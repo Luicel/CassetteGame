@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://byqkycl7qpnd3"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_qfedd"]
+[ext_resource type="Texture2D" uid="uid://beo26eo1p1p7l" path="res://player/amogus.png" id="2_43p0k"]
+[ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="3_4s4r2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8o1gm"]
+radius = 32.0
+height = 128.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5meqo"]
+radius = 32.0
+height = 128.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_qfedd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_43p0k")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-40, 0)
+scale = Vector2(0.25, 0.5)
+texture = ExtResource("2_43p0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8o1gm")
+
+[node name="CassetteDetectorArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CassetteDetectorArea"]
+shape = SubResource("CapsuleShape2D_5meqo")
+
+[node name="CassettePocket" parent="." instance=ExtResource("3_4s4r2")]
+position = Vector2(0, -32)
+
+[connection signal="body_entered" from="CassetteDetectorArea" to="." method="_on_cassette_detector_area_body_entered"]

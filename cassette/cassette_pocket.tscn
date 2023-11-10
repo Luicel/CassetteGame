@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://h0qaqq82paex"]
+
+[ext_resource type="Script" path="res://cassette/cassette_pocket.gd" id="1_ktp5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwd7g"]
+size = Vector2(32, 32)
+
+[node name="CassettePocket" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_ktp5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hwd7g")
+
+[node name="PickupCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
