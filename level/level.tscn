@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cahykmuydyicq" path="res://level/tilesheet_complete.png" id="1_qeo0w"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
-[ext_resource type="PackedScene" uid="uid://clxdrm61ea5bg" path="res://cassette/blue_cassette.tscn" id="3_xgbss"]
-[ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="4_uh264"]
+[ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red_cassette.tscn" id="6_mjnsa"]
+[ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_block.tscn" id="7_338qu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpbmk"]
 texture = ExtResource("1_qeo0w")
@@ -855,14 +855,131 @@ sources/0 = SubResource("TileSetAtlasSource_bpbmk")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_2abaw")
 format = 2
-layer_0/tile_data = PackedInt32Array(1114113, 0, 6, 1114114, 0, 6, 1114115, 0, 6, 1114116, 0, 6, 1114117, 0, 6, 1114118, 0, 6, 1114119, 0, 6, 1114120, 0, 6, 1114121, 0, 6, 1114122, 0, 6, 1114123, 0, 6, 1114124, 0, 6, 1114125, 0, 6, 1114126, 0, 6, 1114127, 0, 6, 1114128, 0, 6, 1114129, 0, 6, 1114112, 0, 6, 1048576, 0, 6, 983040, 0, 6, 917504, 0, 6, 851968, 0, 6, 786432, 0, 6, 720896, 0, 6, 655360, 0, 6, 589824, 0, 6, 524288, 0, 6, 458752, 0, 6, 0, 0, 6, 65536, 0, 6, 131072, 0, 6, 196608, 0, 6, 262144, 0, 6, 327680, 0, 6, 393216, 0, 6, 31, 0, 6, 30, 0, 6, 29, 0, 6, 28, 0, 6, 27, 0, 6, 26, 0, 6, 25, 0, 6, 24, 0, 6, 23, 0, 6, 22, 0, 6, 21, 0, 6, 20, 0, 6, 19, 0, 6, 18, 0, 6, 17, 0, 6, 16, 0, 6, 15, 0, 6, 14, 0, 6, 13, 0, 6, 12, 0, 6, 11, 0, 6, 10, 0, 6, 9, 0, 6, 8, 0, 6, 7, 0, 6, 6, 0, 6, 5, 0, 6, 4, 0, 6, 3, 0, 6, 2, 0, 6, 1, 0, 6, 1114130, 0, 6, 1114131, 0, 6, 1114132, 0, 6, 1114133, 0, 6, 1114134, 0, 6, 1114135, 0, 6, 1114136, 0, 6, 1114137, 0, 6, 1114138, 0, 6, 1114139, 0, 6, 1114140, 0, 6, 1114141, 0, 6, 1114142, 0, 6, 1114143, 0, 6, 65567, 0, 6, 131103, 0, 6, 196639, 0, 6, 262175, 0, 6, 327711, 0, 6, 393247, 0, 6, 458783, 0, 6, 524319, 0, 6, 589855, 0, 6, 655391, 0, 6, 720927, 0, 6, 786463, 0, 6, 851999, 0, 6, 917535, 0, 6, 983071, 0, 6, 1048607, 0, 6)
+layer_0/tile_data = PackedInt32Array(1114113, 0, 6, 1114114, 0, 6, 1114115, 0, 6, 1114116, 0, 6, 1114117, 0, 6, 1114118, 0, 6, 1114119, 0, 6, 1114120, 0, 6, 1114121, 0, 6, 1114122, 0, 6, 1114123, 0, 6, 1114112, 0, 6, 1048576, 0, 6, 983040, 0, 6, 917504, 0, 6, 851968, 0, 6, 786432, 0, 6, 720896, 0, 6, 655360, 0, 6, 589824, 0, 6, 524288, 0, 6, 458752, 0, 6, 0, 0, 6, 65536, 0, 6, 131072, 0, 6, 196608, 0, 6, 262144, 0, 6, 327680, 0, 6, 393216, 0, 6, 31, 0, 6, 30, 0, 6, 29, 0, 6, 28, 0, 6, 27, 0, 6, 26, 0, 6, 25, 0, 6, 24, 0, 6, 23, 0, 6, 22, 0, 6, 21, 0, 6, 20, 0, 6, 19, 0, 6, 18, 0, 6, 17, 0, 6, 16, 0, 6, 15, 0, 6, 14, 0, 6, 13, 0, 6, 12, 0, 6, 11, 0, 6, 10, 0, 6, 9, 0, 6, 8, 0, 6, 7, 0, 6, 6, 0, 6, 5, 0, 6, 4, 0, 6, 3, 0, 6, 2, 0, 6, 1, 0, 6, 1114132, 0, 6, 1114133, 0, 6, 1114134, 0, 6, 1114135, 0, 6, 1114136, 0, 6, 1114137, 0, 6, 1114138, 0, 6, 1114139, 0, 6, 1114140, 0, 6, 1114141, 0, 6, 1114142, 0, 6, 1114143, 0, 6, 65567, 0, 6, 131103, 0, 6, 196639, 0, 6, 262175, 0, 6, 327711, 0, 6, 393247, 0, 6, 458783, 0, 6, 524319, 0, 6, 589855, 0, 6, 655391, 0, 6, 720927, 0, 6, 786463, 0, 6, 851999, 0, 6, 917535, 0, 6, 983071, 0, 6, 1048607, 0, 6, 1114124, 0, 6, 1114131, 0, 6)
 
 [node name="Player" parent="." instance=ExtResource("2_rfyqa")]
 z_index = 1
-position = Vector2(896, 1024)
+position = Vector2(544, 1024)
 
-[node name="BlueCassette" parent="." instance=ExtResource("3_xgbss")]
-position = Vector2(1288, 752)
+[node name="RedCassette" parent="." instance=ExtResource("6_mjnsa")]
+position = Vector2(736, 880)
 
-[node name="CassettePocket" parent="." instance=ExtResource("4_uh264")]
-position = Vector2(1512, 896)
+[node name="RedBlock" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1040, 1136)
+
+[node name="RedBlock2" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1040, 1104)
+
+[node name="RedBlock3" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1072, 1136)
+
+[node name="RedBlock4" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1072, 1104)
+
+[node name="RedBlock5" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1104, 1136)
+
+[node name="RedBlock6" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1104, 1104)
+
+[node name="RedBlock7" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1136, 1136)
+
+[node name="RedBlock8" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1136, 1104)
+
+[node name="RedBlock9" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1168, 1136)
+
+[node name="RedBlock10" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1168, 1104)
+
+[node name="RedBlock11" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1200, 1136)
+
+[node name="RedBlock12" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1200, 1104)
+
+[node name="RedBlock13" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(976, 1136)
+
+[node name="RedBlock14" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(976, 1104)
+
+[node name="RedBlock15" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1008, 1136)
+
+[node name="RedBlock16" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(1008, 1104)
+
+[node name="RedBlock17" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 1072)
+
+[node name="RedBlock18" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 1040)
+
+[node name="RedBlock19" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 1072)
+
+[node name="RedBlock20" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 1040)
+
+[node name="RedBlock25" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 944)
+
+[node name="RedBlock26" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 912)
+
+[node name="RedBlock27" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 944)
+
+[node name="RedBlock28" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 912)
+
+[node name="RedBlock29" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 880)
+
+[node name="RedBlock30" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 848)
+
+[node name="RedBlock31" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 880)
+
+[node name="RedBlock32" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 848)
+
+[node name="RedBlock33" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 816)
+
+[node name="RedBlock34" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 784)
+
+[node name="RedBlock35" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 816)
+
+[node name="RedBlock36" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 784)
+
+[node name="RedBlock37" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 1136)
+
+[node name="RedBlock38" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 1104)
+
+[node name="RedBlock39" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 1136)
+
+[node name="RedBlock40" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 1104)
+
+[node name="RedBlock21" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 1008)
+
+[node name="RedBlock22" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(912, 976)
+
+[node name="RedBlock23" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 1008)
+
+[node name="RedBlock24" parent="." instance=ExtResource("7_338qu")]
+position = Vector2(944, 976)

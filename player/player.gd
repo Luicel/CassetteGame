@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal cassette_thrown
+
 @onready var cassette_pocket = $CassettePocket
 @onready var sprite_2d = $Sprite2D
 
@@ -30,25 +32,21 @@ func handle_movement(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
-		sprite_2d.scale.x = -1 if direction < 0 else 1
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
 
 func _on_cassette_detector_area_body_entered(body):
-	cassette_pocket.try_to_pocket_cassette(body)
+	var success = cassette_pocket.try_to_pocket_cassette(body)
+	if success: body._enable_effect()
 
 
 func throw_cassette():
 	if not cassette_pocket.pocketed_cassette: return
 	
 	var cassette = cassette_pocket.pocketed_cassette
+	cassette.throw()
+	cassette._disable_effect()
 	cassette_pocket.pocketed_cassette = null
 	cassette_pocket.pickup_cooldown.start()
-	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
-	
-	cassette.reparent(get_tree().root)
-	cassette.freeze = false
-	cassette.apply_central_force(direction * 50000)
-	print(direction)

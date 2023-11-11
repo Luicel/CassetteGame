@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://byqkycl7qpnd3"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_qfedd"]
-[ext_resource type="Texture2D" uid="uid://beo26eo1p1p7l" path="res://player/amogus.png" id="2_43p0k"]
+[ext_resource type="Texture2D" uid="uid://wffy47qet336" path="res://kenney_pattern-pack-pixel/Tiles (Color)/tile_0000.png" id="2_47wof"]
 [ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="3_4s4r2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8o1gm"]
@@ -17,12 +17,8 @@ collision_layer = 2
 script = ExtResource("1_qfedd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_43p0k")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-40, 0)
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("2_43p0k")
+scale = Vector2(4, 8)
+texture = ExtResource("2_47wof")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8o1gm")
