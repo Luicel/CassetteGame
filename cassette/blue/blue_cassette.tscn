@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://clxdrm61ea5bg"]
+
+[ext_resource type="PackedScene" uid="uid://c5ppwe7hqd38a" path="res://cassette/base_cassette.tscn" id="1_ufuvp"]
+[ext_resource type="Script" path="res://cassette/blue/blue_cassette.gd" id="2_xogrn"]
+[ext_resource type="Texture2D" uid="uid://bpn85pm0wvey6" path="res://cassette/blue/blue-cassette.png" id="3_rfp2n"]
+
+[node name="BlueCassette" instance=ExtResource("1_ufuvp")]
+script = ExtResource("2_xogrn")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_rfp2n")

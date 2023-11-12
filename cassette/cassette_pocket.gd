@@ -7,11 +7,8 @@ var active = true
 
 
 func try_to_pocket_cassette(potential_cassette):
-	print("a")
 	if potential_cassette.is_in_group("cassette") and not pocketed_cassette and pickup_cooldown.time_left == 0:
-		print("b")
 		pocket_cassette(potential_cassette)
-		print("c")
 		return true
 	else:
 		return false

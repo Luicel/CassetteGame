@@ -21,7 +21,6 @@ func _ready():
 	for child in player_movement_state_machine.get_children():
 		if child is PlayerMovementState:
 			movement_states[child.name.to_lower()] = child
-			print()
 	
 	if initial_movement_state:
 		initial_movement_state.enter()
@@ -59,7 +58,6 @@ func transition_to_movement_state(new_movement_state_name):
 
 func _on_cassette_detector_area_body_entered(body):
 	var success = cassette_pocket.try_to_pocket_cassette(body)
-	print(success)
 	if success: body._enable_effect()
 
 
@@ -71,9 +69,12 @@ func handle_horizontal_movement():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 
-func handle_jump():
+func handle_jump(flipped = false):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		if not flipped:
+			velocity.y = JUMP_VELOCITY
+		else:
+			velocity.y = -JUMP_VELOCITY
 
 
 func handle_air_jump():
@@ -82,9 +83,13 @@ func handle_air_jump():
 		can_air_jump = false
 
 
-func apply_gravity(delta):
+func apply_gravity(delta, flipped = false):
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		if not flipped:
+			velocity.y += gravity * delta
+		else:
+			print("!")
+			velocity.y += gravity * delta * -1.0
 
 
 func throw_cassette():

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qo6rn40gfsg4"
-path="res://.godot/imported/purple-cassette.png-32d6666813691e2324eb57a57a5a660c.ctex"
+uid="uid://d32lkkgwh6t3o"
+path="res://.godot/imported/green-cassette.png-2eddf6b2c6120f92166053bb19cbac93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cassette/purple-cassette.png"
-dest_files=["res://.godot/imported/purple-cassette.png-32d6666813691e2324eb57a57a5a660c.ctex"]
+source_file="res://cassette/green/green-cassette.png"
+dest_files=["res://.godot/imported/green-cassette.png-2eddf6b2c6120f92166053bb19cbac93.ctex"]
 
 [params]
 
