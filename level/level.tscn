@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=9 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="Texture2D" uid="uid://cahykmuydyicq" path="res://level/tilesheet_complete.png" id="1_qeo0w"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
+[ext_resource type="PackedScene" uid="uid://b137qf0dif740" path="res://cassette/purple_cassette.tscn" id="5_rqfs6"]
 [ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red_cassette.tscn" id="6_mjnsa"]
+[ext_resource type="PackedScene" uid="uid://clxdrm61ea5bg" path="res://cassette/blue_cassette.tscn" id="6_ypkii"]
 [ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_block.tscn" id="7_338qu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpbmk"]
@@ -983,3 +985,9 @@ position = Vector2(944, 1008)
 
 [node name="RedBlock24" parent="." instance=ExtResource("7_338qu")]
 position = Vector2(944, 976)
+
+[node name="PurpleCassette" parent="." instance=ExtResource("5_rqfs6")]
+position = Vector2(328, 872)
+
+[node name="BlueCassette" parent="." instance=ExtResource("6_ypkii")]
+position = Vector2(184, 824)

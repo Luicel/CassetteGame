@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://byqkycl7qpnd3"]
+[gd_scene load_steps=9 format=3 uid="uid://byqkycl7qpnd3"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_qfedd"]
 [ext_resource type="Texture2D" uid="uid://wffy47qet336" path="res://kenney_pattern-pack-pixel/Tiles (Color)/tile_0000.png" id="2_47wof"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://player/movement/player_movement_state_machine.gd" id="4_f4mm0"]
 [ext_resource type="Script" path="res://player/movement/player_normal_movement_state.gd" id="5_32qle"]
 [ext_resource type="Script" path="res://player/movement/player_levitate_movement_state.gd" id="6_2mgkq"]
-[ext_resource type="Script" path="res://player/movement/player_air_jump_movement_state.gd" id="7_oa0nt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8o1gm"]
 radius = 32.0
@@ -37,8 +36,6 @@ shape = SubResource("CapsuleShape2D_5meqo")
 
 [node name="CassettePocket" parent="." instance=ExtResource("3_4s4r2")]
 position = Vector2(0, -32)
-collision_layer = 0
-collision_mask = 0
 
 [node name="PlayerMovementStateMachine" type="Node" parent="."]
 script = ExtResource("4_f4mm0")
@@ -48,8 +45,5 @@ script = ExtResource("5_32qle")
 
 [node name="Levitate" type="Node" parent="PlayerMovementStateMachine"]
 script = ExtResource("6_2mgkq")
-
-[node name="AirJump" type="Node" parent="PlayerMovementStateMachine"]
-script = ExtResource("7_oa0nt")
 
 [connection signal="body_entered" from="CassetteDetectorArea" to="." method="_on_cassette_detector_area_body_entered"]
