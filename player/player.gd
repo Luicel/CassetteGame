@@ -5,6 +5,7 @@ signal cassette_thrown
 @onready var cassette_pocket = $CassettePocket
 @onready var sprite_2d = $Sprite2D
 @onready var player_movement_state_machine = $PlayerMovementStateMachine
+@onready var cassette_detector_area = $CassetteDetectorArea
 
 @export var initial_movement_state : PlayerMovementState
 
@@ -33,6 +34,9 @@ func _process(delta):
 	
 	if is_on_floor() and not can_air_jump:
 		can_air_jump = true
+	
+	if not cassette_pocket.pocketed_cassette:
+		detect_overlapping_colliders()
 
 
 func _physics_process(delta):
@@ -98,3 +102,8 @@ func throw_cassette():
 	cassette.throw()
 	cassette._disable_effect()
 	cassette_pocket.remove_pocketed_cassette()
+
+
+func detect_overlapping_colliders():
+	for body in cassette_detector_area.get_overlapping_bodies():
+		cassette_pocket.try_to_pocket_cassette(body)

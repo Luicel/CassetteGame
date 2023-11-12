@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://byqkycl7qpnd3"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_qfedd"]
+[ext_resource type="Texture2D" uid="uid://wffy47qet336" path="res://kenney_pattern-pack-pixel/Tiles (Color)/tile_0000.png" id="2_47wof"]
+[ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="3_4s4r2"]
+[ext_resource type="Script" path="res://player/movement/player_movement_state_machine.gd" id="4_f4mm0"]
+[ext_resource type="Script" path="res://player/movement/player_normal_movement_state.gd" id="5_32qle"]
+[ext_resource type="Script" path="res://player/movement/player_levitate_movement_state.gd" id="6_2mgkq"]
+[ext_resource type="Script" path="res://player/movement/player_air_jump_movement_state.gd" id="7_oa0nt"]
+[ext_resource type="Script" path="res://player/movement/player_upside_down_movement_state.gd" id="8_42xle"]
+[ext_resource type="Script" path="res://player/movement/player_float_movement_state.gd" id="9_u7hmn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8o1gm"]
+radius = 32.0
+height = 128.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5meqo"]
+radius = 32.0
+height = 128.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("initial_movement_state") groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_qfedd")
+initial_movement_state = NodePath("PlayerMovementStateMachine/Normal")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 8)
+texture = ExtResource("2_47wof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8o1gm")
+
+[node name="CassetteDetectorArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CassetteDetectorArea"]
+shape = SubResource("CapsuleShape2D_5meqo")
+
+[node name="CassettePocket" parent="." instance=ExtResource("3_4s4r2")]
+position = Vector2(0, -32)
+collision_layer = 0
+collision_mask = 0
+
+[node name="PlayerMovementStateMachine" type="Node" parent="."]
+script = ExtResource("4_f4mm0")
+
+[node name="Normal" type="Node" parent="PlayerMovementStateMachine"]
+script = ExtResource("5_32qle")
+
+[node name="Levitate" type="Node" parent="PlayerMovementStateMachine"]
+script = ExtResource("6_2mgkq")
+
+[node name="AirJump" type="Node" parent="PlayerMovementStateMachine"]
+script = ExtResource("7_oa0nt")
+
+[node name="UpsideDown" type="Node" parent="PlayerMovementStateMachine"]
+script = ExtResource("8_42xle")
+
+[node name="Float" type="Node" parent="PlayerMovementStateMachine"]
+script = ExtResource("9_u7hmn")
+
+[connection signal="body_entered" from="CassetteDetectorArea" to="." method="_on_cassette_detector_area_body_entered"]

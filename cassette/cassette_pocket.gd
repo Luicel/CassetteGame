@@ -33,9 +33,9 @@ func pocket_cassette(cassette):
 
 
 func remove_pocketed_cassette():
+	previously_pocketed_cassette = pocketed_cassette
 	pocketed_cassette = null
 	pickup_cooldown.start()
-	previously_pocketed_cassette = pocketed_cassette
 
 
 func _on_body_entered(body):
