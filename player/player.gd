@@ -88,7 +88,6 @@ func apply_gravity(delta, flipped = false):
 		if not flipped:
 			velocity.y += gravity * delta
 		else:
-			print("!")
 			velocity.y += gravity * delta * -1.0
 
 
@@ -98,5 +97,4 @@ func throw_cassette():
 	var cassette = cassette_pocket.pocketed_cassette
 	cassette.throw()
 	cassette._disable_effect()
-	cassette_pocket.pocketed_cassette = null
-	cassette_pocket.pickup_cooldown.start()
+	cassette_pocket.remove_pocketed_cassette()
