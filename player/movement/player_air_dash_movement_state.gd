@@ -18,7 +18,7 @@ func physics_update(delta):
 			handle_air_dash()
 			return
 		else:
-			player.handle_horizontal_movement()
+			player.handle_horizontal_movement(delta)
 			player.handle_jump()
 			player.handle_wall_jump()
 			player.apply_gravity(delta)
@@ -31,7 +31,7 @@ func physics_update(delta):
 			air_dash_timer.stop()
 			physics_update(delta) # Re-calculate physics update
 		else:
-			player.velocity = player.velocity.move_toward(Vector2.ZERO, player.air_dash_resistance)
+			player.velocity = player.velocity.move_toward(Vector2.ZERO, player.air_dash_resistance * delta)
 			#print(player.velocity)
 			pass
 	

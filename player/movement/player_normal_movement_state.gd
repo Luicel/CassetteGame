@@ -8,7 +8,7 @@ func enter():
 
 
 func physics_update(delta):
-	player.handle_horizontal_movement()
+	player.handle_horizontal_movement(delta)
 	player.handle_jump()
 	player.handle_wall_jump()
 	player.apply_gravity(delta)

@@ -863,7 +863,7 @@ layer_0/tile_data = PackedInt32Array(1114113, 0, 6, 1114114, 0, 6, 1114115, 0, 6
 
 [node name="Player" parent="." instance=ExtResource("2_rfyqa")]
 z_index = 1
-position = Vector2(1216, 1024)
+position = Vector2(320, 1024)
 
 [node name="RedCassette" parent="." instance=ExtResource("6_mjnsa")]
 position = Vector2(960, 1072)
@@ -877,7 +877,7 @@ position = Vector2(1504, 928)
 scale = Vector2(1, 5)
 
 [node name="PurpleCassette" parent="." instance=ExtResource("5_rqfs6")]
-position = Vector2(384, 1072)
+position = Vector2(1288, 1072)
 
 [node name="BlueCassette" parent="." instance=ExtResource("6_ypkii")]
 position = Vector2(1088, 1072)
