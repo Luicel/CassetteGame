@@ -10,6 +10,7 @@ func enter():
 func physics_update(delta):
 	player.handle_horizontal_movement()
 	player.handle_jump()
+	player.handle_wall_jump()
 	player.apply_gravity(delta)
 	
 	player.move_and_slide()

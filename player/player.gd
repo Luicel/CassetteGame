@@ -7,6 +7,7 @@ signal cassette_thrown
 @onready var player_movement_state_machine = $PlayerMovementStateMachine
 @onready var cassette_detector_area = $CassetteDetectorArea
 @onready var coyote_time_timer = $CoyoteTimeTimer
+@onready var wall_jump_timer = $WallJumpTimer
 
 @export var initial_movement_state : PlayerMovementState
 @export_category("Player Movement")
@@ -74,10 +75,12 @@ func _on_cassette_detector_area_body_entered(body):
 
 
 func handle_horizontal_movement():
+	if wall_jump_timer.time_left > 0.0 and not is_on_floor(): return
+	
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * speed
-	else:
+	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 
@@ -102,6 +105,18 @@ func handle_jump(flipped = false):
 		else:
 			if velocity.y >= -jump_velocity / 2.0:
 				velocity.y = -jump_velocity / 2.0
+
+
+func handle_wall_jump(flipped = false):
+	if Input.is_action_just_pressed("jump") and is_on_wall_only():
+		#var wall_normal = was_wall_normal if wall_grace_timer.time_left > 0 else get_wall_normal()
+		var wall_normal = get_wall_normal()
+		velocity.x = wall_normal.x * speed
+		if not flipped:
+			velocity.y = jump_velocity
+		else:
+			velocity.y = -jump_velocity
+		#wall_jump_timer.start()
 
 
 func apply_gravity(delta, flipped = false):

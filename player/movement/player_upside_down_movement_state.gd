@@ -17,6 +17,7 @@ func exit():
 func physics_update(delta):
 	player.handle_horizontal_movement()
 	player.handle_jump(true)
+	player.handle_wall_jump(true)
 	player.apply_gravity(delta, true)
 	
 	player.move_and_slide()

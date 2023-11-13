@@ -20,6 +20,7 @@ func physics_update(delta):
 		else:
 			player.handle_horizontal_movement()
 			player.handle_jump()
+			player.handle_wall_jump()
 			player.apply_gravity(delta)
 		
 		if player.is_on_floor():
