@@ -6,16 +6,19 @@ signal cassette_thrown
 @onready var sprite_2d = $Sprite2D
 @onready var player_movement_state_machine = $PlayerMovementStateMachine
 @onready var cassette_detector_area = $CassetteDetectorArea
+@onready var coyote_time_timer = $CoyoteTimeTimer
 
 @export var initial_movement_state : PlayerMovementState
+@export_category("Player Movement")
+@export var speed = 300.0
+@export var jump_velocity = -400.0
+@export_category("Player Air Dash Movement")
 @export var air_dash_force = 0.0
 @export var air_dash_resistance = 0.0
 @export var air_dash_wait_time = 0.0
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+var coyote_time_activated = false
 var can_air_dash = true
 var gravity_scale = 1.0
 var current_movement_state : PlayerMovementState
@@ -71,27 +74,27 @@ func _on_cassette_detector_area_body_entered(body):
 
 
 func handle_horizontal_movement():
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 
 func handle_jump(flipped = false):
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		if not flipped:
-			velocity.y = JUMP_VELOCITY
-		else:
-			velocity.y = -JUMP_VELOCITY
-
-
-func handle_air_dash():
-	if Input.is_action_just_pressed("ui_accept") and not is_on_floor() and can_air_dash:
-		var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
-		velocity = direction * air_dash_force
-		gravity_scale = 0.0
-		can_air_dash = false
+	if not is_on_floor() and not coyote_time_activated:
+		coyote_time_activated = true
+		coyote_time_timer.start()
+	elif is_on_floor():
+		coyote_time_activated = false
+	
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() or coyote_time_timer.time_left > 0.0:
+			coyote_time_activated = true
+			if not flipped:
+				velocity.y = jump_velocity
+			else:
+				velocity.y = -jump_velocity
 
 
 func apply_gravity(delta, flipped = false):
