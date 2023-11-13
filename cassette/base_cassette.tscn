@@ -12,6 +12,9 @@ size = Vector2(64, 32)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_lflj2")
+force = 150000
+air_resistance = 5
+cassette_gravity_scale = 2.0
 
 [node name="PhysicsCollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6wf0k")
@@ -20,6 +23,7 @@ shape = SubResource("RectangleShape2D_6wf0k")
 z_index = 5
 
 [node name="ThrowTimer" type="Timer" parent="."]
+wait_time = 0.75
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]

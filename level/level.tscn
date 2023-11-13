@@ -882,8 +882,8 @@ position = Vector2(1288, 1072)
 [node name="BlueCassette" parent="." instance=ExtResource("6_ypkii")]
 position = Vector2(1088, 1072)
 
-[node name="GreenCassette" parent="." instance=ExtResource("7_njao1")]
-position = Vector2(576, 1072)
-
 [node name="YellowCassette" parent="." instance=ExtResource("8_tlxbv")]
 position = Vector2(768, 1072)
+
+[node name="GreenCassette" parent="." instance=ExtResource("7_njao1")]
+position = Vector2(616, 1056)

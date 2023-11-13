@@ -4,6 +4,8 @@ class_name BaseCassette extends RigidBody2D
 
 @export var force = 100000
 @export var air_resistance = 4
+@export var cassette_gravity_scale = 0.0
+
 
 func throw(player_direction):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
@@ -39,7 +41,7 @@ func _on_body_entered(body):
 func disable_unique_physics():
 	linear_velocity = Vector2.ZERO
 	linear_damp = 0
-	gravity_scale = 1
+	gravity_scale = cassette_gravity_scale
 
 
 func _on_area_2d_area_entered(area):

@@ -29,8 +29,8 @@ acceleration = 2500.0
 friction = 6000.0
 air_acceleration = 2000.0
 air_resistance = 3000.0
-air_dash_force = 1100.0
-air_dash_resistance = 1600.0
+air_dash_force = 2000.0
+air_dash_resistance = 2500.0
 air_dash_wait_time = 0.075
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -72,7 +72,7 @@ script = ExtResource("9_u7hmn")
 
 [node name="AirDashTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
 
 [node name="CoyoteTimeTimer" type="Timer" parent="."]

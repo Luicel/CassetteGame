@@ -14,7 +14,6 @@ func enter():
 func physics_update(delta):
 	if air_dash_timer.time_left == 0.0:
 		if player.is_on_wall_only() or player.wall_grace_timer.time_left > 0:
-			print("!")
 			execute_basics(delta)
 		elif not player.is_on_floor() and Input.is_action_just_pressed("jump") and can_air_dash and air_dash_timer.time_left == 0.0:
 			can_air_dash = false
