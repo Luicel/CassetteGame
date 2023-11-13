@@ -38,7 +38,6 @@ func physics_update(delta):
 
 
 func execute_basics(delta):
-	print("!!")
 	player.handle_horizontal_movement(delta)
 	player.handle_jump()
 	player.handle_wall_jump()

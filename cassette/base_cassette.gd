@@ -10,7 +10,6 @@ class_name BaseCassette extends RigidBody2D
 func throw(player_direction):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
 	if direction == Vector2.ZERO: direction = Vector2(player_direction, 0)
-	print(direction)
 	gravity_scale = 0
 	linear_damp = air_resistance
 	throw_timer.start()

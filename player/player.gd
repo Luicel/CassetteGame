@@ -9,6 +9,7 @@ signal cassette_thrown
 @onready var coyote_time_timer = $CoyoteTimeTimer
 @onready var wall_jump_timer = $WallJumpTimer
 @onready var wall_grace_timer = $WallGraceTimer
+@onready var jump_buffer_timer = $JumpBufferTimer
 
 @export var initial_movement_state : PlayerMovementState
 @export_category("Player Movement")
@@ -136,7 +137,8 @@ func handle_jump(flipped = false):
 	elif is_on_floor():
 		coyote_time_activated = false
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") or jump_buffer_timer.time_left > 0:
+		if jump_buffer_timer.time_left == 0: jump_buffer_timer.start()
 		if is_on_floor() or coyote_time_timer.time_left > 0.0:
 			coyote_time_activated = true
 			if not flipped:
