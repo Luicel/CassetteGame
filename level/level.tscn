@@ -866,6 +866,7 @@ z_index = 1
 position = Vector2(1216, 1024)
 
 [node name="RedCassette" parent="." instance=ExtResource("6_mjnsa")]
+z_index = 0
 position = Vector2(960, 1072)
 
 [node name="RedBlock11" parent="." instance=ExtResource("7_338qu")]
@@ -877,13 +878,17 @@ position = Vector2(1504, 928)
 scale = Vector2(1, 5)
 
 [node name="PurpleCassette" parent="." instance=ExtResource("5_rqfs6")]
+z_index = 0
 position = Vector2(384, 1072)
 
 [node name="BlueCassette" parent="." instance=ExtResource("6_ypkii")]
-position = Vector2(192, 1072)
+z_index = 0
+position = Vector2(1088, 1072)
 
 [node name="GreenCassette" parent="." instance=ExtResource("7_njao1")]
+z_index = 0
 position = Vector2(576, 1072)
 
 [node name="YellowCassette" parent="." instance=ExtResource("8_tlxbv")]
+z_index = 0
 position = Vector2(768, 1072)

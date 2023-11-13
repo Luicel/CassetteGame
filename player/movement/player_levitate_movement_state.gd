@@ -12,7 +12,8 @@ func enter():
 
 
 func physics_update(delta):
-	player.velocity.y = -SPEED
+	if player.velocity.y > -SPEED:
+		player.velocity.y += -(SPEED / 10.0)
 	player.handle_horizontal_movement()
 	
 	player.move_and_slide()

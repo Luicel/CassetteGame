@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://player/movement/player_movement_state_machine.gd" id="4_f4mm0"]
 [ext_resource type="Script" path="res://player/movement/player_normal_movement_state.gd" id="5_32qle"]
 [ext_resource type="Script" path="res://player/movement/player_levitate_movement_state.gd" id="6_2mgkq"]
-[ext_resource type="Script" path="res://player/movement/player_air_jump_movement_state.gd" id="7_oa0nt"]
+[ext_resource type="Script" path="res://player/movement/player_air_dash_movement_state.gd" id="7_74ulm"]
 [ext_resource type="Script" path="res://player/movement/player_upside_down_movement_state.gd" id="8_42xle"]
 [ext_resource type="Script" path="res://player/movement/player_float_movement_state.gd" id="9_u7hmn"]
 
@@ -22,6 +22,9 @@ height = 128.0
 collision_layer = 2
 script = ExtResource("1_qfedd")
 initial_movement_state = NodePath("PlayerMovementStateMachine/Normal")
+air_dash_force = 1250.0
+air_dash_resistance = 35.0
+air_dash_wait_time = 0.075
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 8)
@@ -51,13 +54,20 @@ script = ExtResource("5_32qle")
 [node name="Levitate" type="Node" parent="PlayerMovementStateMachine"]
 script = ExtResource("6_2mgkq")
 
-[node name="AirJump" type="Node" parent="PlayerMovementStateMachine"]
-script = ExtResource("7_oa0nt")
+[node name="AirDash" type="Node" parent="PlayerMovementStateMachine"]
+script = ExtResource("7_74ulm")
 
 [node name="UpsideDown" type="Node" parent="PlayerMovementStateMachine"]
 script = ExtResource("8_42xle")
 
 [node name="Float" type="Node" parent="PlayerMovementStateMachine"]
 script = ExtResource("9_u7hmn")
+
+[node name="AirDashTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="AirDash" type="Timer" parent="."]
 
 [connection signal="body_entered" from="CassetteDetectorArea" to="." method="_on_cassette_detector_area_body_entered"]

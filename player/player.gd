@@ -8,12 +8,16 @@ signal cassette_thrown
 @onready var cassette_detector_area = $CassetteDetectorArea
 
 @export var initial_movement_state : PlayerMovementState
+@export var air_dash_force = 0.0
+@export var air_dash_resistance = 0.0
+@export var air_dash_wait_time = 0.0
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var can_air_jump = true
+var can_air_dash = true
+var gravity_scale = 1.0
 var current_movement_state : PlayerMovementState
 var movement_states : Dictionary = {}
 
@@ -32,8 +36,9 @@ func _process(delta):
 	if current_movement_state:
 		current_movement_state.update(delta)
 	
-	if is_on_floor() and not can_air_jump:
-		can_air_jump = true
+	if is_on_floor() and not can_air_dash:
+		can_air_dash = true
+		gravity_scale = 1.0
 	
 	if not cassette_pocket.pocketed_cassette:
 		detect_overlapping_colliders()
@@ -81,18 +86,20 @@ func handle_jump(flipped = false):
 			velocity.y = -JUMP_VELOCITY
 
 
-func handle_air_jump():
-	if Input.is_action_just_pressed("ui_accept") and not is_on_floor() and can_air_jump:
-		velocity.y = JUMP_VELOCITY * 1.5
-		can_air_jump = false
+func handle_air_dash():
+	if Input.is_action_just_pressed("ui_accept") and not is_on_floor() and can_air_dash:
+		var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
+		velocity = direction * air_dash_force
+		gravity_scale = 0.0
+		can_air_dash = false
 
 
 func apply_gravity(delta, flipped = false):
 	if not is_on_floor():
 		if not flipped:
-			velocity.y += gravity * delta
+			velocity.y += gravity * delta * gravity_scale
 		else:
-			velocity.y += gravity * delta * -1.0
+			velocity.y += gravity * delta * gravity_scale * -1.0
 
 
 func throw_cassette():
@@ -106,4 +113,7 @@ func throw_cassette():
 
 func detect_overlapping_colliders():
 	for body in cassette_detector_area.get_overlapping_bodies():
-		cassette_pocket.try_to_pocket_cassette(body)
+		var success = cassette_pocket.try_to_pocket_cassette(body)
+		if success:
+			body._enable_effect()
+			return
