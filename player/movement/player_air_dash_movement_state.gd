@@ -13,15 +13,15 @@ func enter():
 
 func physics_update(delta):
 	if air_dash_timer.time_left == 0.0:
-		if not player.is_on_floor() and Input.is_action_just_pressed("jump") and can_air_dash and air_dash_timer.time_left == 0.0:
+		if player.is_on_wall_only() or player.wall_grace_timer.time_left > 0:
+			print("!")
+			execute_basics(delta)
+		elif not player.is_on_floor() and Input.is_action_just_pressed("jump") and can_air_dash and air_dash_timer.time_left == 0.0:
 			can_air_dash = false
 			handle_air_dash()
 			return
 		else:
-			player.handle_horizontal_movement(delta)
-			player.handle_jump()
-			player.handle_wall_jump()
-			player.apply_gravity(delta)
+			execute_basics(delta)
 		
 		if player.is_on_floor():
 			can_air_dash = true
@@ -36,6 +36,14 @@ func physics_update(delta):
 			pass
 	
 	player.move_and_slide()
+
+
+func execute_basics(delta):
+	print("!!")
+	player.handle_horizontal_movement(delta)
+	player.handle_jump()
+	player.handle_wall_jump()
+	player.apply_gravity(delta)
 
 
 func handle_air_dash():
