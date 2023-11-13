@@ -7,11 +7,13 @@ func enter():
 	player = get_tree().get_first_node_in_group("player")
 	player.up_direction = Vector2.DOWN
 	player.scale.y *= -1
+	player.velocity.y /= 2
 
 
 func exit():
 	player.up_direction = Vector2.UP
 	player.scale.y *= -1
+	player.velocity.y /= 2
 
 
 func physics_update(delta):

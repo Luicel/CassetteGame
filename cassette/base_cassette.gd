@@ -5,8 +5,10 @@ class_name BaseCassette extends RigidBody2D
 @export var force = 100000
 @export var air_resistance = 4
 
-func throw():
+func throw(player_direction):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
+	if direction == Vector2.ZERO: direction = Vector2(player_direction, 0)
+	print(direction)
 	gravity_scale = 0
 	linear_damp = air_resistance
 	throw_timer.start()

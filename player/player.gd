@@ -94,6 +94,10 @@ func handle_horizontal_movement(delta):
 	#if wall_jump_timer.time_left > 0.0 and not is_on_floor(): return
 	
 	var direction = Input.get_axis("left", "right")
+	
+	if direction > 0 and velocity.x > 0 or direction < 0 and velocity.x < 0:
+		previous_direction = direction
+	
 	apply_acceleration(direction, delta)
 	apply_friction(direction, delta)
 	apply_air_acceleration(direction, delta)
@@ -107,11 +111,7 @@ func apply_acceleration(direction, delta):
 
 
 func apply_friction(direction, delta):
-	if direction > 0 and velocity.x > 0 or direction < 0 and velocity.x < 0:
-		previous_direction = direction
-	
 	if direction and direction != previous_direction and is_on_floor():
-		print("!")
 		previous_direction = direction
 		velocity.x = move_toward(velocity.x, 0, friction * delta * 5)
 	elif not direction and is_on_floor():
@@ -175,7 +175,7 @@ func throw_cassette():
 	if not cassette_pocket.pocketed_cassette: return
 	
 	var cassette = cassette_pocket.pocketed_cassette
-	cassette.throw()
+	cassette.throw(previous_direction)
 	cassette._disable_effect()
 	cassette_pocket.remove_pocketed_cassette()
 

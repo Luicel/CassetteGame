@@ -42,4 +42,6 @@ func handle_air_dash():
 	await get_tree().create_timer(player.air_dash_wait_time).timeout
 	
 	air_dash_timer.start()
-	player.velocity = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized() * player.air_dash_force
+	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
+	if direction == Vector2.ZERO: direction = Vector2(player.previous_direction, 0)
+	player.velocity = direction * player.air_dash_force
