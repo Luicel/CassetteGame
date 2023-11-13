@@ -18,6 +18,7 @@ signal cassette_thrown
 @export var wall_jump_velocity = 800.0
 @export_category("Player Physics Movement")
 @export var gravity_scale = 1.0
+@export var wall_slide_gravity_multiplier = 1.0
 @export var acceleration = 0.0
 @export var friction = 0.0
 @export var air_acceleration = 0.0
@@ -166,11 +167,25 @@ func handle_wall_jump(flipped = false):
 
 
 func apply_gravity(delta, flipped = false):
-	if not is_on_floor():
+	if is_player_against_wall() and velocity.y > 0:
+		if not flipped:
+			velocity.y += (gravity * wall_slide_gravity_multiplier) * delta * gravity_scale
+		else:
+			velocity.y += (gravity * wall_slide_gravity_multiplier) * gravity_scale * -1.0
+	elif not is_on_floor():
 		if not flipped:
 			velocity.y += gravity * delta * gravity_scale
 		else:
 			velocity.y += gravity * delta * gravity_scale * -1.0
+
+
+func is_player_against_wall():
+	if is_on_wall_only() and get_wall_normal() == Vector2.LEFT and Input.is_action_pressed("right"):
+		return true
+	elif is_on_wall_only() and get_wall_normal() == Vector2.RIGHT and Input.is_action_pressed("left"):
+		return true
+	else:
+		return false
 
 
 func throw_cassette():
