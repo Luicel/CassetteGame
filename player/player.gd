@@ -95,6 +95,13 @@ func handle_jump(flipped = false):
 				velocity.y = jump_velocity
 			else:
 				velocity.y = -jump_velocity
+	elif Input.is_action_just_released("jump") and not is_on_floor():
+		if not flipped:
+			if velocity.y <= jump_velocity / 2.0:
+				velocity.y = jump_velocity / 2.0
+		else:
+			if velocity.y >= -jump_velocity / 2.0:
+				velocity.y = -jump_velocity / 2.0
 
 
 func apply_gravity(delta, flipped = false):
