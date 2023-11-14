@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal cassette_thrown
 
-@onready var camera_2d = $Camera2D
+#@onready var camera_2d = $Camera2D
 @onready var cassette_pocket = $CassettePocket
 @onready var sprite_2d = $Sprite2D
 @onready var player_movement_state_machine = $PlayerMovementStateMachine
@@ -11,8 +11,11 @@ signal cassette_thrown
 @onready var wall_jump_timer = $WallJumpTimer
 @onready var wall_grace_timer = $WallGraceTimer
 @onready var jump_buffer_timer = $JumpBufferTimer
+@onready var just_swapped_verticality_timer = $JustSwappedVerticalityTimer
+@onready var phantom_camera_2d = %PhantomCamera2D
 
 @export var initial_movement_state : PlayerMovementState
+@export var camera_pivot : Vector2
 @export_category("Player Movement")
 @export var speed = 300.0
 @export var jump_velocity = -400.0
@@ -73,10 +76,19 @@ func _physics_process(delta):
 	if was_on_wall and not is_on_wall():
 		wall_grace_timer.start()
 	if was_on_floor != is_on_floor():
-		camera_2d.update_grounded(is_on_floor())
+		pass
 	
 	if Input.is_action_just_pressed("throw"):
 		throw_cassette()
+	
+	
+	if is_on_floor() and just_swapped_verticality_timer.time_left == 0:
+		handle_camera_pivot()
+
+
+func handle_camera_pivot():
+	var multiplier = 1 if up_direction == Vector2.UP else -1
+	phantom_camera_2d.set_follow_target_offset(camera_pivot * multiplier)
 
 
 func transition_to_movement_state(new_movement_state_name):

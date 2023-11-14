@@ -1,5 +1,7 @@
 class_name PlayerUpsideDownMovementState extends PlayerMovementState
 
+@onready var phantom_camera_2d = %PhantomCamera2D
+
 var player : CharacterBody2D
 
 
@@ -8,12 +10,16 @@ func enter():
 	player.up_direction = Vector2.DOWN
 	player.scale.y *= -1
 	player.velocity.y /= 2
+	
+	player.just_swapped_verticality_timer.start()
 
 
 func exit():
 	player.up_direction = Vector2.UP
 	player.scale.y *= -1
 	player.velocity.y /= 2
+	
+	player.just_swapped_verticality_timer.start()
 
 
 func physics_update(delta):
