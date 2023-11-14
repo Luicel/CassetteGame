@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://byqkycl7qpnd3"]
+[gd_scene load_steps=13 format=3 uid="uid://byqkycl7qpnd3"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_qfedd"]
+[ext_resource type="Script" path="res://player/player_camera.gd" id="2_4agji"]
 [ext_resource type="Texture2D" uid="uid://wffy47qet336" path="res://kenney_pattern-pack-pixel/Tiles (Color)/tile_0000.png" id="2_47wof"]
 [ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="3_4s4r2"]
 [ext_resource type="Script" path="res://player/movement/player_movement_state_machine.gd" id="4_f4mm0"]
@@ -33,6 +34,13 @@ air_resistance = 3000.0
 air_dash_force = 2000.0
 air_dash_resistance = 3000.0
 air_dash_wait_time = 0.075
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -128)
+position_smoothing_enabled = true
+drag_top_margin = 0.75
+script = ExtResource("2_4agji")
+lookahead_factor = 0.05
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 8)

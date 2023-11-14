@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal cassette_thrown
 
+@onready var camera_2d = $Camera2D
 @onready var cassette_pocket = $CassettePocket
 @onready var sprite_2d = $Sprite2D
 @onready var player_movement_state_machine = $PlayerMovementStateMachine
@@ -33,6 +34,7 @@ var coyote_time_activated = false
 var was_wall_normal = Vector2.ZERO
 var previous_direction = 0.0
 var can_air_dash = true
+
 var current_movement_state : PlayerMovementState
 var movement_states : Dictionary = {}
 
@@ -63,12 +65,15 @@ func _physics_process(delta):
 	var was_on_wall = is_on_wall_only()
 	if was_on_wall:
 		was_wall_normal = get_wall_normal()
+	var was_on_floor = is_on_floor()
 	
 	if current_movement_state:
 		current_movement_state.physics_update(delta)
 	
 	if was_on_wall and not is_on_wall():
 		wall_grace_timer.start()
+	if was_on_floor != is_on_floor():
+		camera_2d.update_grounded(is_on_floor())
 	
 	if Input.is_action_just_pressed("throw"):
 		throw_cassette()

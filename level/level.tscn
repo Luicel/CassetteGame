@@ -1,13 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=7 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="Texture2D" uid="uid://cahykmuydyicq" path="res://level/tilesheet_complete.png" id="1_qeo0w"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
-[ext_resource type="PackedScene" uid="uid://dmn8rhe7kwmlu" path="res://cassette/purple/purple_cassette.tscn" id="5_rqfs6"]
-[ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red/red_cassette.tscn" id="6_mjnsa"]
-[ext_resource type="PackedScene" uid="uid://clxdrm61ea5bg" path="res://cassette/blue/blue_cassette.tscn" id="6_ypkii"]
 [ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_block.tscn" id="7_338qu"]
 [ext_resource type="PackedScene" uid="uid://bc5tw2d0vhhme" path="res://cassette/green/green_cassette.tscn" id="7_njao1"]
-[ext_resource type="PackedScene" uid="uid://ca3tc862py1lw" path="res://cassette/yellow/yellow_cassette.tscn" id="8_tlxbv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpbmk"]
 texture = ExtResource("1_qeo0w")
@@ -859,14 +855,14 @@ sources/0 = SubResource("TileSetAtlasSource_bpbmk")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_2abaw")
 format = 2
-layer_0/tile_data = PackedInt32Array(1114113, 0, 6, 1114114, 0, 6, 1114115, 0, 6, 1114116, 0, 6, 1114117, 0, 6, 1114118, 0, 6, 1114119, 0, 6, 1114120, 0, 6, 1114121, 0, 6, 1114122, 0, 6, 1114123, 0, 6, 1114112, 0, 6, 1048576, 0, 6, 983040, 0, 6, 917504, 0, 6, 851968, 0, 6, 786432, 0, 6, 720896, 0, 6, 655360, 0, 6, 589824, 0, 6, 524288, 0, 6, 458752, 0, 6, 0, 0, 6, 65536, 0, 6, 131072, 0, 6, 196608, 0, 6, 262144, 0, 6, 327680, 0, 6, 393216, 0, 6, 31, 0, 6, 30, 0, 6, 29, 0, 6, 28, 0, 6, 27, 0, 6, 26, 0, 6, 25, 0, 6, 24, 0, 6, 23, 0, 6, 22, 0, 6, 21, 0, 6, 20, 0, 6, 19, 0, 6, 18, 0, 6, 17, 0, 6, 16, 0, 6, 15, 0, 6, 14, 0, 6, 13, 0, 6, 12, 0, 6, 11, 0, 6, 10, 0, 6, 9, 0, 6, 8, 0, 6, 7, 0, 6, 6, 0, 6, 5, 0, 6, 4, 0, 6, 3, 0, 6, 2, 0, 6, 1, 0, 6, 1114133, 0, 6, 1114140, 0, 6, 1114141, 0, 6, 1114142, 0, 6, 1114143, 0, 6, 65567, 0, 6, 131103, 0, 6, 196639, 0, 6, 262175, 0, 6, 327711, 0, 6, 393247, 0, 6, 458783, 0, 6, 524319, 0, 6, 589855, 0, 6, 655391, 0, 6, 720927, 0, 6, 786463, 0, 6, 851999, 0, 6, 917535, 0, 6, 983071, 0, 6, 1048607, 0, 6, 1114124, 0, 6, 1114132, 0, 6, 1114131, 0, 6, 1114130, 0, 6, 1114129, 0, 6, 1114128, 0, 6, 1114127, 0, 6, 1114126, 0, 6, 1114125, 0, 6)
+layer_0/tile_data = PackedInt32Array(1114113, 0, 6, 1114114, 0, 6, 1114115, 0, 6, 1114116, 0, 6, 1114117, 0, 6, 1114118, 0, 6, 1114119, 0, 6, 1114120, 0, 6, 1114121, 0, 6, 1114122, 0, 6, 1114123, 0, 6, 1114112, 0, 6, 1048576, 0, 6, 983040, 0, 6, 917504, 0, 6, 851968, 0, 6, 786432, 0, 6, 720896, 0, 6, 655360, 0, 6, 589824, 0, 6, 524288, 0, 6, 458752, 0, 6, 0, 0, 6, 65536, 0, 6, 131072, 0, 6, 196608, 0, 6, 262144, 0, 6, 327680, 0, 6, 393216, 0, 6, 31, 0, 6, 30, 0, 6, 29, 0, 6, 28, 0, 6, 27, 0, 6, 26, 0, 6, 25, 0, 6, 24, 0, 6, 23, 0, 6, 22, 0, 6, 21, 0, 6, 20, 0, 6, 19, 0, 6, 18, 0, 6, 17, 0, 6, 16, 0, 6, 15, 0, 6, 14, 0, 6, 13, 0, 6, 12, 0, 6, 11, 0, 6, 10, 0, 6, 9, 0, 6, 8, 0, 6, 7, 0, 6, 6, 0, 6, 5, 0, 6, 4, 0, 6, 3, 0, 6, 2, 0, 6, 1, 0, 6, 1114133, 0, 6, 1114140, 0, 6, 1114141, 0, 6, 1114142, 0, 6, 1114143, 0, 6, 65567, 0, 6, 131103, 0, 6, 196639, 0, 6, 262175, 0, 6, 327711, 0, 6, 393247, 0, 6, 458783, 0, 6, 524319, 0, 6, 589855, 0, 6, 655391, 0, 6, 720927, 0, 6, 786463, 0, 6, 851999, 0, 6, 917535, 0, 6, 983071, 0, 6, 1048607, 0, 6, 1114124, 0, 6, 1114132, 0, 6, 1114131, 0, 6, 1114130, 0, 6, 1114129, 0, 6, 1114128, 0, 6, 1114127, 0, 6, 1114126, 0, 6, 1114125, 0, 6, 1048588, 0, 6, 983052, 0, 6, 983053, 0, 6, 1048589, 0, 6, 1048590, 0, 6, 983054, 0, 6, 917518, 0, 6, 851982, 0, 6, 851983, 0, 6, 917519, 0, 6, 983055, 0, 6, 1048591, 0, 6, 1048592, 0, 6, 983056, 0, 6, 917520, 0, 6, 851984, 0, 6, 786448, 0, 6, 786449, 0, 6, 720913, 0, 6, 720912, 0, 6, 851985, 0, 6, 917521, 0, 6, 983057, 0, 6, 1048593, 0, 6, 1048594, 0, 6, 983058, 0, 6, 917522, 0, 6, 851986, 0, 6, 786450, 0, 6, 720914, 0, 6, 655378, 0, 6, 589842, 0, 6, 589843, 0, 6, 655379, 0, 6, 720915, 0, 6, 786451, 0, 6, 851987, 0, 6, 917523, 0, 6, 983059, 0, 6, 1048595, 0, 6, 1048596, 0, 6, 1048597, 0, 6, 983061, 0, 6, 917525, 0, 6, 851989, 0, 6, 786453, 0, 6, 720917, 0, 6, 655381, 0, 6, 589845, 0, 6, 524309, 0, 6, 458773, 0, 6, 458772, 0, 6, 524308, 0, 6, 589844, 0, 6, 655380, 0, 6, 720916, 0, 6, 983060, 0, 6, 917524, 0, 6, 851988, 0, 6, 786452, 0, 6, 458777, 0, 6, 524313, 0, 6, 524314, 0, 6, 524315, 0, 6, 524316, 0, 6, 524317, 0, 6, 524318, 0, 6, 458782, 0, 6, 458781, 0, 6, 458780, 0, 6, 458779, 0, 6, 458778, 0, 6)
 
 [node name="Player" parent="." instance=ExtResource("2_rfyqa")]
 z_index = 1
 position = Vector2(320, 1024)
 
-[node name="RedCassette" parent="." instance=ExtResource("6_mjnsa")]
-position = Vector2(960, 1072)
+[node name="Camera2D" parent="Player" index="0"]
+editor_draw_drag_margin = true
 
 [node name="RedBlock11" parent="." instance=ExtResource("7_338qu")]
 position = Vector2(1632, 1120)
@@ -876,14 +872,7 @@ scale = Vector2(5, 1)
 position = Vector2(1504, 928)
 scale = Vector2(1, 5)
 
-[node name="PurpleCassette" parent="." instance=ExtResource("5_rqfs6")]
-position = Vector2(1288, 1072)
-
-[node name="BlueCassette" parent="." instance=ExtResource("6_ypkii")]
-position = Vector2(1088, 1072)
-
-[node name="YellowCassette" parent="." instance=ExtResource("8_tlxbv")]
-position = Vector2(768, 1072)
-
 [node name="GreenCassette" parent="." instance=ExtResource("7_njao1")]
 position = Vector2(616, 1056)
+
+[editable path="Player"]
