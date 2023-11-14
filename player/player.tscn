@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://byqkycl7qpnd3"]
+[gd_scene load_steps=15 format=3 uid="uid://byqkycl7qpnd3"]
 
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_a2nrl"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_qfedd"]
 [ext_resource type="Texture2D" uid="uid://wffy47qet336" path="res://kenney_pattern-pack-pixel/Tiles (Color)/tile_0000.png" id="2_47wof"]
 [ext_resource type="Resource" uid="uid://euybd2w0bax" path="res://addons/phantom_camera/examples/resources/tween/PlayerPhantomCamera2DTween.tres" id="2_64r24"]
@@ -20,13 +21,19 @@ height = 128.0
 radius = 32.0
 height = 128.0
 
-[node name="Node" type="Node"]
+[node name="Player" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+drag_top_margin = 0.75
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("1_a2nrl")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_ffp7b")
 priority_override = null
-priority = 0
+priority = 5
 zoom = Vector2(1, 1)
 follow_mode = 2
 follow_target = NodePath("../CharacterBody2D")
