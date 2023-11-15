@@ -12,7 +12,7 @@ size = Vector2(64, 32)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_lflj2")
-force = 150000
+force = 3000
 air_resistance = 5
 cassette_gravity_scale = 2.0
 

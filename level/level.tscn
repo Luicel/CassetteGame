@@ -857,7 +857,7 @@ sources/0 = SubResource("TileSetAtlasSource_bpbmk")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvoxa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey207"]
 size = Vector2(3150.77, 1772.31)
 
 [node name="Level" type="Node2D"]
@@ -896,13 +896,12 @@ position = Vector2(456, 1056)
 [node name="CameraTriggerArea" parent="." node_paths=PackedStringArray("used_phantom_camera_2d") instance=ExtResource("7_ynetk")]
 position = Vector2(-1632, 288)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
-metadata/_edit_group_ = true
 
 [node name="DetectionCollisionShape2D" parent="CameraTriggerArea" index="0"]
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_cvoxa")
+shape = SubResource("RectangleShape2D_ey207")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_el4ej")

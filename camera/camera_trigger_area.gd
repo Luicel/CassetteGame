@@ -21,6 +21,8 @@ func _process(delta):
 
 
 func draw_camera_visibility_preview():
+	if not used_phantom_camera_2d: return
+	
 	var rectangle_shape_2d = RectangleShape2D.new()
 	var width = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var height = ProjectSettings.get_setting("display/window/size/viewport_height")
@@ -29,10 +31,10 @@ func draw_camera_visibility_preview():
 
 
 func _body_entered(body):
-	if body is CharacterBody2D:
+	if body.is_in_group("player"):
 		used_phantom_camera_2d.set_priority(camera_priority)
 
 
 func _body_exited(body):
-	if body is CharacterBody2D:
+	if body.is_in_group("player"):
 		used_phantom_camera_2d.set_priority(0)
