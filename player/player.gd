@@ -224,7 +224,6 @@ func detect_overlapping_colliders():
 
 
 func respawn():
-	print("!")
 	print(checkpoint)
 	if checkpoint:
 		global_position = checkpoint.respawn_point.global_position

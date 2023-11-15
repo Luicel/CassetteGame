@@ -1,4 +1,4 @@
-extends Area2D
+class_name DeathZone extends Area2D
 
 @onready var player : CharacterBody2D = get_tree().get_first_node_in_group("player")
 
