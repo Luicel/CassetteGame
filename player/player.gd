@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal cassette_thrown
 
-#@onready var camera_2d = $Camera2D
+@onready var initial_position = global_position
 @onready var cassette_pocket = $CassettePocket
 @onready var sprite_2d = $Sprite2D
 @onready var player_movement_state_machine = $PlayerMovementStateMachine
@@ -37,6 +37,7 @@ var coyote_time_activated = false
 var was_wall_normal = Vector2.ZERO
 var previous_direction = 0.0
 var can_air_dash = true
+var checkpoint : Checkpoint
 
 var current_movement_state : PlayerMovementState
 var movement_states : Dictionary = {}
@@ -220,3 +221,12 @@ func detect_overlapping_colliders():
 		if success:
 			body._enable_effect()
 			return
+
+
+func respawn():
+	print("!")
+	print(checkpoint)
+	if checkpoint:
+		global_position = checkpoint.respawn_point.global_position
+	else:
+		global_position = initial_position

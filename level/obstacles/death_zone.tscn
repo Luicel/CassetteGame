@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d01d8mkfiuu0u"]
+
+[ext_resource type="Script" path="res://level/obstacles/death_zone.gd" id="1_dm45m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0igov"]
+size = Vector2(64, 64)
+
+[node name="DeathZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_dm45m")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0igov")
+debug_color = Color(0, 0, 0, 0.294118)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

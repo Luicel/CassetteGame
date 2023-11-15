@@ -15,7 +15,8 @@ metadata/_edit_group_ = true
 
 [node name="DetectionCollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3tj3y")
+debug_color = Color(0, 0.639216, 0.368627, 0.337255)
 
 [node name="CameraVisibilityPreview" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lutml")
-debug_color = Color(0.823529, 0.4, 0, 0.419608)
+debug_color = Color(0.772549, 1, 0.34902, 0.0823529)

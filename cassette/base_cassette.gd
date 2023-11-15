@@ -7,10 +7,6 @@ class_name BaseCassette extends RigidBody2D
 @export var cassette_gravity_scale = 0.0
 
 
-func _process(delta):
-	pass
-
-
 func throw(player_direction):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
 	if direction == Vector2.ZERO: direction = Vector2(player_direction, 0)
@@ -20,7 +16,6 @@ func throw(player_direction):
 	
 	reparent(get_tree().root)
 	freeze = false
-	print(linear_damp)
 	apply_central_impulse(direction * force)
 
 
