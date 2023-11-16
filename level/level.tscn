@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=20 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_jgd0x"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_64uir"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v802m"]
 size = Vector2(3150.77, 1772.31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -30,6 +30,9 @@ size = Vector2(128, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1feb"]
 size = Vector2(256, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooqll"]
+size = Vector2(224, 8)
 
 [node name="Level" type="Node2D"]
 
@@ -73,7 +76,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_64uir")
+shape = SubResource("RectangleShape2D_v802m")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_el4ej")
@@ -112,11 +115,17 @@ position = Vector2(2176, 1152)
 end_position_offset = Vector2(512, 0)
 forward_speed = 500.0
 forward_stall_time = 2.5
+forward_requires_player_detection = true
 backward_speed = 300.0
 backward_stall_time = 1.0
 
 [node name="CollisionShape2D" parent="MovingPivot" index="0"]
 shape = SubResource("RectangleShape2D_s1feb")
+
+[node name="CollisionShape2D" parent="MovingPivot/PlayerDetectionArea" index="0"]
+position = Vector2(0, -68)
+shape = SubResource("RectangleShape2D_ooqll")
+disabled = false
 
 [node name="Platform" parent="MovingPivot" instance=ExtResource("11_f1wce")]
 

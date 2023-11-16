@@ -1,8 +1,9 @@
 @tool
 extends AnimatableBody2D
 
-@export_category("General Movement")
-@export var active = true
+signal player_entered
+
+@export_category("Offsets")
 @export var start_position_offset : Vector2
 @export var end_position_offset : Vector2
 @export_category("Forward Movement")
@@ -21,6 +22,7 @@ extends AnimatableBody2D
 @onready var start_position = global_position + start_position_offset
 @onready var end_position = global_position + end_position_offset
 
+var active = false
 var is_moving_forward = true
 var is_player_colliding = false
 var direction = Vector2.ZERO
@@ -28,9 +30,10 @@ var direction = Vector2.ZERO
 
 func _ready():
 	if not Engine.is_editor_hint():
-		
 		_update_path_2d()
-		_start_stall_timer(forward_stall_time)
+		if not forward_requires_player_detection:
+			_start_stall_timer(forward_stall_time)
+			active = true
 
 
 func _process(delta):
@@ -40,23 +43,36 @@ func _process(delta):
 
 func _physics_process(delta):
 	if not Engine.is_editor_hint():
-		constant_linear_velocity = (position - previous_position) / delta
+		#constant_linear_velocity = (position - previous_position) / delta
 		_handle_movement(delta)
 		previous_position = position
 
 
 func _handle_movement(delta):
-	if active && stall_timer.time_left == 0:
+	if not active:
+		if is_player_colliding:
+			if is_moving_forward:
+				_start_stall_timer(forward_stall_time)
+			else:
+				_start_stall_timer(backward_stall_time)
+			active = true
+	elif active and stall_timer.time_left == 0:
 		if is_moving_forward:
 			if position == end_position:
 				is_moving_forward = false
-				_start_stall_timer(backward_stall_time)
+				if backward_requires_player_detection:
+					active = false
+				else:
+					_start_stall_timer(backward_stall_time)
 			else:
 				position = position.move_toward(end_position, forward_speed * delta)
 		else:
 			if position == start_position:
 				is_moving_forward = true
-				_start_stall_timer(forward_stall_time)
+				if forward_requires_player_detection:
+					active = false
+				else:
+					_start_stall_timer(forward_stall_time)
 			else:
 				position = position.move_toward(start_position, backward_speed * delta)
 
@@ -72,3 +88,25 @@ func _update_path_2d():
 	path_2d.curve.clear_points()
 	path_2d.curve.add_point(start_position_offset)
 	path_2d.curve.add_point(end_position_offset)
+
+
+func _on_player_detection_area_body_entered(body):
+	if body == player:
+		is_player_colliding = true
+		player_entered.emit()
+
+
+func _on_player_detection_area_body_exited(body):
+	if body == player:
+		is_player_colliding = false
+		if stall_timer.time_left > 0:
+			stall_timer.stop()
+			stall_timer.emit_signal("timeout")
+
+
+func _on_stall_timer_timeout():
+	if not is_player_colliding:
+		if is_moving_forward and forward_requires_player_detection:
+			active = false
+		elif not is_moving_forward and backward_requires_player_detection:
+			active = false
