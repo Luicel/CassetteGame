@@ -91,6 +91,10 @@ throw={
 2d_physics/layer_3="Cassette"
 2d_physics/layer_4="Pocket"
 
+[physics]
+
+2d/physics_engine="GodotPhysics2D"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

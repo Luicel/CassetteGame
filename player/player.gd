@@ -13,6 +13,7 @@ signal cassette_thrown
 @onready var jump_buffer_timer = $JumpBufferTimer
 @onready var just_swapped_verticality_timer = $JustSwappedVerticalityTimer
 @onready var phantom_camera_2d = %PhantomCamera2D
+@onready var platform_jump_timer = $PlatformJumpTimer
 
 @export var initial_movement_state : PlayerMovementState
 @export var camera_pivot : Vector2
@@ -38,6 +39,8 @@ var was_wall_normal = Vector2.ZERO
 var previous_direction = 0.0
 var can_air_dash = true
 var checkpoint : Checkpoint
+var additional_velocity = Vector2.ZERO
+var added_platform_velocity = Vector2.ZERO
 
 var current_movement_state : PlayerMovementState
 var movement_states : Dictionary = {}
@@ -111,9 +114,12 @@ func _on_cassette_detector_area_body_entered(body):
 
 
 func handle_horizontal_movement(delta):
+	
 	#if wall_jump_timer.time_left > 0.0 and not is_on_floor(): return
 	
 	var direction = Input.get_axis("left", "right")
+	
+	if not direction and not velocity: return
 	
 	if direction > 0 and velocity.x > 0 or direction < 0 and velocity.x < 0:
 		previous_direction = direction

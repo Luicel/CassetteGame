@@ -47,8 +47,7 @@ inactive_update_mode = 0
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("initial_movement_state") groups=["player"]]
 collision_layer = 2
 floor_snap_length = 8.0
-platform_on_leave = 1
-platform_floor_layers = 255
+platform_floor_layers = 1
 script = ExtResource("1_qfedd")
 initial_movement_state = NodePath("PlayerMovementStateMachine/Normal")
 camera_pivot = Vector2(0, -160)
@@ -123,10 +122,6 @@ wait_time = 0.1
 one_shot = true
 
 [node name="JustSwappedVerticalityTimer" type="Timer" parent="CharacterBody2D"]
-wait_time = 0.1
-one_shot = true
-
-[node name="PlatformJumpTimer" type="Timer" parent="CharacterBody2D"]
 wait_time = 0.1
 one_shot = true
 
