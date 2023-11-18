@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=21 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_jgd0x"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
@@ -12,11 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="10_yxgvw"]
 [ext_resource type="PackedScene" uid="uid://dtutos5dxlabe" path="res://level/obstacles/moving_pivot.tscn" id="11_1mivv"]
 [ext_resource type="PackedScene" uid="uid://cha00p1ste10f" path="res://level/obstacles/platform/platform.tscn" id="11_f1wce"]
+[ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="13_60ukk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v802m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg2qd"]
 size = Vector2(3150.77, 1772.31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -44,15 +45,18 @@ layer_0/tile_data = PackedInt32Array(1114113, 3, 6, 1114114, 3, 6, 1114115, 3, 6
 [node name="Player" parent="." instance=ExtResource("2_rfyqa")]
 
 [node name="Camera2D" parent="Player" index="0"]
-position = Vector2(2024, 1024)
+position = Vector2(224, 1024)
 
 [node name="PhantomCamera2D" parent="Player" index="1"]
-position = Vector2(2024, 1024)
+position = Vector2(224, 1024)
 
 [node name="CharacterBody2D" parent="Player" index="2"]
-position = Vector2(2024, 1024)
+position = Vector2(224, 1024)
 platform_wall_layers = 1
 metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Player/CharacterBody2D/CassettePocket/Pocket" index="1"]
+visible = false
 
 [node name="RedBlock11" parent="." instance=ExtResource("7_338qu")]
 position = Vector2(1632, 1120)
@@ -63,10 +67,13 @@ position = Vector2(1504, 928)
 scale = Vector2(1, 5)
 
 [node name="GreenCassette" parent="." instance=ExtResource("7_njao1")]
-position = Vector2(616, 1056)
+position = Vector2(960, 816)
 
 [node name="BlueCassette" parent="." instance=ExtResource("6_naoqn")]
-position = Vector2(456, 1056)
+position = Vector2(448, 1072)
+
+[node name="BlueCassette2" parent="." instance=ExtResource("6_naoqn")]
+position = Vector2(640, 1072)
 
 [node name="CameraTriggerArea" parent="." node_paths=PackedStringArray("used_phantom_camera_2d") instance=ExtResource("7_ynetk")]
 position = Vector2(-1632, 288)
@@ -76,7 +83,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_v802m")
+shape = SubResource("RectangleShape2D_qg2qd")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_el4ej")
@@ -110,14 +117,12 @@ shape = SubResource("RectangleShape2D_qshsu")
 [node name="RespawnPoint" parent="Checkpoint" index="1"]
 position = Vector2(0, 64)
 
-[node name="MovingPivot" parent="." instance=ExtResource("11_1mivv")]
-position = Vector2(2176, 1152)
+[node name="MovingPivot" parent="." node_paths=PackedStringArray("activation_cassette_pocket") instance=ExtResource("11_1mivv")]
+position = Vector2(256, 512)
+activation_cassette_pocket = NodePath("../CassettePocket2")
 end_position_offset = Vector2(512, 0)
 forward_speed = 500.0
-forward_stall_time = 2.5
-forward_requires_player_detection = true
-backward_speed = 300.0
-backward_stall_time = 1.0
+backward_speed = 500.0
 
 [node name="CollisionShape2D" parent="MovingPivot" index="0"]
 shape = SubResource("RectangleShape2D_s1feb")
@@ -129,7 +134,17 @@ disabled = false
 
 [node name="Platform" parent="MovingPivot" instance=ExtResource("11_f1wce")]
 
+[node name="CassettePocket" parent="." instance=ExtResource("13_60ukk")]
+position = Vector2(448, 832)
+
+[node name="CassettePocket2" parent="." instance=ExtResource("13_60ukk")]
+position = Vector2(256, 832)
+
+[node name="CassettePocket3" parent="." instance=ExtResource("13_60ukk")]
+position = Vector2(640, 832)
+
 [editable path="Player"]
+[editable path="Player/CharacterBody2D/CassettePocket"]
 [editable path="CameraTriggerArea"]
 [editable path="DeathZone"]
 [editable path="DeathZone2"]

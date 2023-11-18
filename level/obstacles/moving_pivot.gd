@@ -3,6 +3,8 @@ extends AnimatableBody2D
 
 signal player_entered
 
+@export_category("Activation")
+@export var activation_cassette_pocket : CassettePocket
 @export_category("Offsets")
 @export var start_position_offset : Vector2
 @export var end_position_offset : Vector2
@@ -31,9 +33,16 @@ var direction = Vector2.ZERO
 func _ready():
 	if not Engine.is_editor_hint():
 		_update_path_2d()
+		
+		if not forward_requires_player_detection and not activation_cassette_pocket:
+			active = true
+		
 		if not forward_requires_player_detection:
 			_start_stall_timer(forward_stall_time)
-			active = true
+		
+		if activation_cassette_pocket:
+			activation_cassette_pocket.cassette_pocketed.connect(_on_activation_cassette_pocket_activation)
+			activation_cassette_pocket.cassette_unpocketed.connect(_on_activation_cassette_pocket_deactivation)
 
 
 func _process(delta):
@@ -49,11 +58,11 @@ func _physics_process(delta):
 
 
 func _handle_movement(delta):
-	if not active:
+	if not active and (forward_requires_player_detection or backward_requires_player_detection):
 		if is_player_colliding:
-			if is_moving_forward:
+			if is_moving_forward and forward_requires_player_detection:
 				_start_stall_timer(forward_stall_time)
-			else:
+			elif not is_moving_forward and backward_requires_player_detection:
 				_start_stall_timer(backward_stall_time)
 			active = true
 	elif active and stall_timer.time_left == 0:
@@ -78,6 +87,8 @@ func _handle_movement(delta):
 
 
 func _start_stall_timer(seconds):
+	if seconds == 0: return
+	
 	stall_timer.wait_time = seconds
 	stall_timer.start()
 
@@ -110,3 +121,11 @@ func _on_stall_timer_timeout():
 			active = false
 		elif not is_moving_forward and backward_requires_player_detection:
 			active = false
+
+
+func _on_activation_cassette_pocket_activation():
+	active = true
+
+
+func _on_activation_cassette_pocket_deactivation():
+	active = false

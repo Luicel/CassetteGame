@@ -80,8 +80,9 @@ shape = SubResource("CapsuleShape2D_5meqo")
 
 [node name="CassettePocket" parent="CharacterBody2D" instance=ExtResource("3_4s4r2")]
 position = Vector2(0, -32)
-collision_layer = 0
-collision_mask = 0
+
+[node name="CollisionShape2D" parent="CharacterBody2D/CassettePocket/Pocket" index="0"]
+disabled = true
 
 [node name="PlayerMovementStateMachine" type="Node" parent="CharacterBody2D"]
 script = ExtResource("4_f4mm0")
@@ -131,3 +132,5 @@ wait_time = 0.1
 one_shot = true
 
 [connection signal="body_entered" from="CharacterBody2D/CassetteDetectorArea" to="CharacterBody2D" method="_on_cassette_detector_area_body_entered"]
+
+[editable path="CharacterBody2D/CassettePocket"]

@@ -108,11 +108,6 @@ func transition_to_movement_state(new_movement_state_name):
 	current_movement_state = new_movement_state
 
 
-func _on_cassette_detector_area_body_entered(body):
-	var success = cassette_pocket.try_to_pocket_cassette(body)
-	if success: body._enable_effect()
-
-
 func handle_horizontal_movement(delta):
 	
 	#if wall_jump_timer.time_left > 0.0 and not is_on_floor(): return
@@ -223,10 +218,18 @@ func throw_cassette():
 
 func detect_overlapping_colliders():
 	for body in cassette_detector_area.get_overlapping_bodies():
-		var success = cassette_pocket.try_to_pocket_cassette(body)
-		if success:
-			body._enable_effect()
-			return
+		if body.is_in_group("cassette"):
+			_on_cassette_detector_area_body_entered(body)
+
+
+func _on_cassette_detector_area_body_entered(body):
+	var previous_socket = body.get_parent()
+	var success = cassette_pocket.try_to_pocket_cassette(body)
+	if success:
+		body._enable_effect()
+		if previous_socket is CassettePocket:
+			previous_socket.remove_pocketed_cassette()
+		return
 
 
 func respawn():

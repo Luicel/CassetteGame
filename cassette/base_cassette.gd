@@ -14,7 +14,7 @@ func throw(player_direction):
 	linear_damp = air_resistance
 	throw_timer.start()
 	
-	reparent(get_tree().root)
+	reparent(get_tree().root.get_child(0))
 	freeze = false
 	apply_central_impulse(direction * force)
 

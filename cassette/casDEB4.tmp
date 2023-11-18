@@ -28,3 +28,4 @@ wait_time = 0.05
 one_shot = true
 
 [connection signal="body_entered" from="Pocket" to="." method="_on_pocket_body_entered"]
+[connection signal="body_exited" from="Pocket" to="." method="_on_pocket_body_exited"]
