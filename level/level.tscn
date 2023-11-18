@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=22 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_jgd0x"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
@@ -13,11 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://dtutos5dxlabe" path="res://level/obstacles/moving_pivot.tscn" id="11_1mivv"]
 [ext_resource type="PackedScene" uid="uid://cha00p1ste10f" path="res://level/obstacles/platform/platform.tscn" id="11_f1wce"]
 [ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="13_60ukk"]
+[ext_resource type="PackedScene" uid="uid://d0goadj7nkvyy" path="res://level/obstacles/platform/one_way_platform.tscn" id="14_f0anl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg2qd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6psf"]
 size = Vector2(3150.77, 1772.31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -83,7 +84,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_qg2qd")
+shape = SubResource("RectangleShape2D_s6psf")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_el4ej")
@@ -109,7 +110,7 @@ position = Vector2(1056, 0)
 shape = SubResource("RectangleShape2D_midrg")
 
 [node name="Checkpoint" parent="." instance=ExtResource("10_yxgvw")]
-position = Vector2(-864, 960)
+position = Vector2(-1536, 960)
 
 [node name="CollisionShape2D" parent="Checkpoint" index="0"]
 shape = SubResource("RectangleShape2D_qshsu")
@@ -142,6 +143,10 @@ position = Vector2(256, 832)
 
 [node name="CassettePocket3" parent="." instance=ExtResource("13_60ukk")]
 position = Vector2(640, 832)
+
+[node name="OneWayPlatform" parent="." instance=ExtResource("14_f0anl")]
+position = Vector2(1056, 368)
+scale = Vector2(5, 1)
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]

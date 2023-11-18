@@ -90,6 +90,7 @@ throw={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Cassette"
 2d_physics/layer_4="Pocket"
+2d_physics/layer_5="OneWayPlatform"
 
 [physics]
 
