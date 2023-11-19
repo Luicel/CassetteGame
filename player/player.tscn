@@ -67,12 +67,10 @@ air_dash_resistance = 3000.0
 air_dash_wait_time = 0.075
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(0, -48)
 scale = Vector2(3, 6)
 texture = ExtResource("2_47wof")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, -48)
 shape = SubResource("CapsuleShape2D_8o1gm")
 
 [node name="CassetteDetectorArea" type="Area2D" parent="CharacterBody2D"]
@@ -80,11 +78,11 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/CassetteDetectorArea"]
-position = Vector2(0, -48)
 shape = SubResource("CapsuleShape2D_5meqo")
 
 [node name="CassettePocket" parent="CharacterBody2D" instance=ExtResource("3_4s4r2")]
-position = Vector2(0, -72)
+position = Vector2(0, -24)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="CharacterBody2D/CassettePocket/Pocket" index="0"]
 disabled = true
@@ -135,8 +133,8 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="PlatformJumpTimer" type="Timer" parent="CharacterBody2D"]
-wait_time = 0.1
+[node name="WallStickTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.2
 one_shot = true
 
 [connection signal="body_entered" from="CharacterBody2D/CassetteDetectorArea" to="CharacterBody2D" method="_on_cassette_detector_area_body_entered"]

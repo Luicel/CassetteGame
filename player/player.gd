@@ -13,7 +13,7 @@ signal cassette_thrown
 @onready var jump_buffer_timer = $JumpBufferTimer
 @onready var just_swapped_verticality_timer = $JustSwappedVerticalityTimer
 @onready var phantom_camera_2d = %PhantomCamera2D
-@onready var platform_jump_timer = $PlatformJumpTimer
+@onready var wall_stick_timer = $WallStickTimer
 
 @export var initial_movement_state : PlayerMovementState
 @export var camera_pivot : Vector2
@@ -79,6 +79,8 @@ func _physics_process(delta):
 	
 	if was_on_wall and not is_on_wall():
 		wall_grace_timer.start()
+	if not was_on_wall and is_on_wall():
+		wall_stick_timer.start()
 	if was_on_floor != is_on_floor():
 		pass
 	
@@ -188,11 +190,12 @@ func handle_wall_jump(flipped = false):
 
 
 func apply_gravity(delta, flipped = false):
-	if is_player_against_wall() and velocity.y > 0:
-		if not flipped:
-			velocity.y += (gravity * wall_slide_gravity_multiplier) * delta * gravity_scale
-		else:
-			velocity.y += (gravity * wall_slide_gravity_multiplier) * gravity_scale * -1.0
+	#if wall_stick_timer.time_left > 0:
+	#	velocity.y = 0
+	if is_player_against_wall() and not flipped and velocity.y > 0:
+		velocity.y += (gravity * wall_slide_gravity_multiplier) * gravity_scale * delta
+	elif is_player_against_wall() and flipped and velocity.y < 0:
+		velocity.y -= (gravity * wall_slide_gravity_multiplier) * gravity_scale * delta
 	elif not is_on_floor():
 		if not flipped:
 			velocity.y += gravity * delta * gravity_scale
