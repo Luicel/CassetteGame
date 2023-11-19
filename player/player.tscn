@@ -15,12 +15,12 @@
 [ext_resource type="Script" path="res://player/movement/player_limited_movement_state.gd" id="13_1m4j4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8o1gm"]
-radius = 32.0
-height = 128.0
+radius = 24.0
+height = 96.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5meqo"]
-radius = 32.0
-height = 128.0
+radius = 24.0
+height = 96.0
 
 [node name="Player" type="Node"]
 
@@ -54,7 +54,7 @@ platform_floor_layers = 255
 script = ExtResource("1_qfedd")
 initial_movement_state = NodePath("PlayerMovementStateMachine/Normal")
 camera_pivot = Vector2(0, -160)
-speed = 525.0
+speed = 550.0
 jump_velocity = -1100.0
 gravity_scale = 3.5
 wall_slide_gravity_multiplier = 0.1
@@ -62,15 +62,17 @@ acceleration = 2500.0
 friction = 6000.0
 air_acceleration = 2000.0
 air_resistance = 3000.0
-air_dash_force = 2000.0
+air_dash_force = 1600.0
 air_dash_resistance = 3000.0
 air_dash_wait_time = 0.075
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(4, 8)
+position = Vector2(0, -48)
+scale = Vector2(3, 6)
 texture = ExtResource("2_47wof")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -48)
 shape = SubResource("CapsuleShape2D_8o1gm")
 
 [node name="CassetteDetectorArea" type="Area2D" parent="CharacterBody2D"]
@@ -78,10 +80,11 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/CassetteDetectorArea"]
+position = Vector2(0, -48)
 shape = SubResource("CapsuleShape2D_5meqo")
 
 [node name="CassettePocket" parent="CharacterBody2D" instance=ExtResource("3_4s4r2")]
-position = Vector2(0, -32)
+position = Vector2(0, -72)
 
 [node name="CollisionShape2D" parent="CharacterBody2D/CassettePocket/Pocket" index="0"]
 disabled = true

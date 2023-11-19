@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://cassette/base_cassette.gd" id="1_lflj2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wf0k"]
-size = Vector2(64, 32)
+size = Vector2(48, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s2f2i"]
-size = Vector2(64, 32)
+size = Vector2(48, 24)
 
 [node name="BaseCassette" type="RigidBody2D" groups=["cassette"]]
 collision_layer = 4
 collision_mask = 53
 script = ExtResource("1_lflj2")
-force = 3000
+force = 2500
 air_resistance = 5
 cassette_gravity_scale = 2.0
 
@@ -21,6 +21,7 @@ shape = SubResource("RectangleShape2D_6wf0k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
+scale = Vector2(0.75, 0.75)
 
 [node name="ThrowTimer" type="Timer" parent="."]
 wait_time = 0.75

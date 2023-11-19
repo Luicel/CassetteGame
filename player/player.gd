@@ -88,6 +88,8 @@ func _physics_process(delta):
 	
 	if is_on_floor() and just_swapped_verticality_timer.time_left == 0:
 		handle_camera_pivot()
+	
+	try_to_recharge_blue_cassettes()
 
 
 func handle_camera_pivot():
@@ -250,3 +252,11 @@ func respawn():
 		global_position = checkpoint.respawn_point.global_position
 	else:
 		global_position = initial_position
+
+
+func try_to_recharge_blue_cassettes():
+	if not is_on_floor(): return
+	
+	for cassette in get_tree().get_nodes_in_group("cassette"):
+		if cassette is BlueCassette:
+			cassette.set_charged(true)

@@ -1,14 +1,17 @@
 class_name PlayerAirDashMovementState extends PlayerMovementState
 
+@onready var player = get_tree().get_first_node_in_group("player")
 @onready var air_dash_timer = %AirDashTimer
 
-var player : CharacterBody2D
 var can_air_dash = true
 var air_dash_velocity : Vector2
+var active_blue_cassette : BaseCassette
 
 
 func enter():
-	player = get_tree().get_first_node_in_group("player")
+	active_blue_cassette = player.cassette_pocket.pocketed_cassette
+	if not can_air_dash and active_blue_cassette.is_charged:
+		can_air_dash = true
 
 
 func physics_update(delta):
@@ -31,7 +34,6 @@ func physics_update(delta):
 			physics_update(delta) # Re-calculate physics update
 		else:
 			player.velocity = player.velocity.move_toward(Vector2.ZERO, player.air_dash_resistance * delta)
-			#print(player.velocity)
 			pass
 	
 	player.move_and_slide()
@@ -51,3 +53,4 @@ func handle_air_dash():
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
 	if direction == Vector2.ZERO: direction = Vector2(player.previous_direction, 0)
 	player.velocity = direction * player.air_dash_force
+	active_blue_cassette.set_charged(false)
