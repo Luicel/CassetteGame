@@ -32,6 +32,9 @@ func physics_update(delta):
 			can_air_dash = true
 			air_dash_timer.stop()
 			physics_update(delta) # Re-calculate physics update
+		elif player.is_on_ceiling or player.is_on_wall:
+			air_dash_timer.stop()
+			physics_update(delta) # Re-calculate physics update
 		else:
 			player.velocity = player.velocity.move_toward(Vector2.ZERO, player.air_dash_resistance * delta)
 			pass
