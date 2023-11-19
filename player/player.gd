@@ -212,8 +212,20 @@ func throw_cassette():
 	
 	var cassette = cassette_pocket.pocketed_cassette
 	cassette.throw(previous_direction)
-	cassette._disable_effect()
+	cassette_pocket.pocketed_cassette._disable_effect()
 	cassette_pocket.remove_pocketed_cassette()
+
+
+func respawn_cassette():
+	if not cassette_pocket.pocketed_cassette: return
+	
+	cassette_pocket.pocketed_cassette._disable_effect()
+	cassette_pocket.pocketed_cassette.call_deferred("reparent", get_tree().root.get_child(0))
+	cassette_pocket.pocketed_cassette.set_deferred("freeze", false)
+	cassette_pocket.pocketed_cassette.respawn()
+	
+	cassette_pocket.remove_pocketed_cassette()
+	
 
 
 func detect_overlapping_colliders():
