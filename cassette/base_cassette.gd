@@ -1,10 +1,20 @@
 class_name BaseCassette extends RigidBody2D
 
 @onready var throw_timer = $ThrowTimer
+@onready var initial_global_position = global_position
 
 @export var force = 100000
 @export var air_resistance = 4
 @export var cassette_gravity_scale = 0.0
+
+
+func _ready():
+	freeze = true
+
+
+func _process(delta):
+	if throw_timer.time_left > 0:
+		print(global_position)
 
 
 func throw(player_direction):
@@ -40,6 +50,20 @@ func disable_unique_physics():
 	linear_velocity = Vector2.ZERO
 	linear_damp = 0
 	gravity_scale = cassette_gravity_scale
+
+
+func respawn():
+	# Lots of weird checks here. Basically, the physics engine does not like
+	# rapid movement, so I'm telling it to shut the fuck up.
+	disable_unique_physics()
+	set_physics_process(false)
+	set_deferred("freeze", true)
+	await get_tree().process_frame
+	
+	global_position = initial_global_position
+	await get_tree().process_frame
+	
+	set_physics_process(true)
 
 
 func _on_area_2d_area_entered(area):

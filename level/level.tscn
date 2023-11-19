@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=19 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_jgd0x"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
@@ -10,13 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://d01d8mkfiuu0u" path="res://level/obstacles/death_zone/death_zone.tscn" id="9_owg8g"]
 [ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="10_yxgvw"]
 [ext_resource type="PackedScene" uid="uid://cvqm5t0idydcy" path="res://level/obstacles/platform/one-way/crumble_one_way_platform.tscn" id="12_u4o2j"]
+[ext_resource type="PackedScene" uid="uid://bc5tw2d0vhhme" path="res://cassette/green/green_cassette.tscn" id="13_cn23b"]
 [ext_resource type="PackedScene" uid="uid://d0goadj7nkvyy" path="res://level/obstacles/platform/one-way/one_way_platform.tscn" id="14_f0anl"]
 [ext_resource type="PackedScene" uid="uid://crvh46rtn6va1" path="res://level/obstacles/platform/one-way/cassette_one_way_platform.tscn" id="15_gy608"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixl0k"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n4tx"]
 size = Vector2(3150.77, 1772.31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -67,7 +68,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_ixl0k")
+shape = SubResource("RectangleShape2D_2n4tx")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_el4ej")
@@ -110,11 +111,21 @@ position = Vector2(992, 368)
 scale = Vector2(5, 1)
 
 [node name="BlueCassette" parent="." instance=ExtResource("6_naoqn")]
-position = Vector2(448, 1072)
+position = Vector2(448, 976)
 
 [node name="CrumbleOneWayPlatform" parent="." instance=ExtResource("12_u4o2j")]
 position = Vector2(672, 368)
 scale = Vector2(5, 1)
+
+[node name="GreenCassette" parent="." instance=ExtResource("13_cn23b")]
+position = Vector2(616, 1024)
+
+[node name="DeathZone3" parent="." instance=ExtResource("9_owg8g")]
+position = Vector2(32, 1024)
+scale = Vector2(1, 2)
+
+[node name="DeathZone4" parent="." instance=ExtResource("9_owg8g")]
+position = Vector2(864, 928)
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]

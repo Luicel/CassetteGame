@@ -6,7 +6,7 @@
 size = Vector2(64, 64)
 
 [node name="DeathZone" type="Area2D"]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_vb3vr")
 metadata/_edit_group_ = true
 
