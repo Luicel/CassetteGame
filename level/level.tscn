@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=21 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_jgd0x"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
@@ -13,12 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://bc5tw2d0vhhme" path="res://cassette/green/green_cassette.tscn" id="13_cn23b"]
 [ext_resource type="PackedScene" uid="uid://d0goadj7nkvyy" path="res://level/obstacles/platform/one-way/one_way_platform.tscn" id="14_f0anl"]
 [ext_resource type="PackedScene" uid="uid://chrtsyofiofhm" path="res://level/obstacles/cassette_destruction_laser/cassette_destruction_laser.tscn" id="14_sor0p"]
+[ext_resource type="PackedScene" uid="uid://dorvfpohkstmf" path="res://level/obstacles/spikes/spikes.tscn" id="15_8nhne"]
 [ext_resource type="PackedScene" uid="uid://crvh46rtn6va1" path="res://level/obstacles/platform/one-way/cassette_one_way_platform.tscn" id="15_gy608"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hfv1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nuc5"]
 size = Vector2(3150.77, 1772.31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -69,7 +70,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_4hfv1")
+shape = SubResource("RectangleShape2D_5nuc5")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_el4ej")
@@ -124,6 +125,10 @@ position = Vector2(616, 1024)
 [node name="CassetteDestructionLaser" parent="." instance=ExtResource("14_sor0p")]
 position = Vector2(224, 800)
 scale = Vector2(5, 1)
+
+[node name="Spikes" parent="." instance=ExtResource("15_8nhne")]
+position = Vector2(736, 1088)
+type = 2
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]
