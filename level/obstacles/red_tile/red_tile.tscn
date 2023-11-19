@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuspi1aoqw7hh"]
+
+[ext_resource type="Script" path="res://level/obstacles/red_tile/red_tile.gd" id="1_pvtn3"]
+[ext_resource type="Texture2D" uid="uid://curh2xagqtu01" path="res://level/obstacles/red_tile/red-tile.png" id="2_3mv20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyef5"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlqsn"]
+size = Vector2(64, 64)
+
+[node name="RedBlock" type="StaticBody2D" groups=["red_block"]]
+scale = Vector2(0.5, 0.5)
+collision_mask = 2
+script = ExtResource("1_pvtn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iyef5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3mv20")
+
+[node name="PlayerDetectorArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectorArea"]
+shape = SubResource("RectangleShape2D_dlqsn")
+
+[connection signal="body_entered" from="PlayerDetectorArea" to="." method="_on_player_detector_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectorArea" to="." method="_on_player_detector_area_body_exited"]

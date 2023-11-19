@@ -4,7 +4,6 @@ class_name DeathZone extends Area2D
 
 
 func _on_body_entered(body):
-	print("!")
 	if body == player:
 		player.respawn()
 	elif body.is_in_group("cassette"):

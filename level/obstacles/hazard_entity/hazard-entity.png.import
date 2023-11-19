@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjpqjm6h0skvh"
-path="res://.godot/imported/lockRedMid.png-5cb7fc4c06687619fa2a139f597257e1.ctex"
+uid="uid://6lftd4412khw"
+path="res://.godot/imported/hazard-entity.png-5990c912976d1bc54ed22fe7053436af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/obstacles/lockRedMid.png"
-dest_files=["res://.godot/imported/lockRedMid.png-5cb7fc4c06687619fa2a139f597257e1.ctex"]
+source_file="res://level/obstacles/hazard_entity/hazard-entity.png"
+dest_files=["res://.godot/imported/hazard-entity.png-5990c912976d1bc54ed22fe7053436af.ctex"]
 
 [params]
 

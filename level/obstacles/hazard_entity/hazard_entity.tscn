@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkp5hpo1eq2au"]
+
+[ext_resource type="Texture2D" uid="uid://6lftd4412khw" path="res://level/obstacles/hazard_entity/hazard-entity.png" id="1_2q0pa"]
+[ext_resource type="Script" path="res://level/obstacles/death_zone/death_zone.gd" id="1_8ymb0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axtbn"]
+size = Vector2(64, 64)
+
+[node name="HazardEntity" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2q0pa")
+
+[node name="DeathZone" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("1_8ymb0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+shape = SubResource("RectangleShape2D_axtbn")
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
