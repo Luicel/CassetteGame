@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=19 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_jgd0x"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
@@ -8,12 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://b82pyxhyv8q4a" path="res://camera/camera_trigger_area.tscn" id="7_ynetk"]
 [ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red/red_cassette.tscn" id="9_hed03"]
 [ext_resource type="PackedScene" uid="uid://d01d8mkfiuu0u" path="res://level/obstacles/death_zone/death_zone.tscn" id="9_owg8g"]
+[ext_resource type="PackedScene" uid="uid://dtutos5dxlabe" path="res://level/obstacles/moving_pivot.tscn" id="10_gdolc"]
 [ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="10_yxgvw"]
+[ext_resource type="PackedScene" uid="uid://cha00p1ste10f" path="res://level/obstacles/platform/platform.tscn" id="11_20hwe"]
+[ext_resource type="PackedScene" uid="uid://clxdrm61ea5bg" path="res://cassette/blue/blue_cassette.tscn" id="12_kdn16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_16ear"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hdhf"]
 size = Vector2(3150.77, 1772.31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -24,6 +27,9 @@ size = Vector2(5760, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qshsu"]
 size = Vector2(128, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hrl3"]
+size = Vector2(256, 128)
 
 [node name="Level" type="Node2D"]
 
@@ -64,7 +70,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_16ear")
+shape = SubResource("RectangleShape2D_8hdhf")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_el4ej")
@@ -101,9 +107,30 @@ position = Vector2(0, 64)
 [node name="RedCassette" parent="." instance=ExtResource("9_hed03")]
 position = Vector2(408, 1008)
 
+[node name="MovingPivot" parent="." instance=ExtResource("10_gdolc")]
+position = Vector2(216, 864)
+end_position_offset = Vector2(0, -256)
+forward_speed = 500.0
+forward_stall_time = 1.0
+backward_speed = 500.0
+backward_stall_time = 1.0
+
+[node name="CollisionShape2D" parent="MovingPivot" index="0"]
+shape = SubResource("RectangleShape2D_4hrl3")
+
+[node name="Platform" parent="MovingPivot" instance=ExtResource("11_20hwe")]
+
+[node name="CollisionShape2D" parent="MovingPivot/Platform" index="1"]
+disabled = true
+
+[node name="BlueCassette" parent="." instance=ExtResource("12_kdn16")]
+position = Vector2(536, 944)
+
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]
 [editable path="CameraTriggerArea"]
 [editable path="DeathZone"]
 [editable path="DeathZone2"]
 [editable path="Checkpoint"]
+[editable path="MovingPivot"]
+[editable path="MovingPivot/Platform"]

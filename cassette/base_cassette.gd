@@ -12,6 +12,10 @@ func _ready():
 	freeze = true
 
 
+func _process(delta):
+	sleeping = false
+
+
 func throw(player_direction):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
 	if direction == Vector2.ZERO: direction = Vector2(player_direction, 0)
