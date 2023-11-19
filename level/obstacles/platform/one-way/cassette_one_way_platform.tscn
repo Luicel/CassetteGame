@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://crvh46rtn6va1"]
+
+[ext_resource type="Texture2D" uid="uid://bc0jcoo1vmfnv" path="res://level/obstacles/platform/one-way/cassette-one-way-platform.png" id="1_a2xc8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_054is"]
+size = Vector2(64, 32)
+
+[node name="CassetteOneWayPlatform" type="AnimatableBody2D"]
+collision_layer = 32
+collision_mask = 4
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.5)
+texture = ExtResource("1_a2xc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_054is")
+one_way_collision = true

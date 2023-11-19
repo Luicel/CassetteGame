@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=18 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_jgd0x"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
@@ -6,19 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://clxdrm61ea5bg" path="res://cassette/blue/blue_cassette.tscn" id="6_naoqn"]
 [ext_resource type="Resource" uid="uid://euybd2w0bax" path="res://addons/phantom_camera/examples/resources/tween/PlayerPhantomCamera2DTween.tres" id="6_pxyqr"]
 [ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_block.tscn" id="7_338qu"]
-[ext_resource type="PackedScene" uid="uid://bc5tw2d0vhhme" path="res://cassette/green/green_cassette.tscn" id="7_njao1"]
 [ext_resource type="PackedScene" uid="uid://b82pyxhyv8q4a" path="res://camera/camera_trigger_area.tscn" id="7_ynetk"]
 [ext_resource type="PackedScene" uid="uid://d01d8mkfiuu0u" path="res://level/obstacles/death_zone/death_zone.tscn" id="9_owg8g"]
 [ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="10_yxgvw"]
-[ext_resource type="PackedScene" uid="uid://dtutos5dxlabe" path="res://level/obstacles/moving_pivot.tscn" id="11_1mivv"]
-[ext_resource type="PackedScene" uid="uid://cha00p1ste10f" path="res://level/obstacles/platform/platform.tscn" id="11_f1wce"]
-[ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="13_60ukk"]
-[ext_resource type="PackedScene" uid="uid://d0goadj7nkvyy" path="res://level/obstacles/platform/one_way_platform.tscn" id="14_f0anl"]
+[ext_resource type="PackedScene" uid="uid://cvqm5t0idydcy" path="res://level/obstacles/platform/one-way/crumble_one_way_platform.tscn" id="12_u4o2j"]
+[ext_resource type="PackedScene" uid="uid://d0goadj7nkvyy" path="res://level/obstacles/platform/one-way/one_way_platform.tscn" id="14_f0anl"]
+[ext_resource type="PackedScene" uid="uid://crvh46rtn6va1" path="res://level/obstacles/platform/one-way/cassette_one_way_platform.tscn" id="15_gy608"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6psf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixl0k"]
 size = Vector2(3150.77, 1772.31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -29,12 +27,6 @@ size = Vector2(5760, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qshsu"]
 size = Vector2(128, 256)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1feb"]
-size = Vector2(256, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooqll"]
-size = Vector2(224, 8)
 
 [node name="Level" type="Node2D"]
 
@@ -67,15 +59,6 @@ scale = Vector2(5, 1)
 position = Vector2(1504, 928)
 scale = Vector2(1, 5)
 
-[node name="GreenCassette" parent="." instance=ExtResource("7_njao1")]
-position = Vector2(960, 816)
-
-[node name="BlueCassette" parent="." instance=ExtResource("6_naoqn")]
-position = Vector2(448, 1072)
-
-[node name="BlueCassette2" parent="." instance=ExtResource("6_naoqn")]
-position = Vector2(640, 1072)
-
 [node name="CameraTriggerArea" parent="." node_paths=PackedStringArray("used_phantom_camera_2d") instance=ExtResource("7_ynetk")]
 position = Vector2(-1632, 288)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
@@ -84,7 +67,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_s6psf")
+shape = SubResource("RectangleShape2D_ixl0k")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_el4ej")
@@ -118,34 +101,19 @@ shape = SubResource("RectangleShape2D_qshsu")
 [node name="RespawnPoint" parent="Checkpoint" index="1"]
 position = Vector2(0, 64)
 
-[node name="MovingPivot" parent="." node_paths=PackedStringArray("activation_cassette_pocket") instance=ExtResource("11_1mivv")]
-position = Vector2(256, 512)
-activation_cassette_pocket = NodePath("../CassettePocket2")
-end_position_offset = Vector2(512, 0)
-forward_speed = 500.0
-backward_speed = 500.0
-
-[node name="CollisionShape2D" parent="MovingPivot" index="0"]
-shape = SubResource("RectangleShape2D_s1feb")
-
-[node name="CollisionShape2D" parent="MovingPivot/PlayerDetectionArea" index="0"]
-position = Vector2(0, -68)
-shape = SubResource("RectangleShape2D_ooqll")
-disabled = false
-
-[node name="Platform" parent="MovingPivot" instance=ExtResource("11_f1wce")]
-
-[node name="CassettePocket" parent="." instance=ExtResource("13_60ukk")]
-position = Vector2(448, 832)
-
-[node name="CassettePocket2" parent="." instance=ExtResource("13_60ukk")]
-position = Vector2(256, 832)
-
-[node name="CassettePocket3" parent="." instance=ExtResource("13_60ukk")]
-position = Vector2(640, 832)
-
 [node name="OneWayPlatform" parent="." instance=ExtResource("14_f0anl")]
-position = Vector2(1056, 368)
+position = Vector2(1312, 368)
+scale = Vector2(5, 1)
+
+[node name="CassetteOneWayPlatform" parent="." instance=ExtResource("15_gy608")]
+position = Vector2(992, 368)
+scale = Vector2(5, 1)
+
+[node name="BlueCassette" parent="." instance=ExtResource("6_naoqn")]
+position = Vector2(448, 1072)
+
+[node name="CrumbleOneWayPlatform" parent="." instance=ExtResource("12_u4o2j")]
+position = Vector2(672, 368)
 scale = Vector2(5, 1)
 
 [editable path="Player"]
@@ -154,4 +122,3 @@ scale = Vector2(5, 1)
 [editable path="DeathZone"]
 [editable path="DeathZone2"]
 [editable path="Checkpoint"]
-[editable path="MovingPivot"]

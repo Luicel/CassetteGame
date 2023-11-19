@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvqm5t0idydcy"]
+
+[ext_resource type="Script" path="res://level/obstacles/platform/one-way/crumble_one_way_platform.gd" id="1_u5r1i"]
+[ext_resource type="Texture2D" uid="uid://dojvechpp87lv" path="res://level/obstacles/platform/one-way/crumble-one-way-platform.png" id="2_6ssa7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_054is"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_koq6g"]
+size = Vector2(64, 16)
+
+[node name="CrumbleOneWayPlatform" type="AnimatableBody2D"]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("1_u5r1i")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.5)
+texture = ExtResource("2_6ssa7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_054is")
+one_way_collision = true
+
+[node name="StandingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_koq6g")
+
+[connection signal="timeout" from="StandingTimer" to="." method="_on_standing_timer_timeout"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

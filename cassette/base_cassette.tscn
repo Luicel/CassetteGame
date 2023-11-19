@@ -10,7 +10,7 @@ size = Vector2(64, 32)
 
 [node name="BaseCassette" type="RigidBody2D" groups=["cassette"]]
 collision_layer = 4
-collision_mask = 21
+collision_mask = 53
 script = ExtResource("1_lflj2")
 force = 3000
 air_resistance = 5

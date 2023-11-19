@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5qqc7ekd2u8v"
-path="res://.godot/imported/one-way-platform.png-8f8399d72a9a80d53c5b9fc4380fafb1.ctex"
+uid="uid://bc0jcoo1vmfnv"
+path="res://.godot/imported/cassette-one-way-platform.png-c2680d5adf64b449c605bafa486481cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/obstacles/platform/one-way-platform.png"
-dest_files=["res://.godot/imported/one-way-platform.png-8f8399d72a9a80d53c5b9fc4380fafb1.ctex"]
+source_file="res://level/obstacles/platform/one-way/cassette-one-way-platform.png"
+dest_files=["res://.godot/imported/cassette-one-way-platform.png-c2680d5adf64b449c605bafa486481cf.ctex"]
 
 [params]
 
