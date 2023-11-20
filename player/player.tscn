@@ -114,7 +114,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="CoyoteTimeTimer" type="Timer" parent="CharacterBody2D"]
-wait_time = 0.1
+wait_time = 0.075
 one_shot = true
 
 [node name="WallJumpTimer" type="Timer" parent="CharacterBody2D"]

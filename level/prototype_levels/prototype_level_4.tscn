@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbc2y"]
 size = Vector2(1792, 960)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6k4e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7awqj"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_yob1n"]
@@ -22,7 +22,7 @@ transition = 3
 ease = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv8sg"]
-size = Vector2(192, 256)
+size = Vector2(256, 256)
 
 [node name="PrototypeLevel1" instance=ExtResource("1_2hsua")]
 
@@ -46,7 +46,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_kbc2y")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_j6k4e")
+shape = SubResource("RectangleShape2D_7awqj")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea" index="2"]
 script = ExtResource("3_65jwr")
@@ -58,97 +58,97 @@ tween_parameters = SubResource("Resource_yob1n")
 tween_on_load = true
 inactive_update_mode = 0
 
-[node name="GreenCassette" parent="." index="3" instance=ExtResource("5_eu0sw")]
-position = Vector2(896, -128)
-
-[node name="Spikes" parent="." index="4" instance=ExtResource("6_i7nuk")]
+[node name="Spikes" parent="." index="3" instance=ExtResource("6_i7nuk")]
 position = Vector2(992, 64)
 
-[node name="Spikes2" parent="." index="5" instance=ExtResource("6_i7nuk")]
+[node name="Spikes2" parent="." index="4" instance=ExtResource("6_i7nuk")]
 position = Vector2(1056, 64)
 
-[node name="Spikes3" parent="." index="6" instance=ExtResource("6_i7nuk")]
+[node name="Spikes3" parent="." index="5" instance=ExtResource("6_i7nuk")]
 position = Vector2(1120, 64)
 
-[node name="Spikes4" parent="." index="7" instance=ExtResource("6_i7nuk")]
+[node name="Spikes4" parent="." index="6" instance=ExtResource("6_i7nuk")]
 position = Vector2(1184, 64)
 
-[node name="Spikes5" parent="." index="8" instance=ExtResource("6_i7nuk")]
+[node name="Spikes5" parent="." index="7" instance=ExtResource("6_i7nuk")]
 position = Vector2(1248, 64)
 
-[node name="Spikes6" parent="." index="9" instance=ExtResource("6_i7nuk")]
+[node name="Spikes6" parent="." index="8" instance=ExtResource("6_i7nuk")]
 position = Vector2(1312, 64)
 
-[node name="Spikes7" parent="." index="10" instance=ExtResource("6_i7nuk")]
+[node name="Spikes7" parent="." index="9" instance=ExtResource("6_i7nuk")]
 position = Vector2(1376, 64)
 
-[node name="Spikes8" parent="." index="11" instance=ExtResource("6_i7nuk")]
+[node name="Spikes8" parent="." index="10" instance=ExtResource("6_i7nuk")]
 position = Vector2(1440, 64)
 
-[node name="Spikes9" parent="." index="12" instance=ExtResource("6_i7nuk")]
+[node name="Spikes9" parent="." index="11" instance=ExtResource("6_i7nuk")]
 position = Vector2(1504, 64)
 
-[node name="Spikes10" parent="." index="13" instance=ExtResource("6_i7nuk")]
+[node name="Spikes10" parent="." index="12" instance=ExtResource("6_i7nuk")]
 position = Vector2(1568, 64)
 
-[node name="Spikes11" parent="." index="14" instance=ExtResource("6_i7nuk")]
+[node name="Spikes11" parent="." index="13" instance=ExtResource("6_i7nuk")]
 position = Vector2(1632, 64)
 
-[node name="Spikes12" parent="." index="15" instance=ExtResource("6_i7nuk")]
+[node name="Spikes12" parent="." index="14" instance=ExtResource("6_i7nuk")]
 position = Vector2(1696, 64)
 
-[node name="Spikes13" parent="." index="16" instance=ExtResource("6_i7nuk")]
+[node name="Spikes13" parent="." index="15" instance=ExtResource("6_i7nuk")]
 position = Vector2(1760, 64)
 
-[node name="Spikes14" parent="." index="17" instance=ExtResource("6_i7nuk")]
+[node name="Spikes14" parent="." index="16" instance=ExtResource("6_i7nuk")]
 position = Vector2(1824, 64)
 
-[node name="Spikes15" parent="." index="18" instance=ExtResource("6_i7nuk")]
+[node name="Spikes15" parent="." index="17" instance=ExtResource("6_i7nuk")]
 position = Vector2(1888, 64)
 
-[node name="Spikes16" parent="." index="19" instance=ExtResource("6_i7nuk")]
+[node name="Spikes16" parent="." index="18" instance=ExtResource("6_i7nuk")]
 position = Vector2(1952, 64)
 
-[node name="Spikes17" parent="." index="20" instance=ExtResource("6_i7nuk")]
+[node name="Spikes17" parent="." index="19" instance=ExtResource("6_i7nuk")]
 position = Vector2(2016, 64)
 
-[node name="Spikes18" parent="." index="21" instance=ExtResource("6_i7nuk")]
+[node name="Spikes18" parent="." index="20" instance=ExtResource("6_i7nuk")]
 position = Vector2(2080, 64)
 
-[node name="Spikes19" parent="." index="22" instance=ExtResource("6_i7nuk")]
+[node name="Spikes19" parent="." index="21" instance=ExtResource("6_i7nuk")]
 position = Vector2(2144, 64)
 
-[node name="Spikes20" parent="." index="23" instance=ExtResource("6_i7nuk")]
+[node name="Spikes20" parent="." index="22" instance=ExtResource("6_i7nuk")]
 position = Vector2(2208, 64)
 
-[node name="Spikes21" parent="." index="24" instance=ExtResource("6_i7nuk")]
+[node name="Spikes21" parent="." index="23" instance=ExtResource("6_i7nuk")]
 position = Vector2(2272, 64)
 
-[node name="Spikes22" parent="." index="25" instance=ExtResource("6_i7nuk")]
+[node name="Spikes22" parent="." index="24" instance=ExtResource("6_i7nuk")]
 position = Vector2(2336, 64)
 
-[node name="Spikes23" parent="." index="26" instance=ExtResource("6_i7nuk")]
+[node name="Spikes23" parent="." index="25" instance=ExtResource("6_i7nuk")]
 position = Vector2(1440, -768)
 rotation = 3.14159
 
-[node name="Spikes24" parent="." index="27" instance=ExtResource("6_i7nuk")]
+[node name="Spikes24" parent="." index="26" instance=ExtResource("6_i7nuk")]
 position = Vector2(1504, -768)
 rotation = 3.14159
 
-[node name="Spikes25" parent="." index="28" instance=ExtResource("6_i7nuk")]
+[node name="Spikes25" parent="." index="27" instance=ExtResource("6_i7nuk")]
 position = Vector2(1568, -768)
 rotation = 3.14159
 
-[node name="Spikes26" parent="." index="29" instance=ExtResource("6_i7nuk")]
+[node name="Spikes26" parent="." index="28" instance=ExtResource("6_i7nuk")]
 position = Vector2(1632, -768)
 rotation = 3.14159
 
-[node name="CassetteDestructionLaser" parent="." index="30" instance=ExtResource("7_mgru5")]
+[node name="CassetteDestructionLaser" parent="." index="29" instance=ExtResource("7_mgru5")]
 position = Vector2(576, -192)
 scale = Vector2(1, 4)
 
+[node name="GreenCassette" parent="." index="30" instance=ExtResource("5_eu0sw")]
+position = Vector2(832, -256)
+
 [node name="Checkpoint" parent="." index="31" instance=ExtResource("8_jed4c")]
-position = Vector2(800, -192)
+position = Vector2(832, -192)
 
 [node name="CollisionShape2D" parent="Checkpoint" index="0"]
 shape = SubResource("RectangleShape2D_dv8sg")
