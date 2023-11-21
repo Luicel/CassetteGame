@@ -5,6 +5,7 @@ extends Area2D
 @export var camera_priority = 10
 
 @onready var camera_visibility_preview = $CameraVisibilityPreview
+@onready var path_2d = $Path2D
 
 
 func _ready():
@@ -26,7 +27,14 @@ func draw_camera_visibility_preview():
 	var rectangle_shape_2d = RectangleShape2D.new()
 	var width = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var height = ProjectSettings.get_setting("display/window/size/viewport_height")
-	rectangle_shape_2d.size = Vector2(width * (1 / used_phantom_camera_2d.get_zoom().x), height * (1 / used_phantom_camera_2d.get_zoom().y))
+	width *= (1 / used_phantom_camera_2d.get_zoom().x)
+	height *= (1 / used_phantom_camera_2d.get_zoom().y)
+	#if path_2d.curve.get_point_count() == 2:
+	#	width += abs(path_2d.curve.get_point_position(0).x - path_2d.curve.get_point_position(1).x)
+	#	print(abs(path_2d.curve.get_point_position(0).x - path_2d.curve.get_point_position(1).x))
+	#	height += abs(path_2d.curve.get_point_position(0).y - path_2d.curve.get_point_position(1).y)
+		
+	rectangle_shape_2d.size = Vector2(width, height)
 	camera_visibility_preview.shape = rectangle_shape_2d
 
 

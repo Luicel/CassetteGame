@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b82pyxhyv8q4a"]
+[gd_scene load_steps=5 format=3 uid="uid://b82pyxhyv8q4a"]
 
 [ext_resource type="Script" path="res://camera/camera_trigger_area.gd" id="1_m1lq3"]
 
@@ -6,6 +6,12 @@
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lutml"]
+
+[sub_resource type="Curve2D" id="Curve2D_uf0tx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
 
 [node name="CameraTriggerArea" type="Area2D"]
 collision_layer = 0
@@ -20,3 +26,6 @@ debug_color = Color(0, 0.639216, 0.368627, 0.337255)
 [node name="CameraVisibilityPreview" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lutml")
 debug_color = Color(0.772549, 1, 0.34902, 0.0823529)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_uf0tx")
