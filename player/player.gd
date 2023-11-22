@@ -251,6 +251,9 @@ func _on_cassette_detector_area_body_entered(body):
 
 func respawn():
 	respawn_cassette()
+	for cassette in get_tree().get_nodes_in_group("cassette"):
+		cassette.respawn()
+	
 	if checkpoint:
 		global_position = checkpoint.respawn_point.global_position
 	else:
