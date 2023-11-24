@@ -10,19 +10,6 @@
 tile_set = ExtResource("1_jgd0x")
 format = 2
 
-[node name="LevelLayout" type="StaticBody2D" parent="."]
-collision_mask = 6
-script = ExtResource("3_nsfm0")
-
-[node name="Polygon2D" type="Polygon2D" parent="LevelLayout"]
-position = Vector2(0, -24)
-color = Color(0.188235, 0.219608, 0.254902, 1)
-polygon = PackedVector2Array(-64, 120, 64, 120, 64, 120, 64, 184, -64, 184)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelLayout"]
-visible = false
-polygon = PackedVector2Array(-64, 120, 64, 120, 64, 120, 64, 184, -64, 184)
-
 [node name="Player" parent="." instance=ExtResource("2_rfyqa")]
 
 [node name="Camera2D" parent="Player" index="0"]
@@ -37,6 +24,17 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="Player/CharacterBody2D/CassettePocket/Pocket" index="1"]
 visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 6
+script = ExtResource("3_nsfm0")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+position = Vector2(-128, 120)
+color = Color(0.188235, 0.219608, 0.254902, 1)
+polygon = PackedVector2Array(64, 0, 192, 0, 192, 32, 192, 64, 64, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://mcbifdffmvlw"]
+
+[ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_ppsru"]
+
+[node name="PrototypeAct1Level1" instance=ExtResource("1_ppsru")]
+
+[node name="Polygon2D" parent="LevelLayout" index="0"]
+position = Vector2(0, 0)
+polygon = PackedVector2Array(-384, 128, 640, 128, 640, 0, 896, 16, 896, 128, 1280, 128, 1280, 0, 1536, 0, 1536, -128, 1792, -128, 1792, 192, -384, 192)
+
+[node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
+polygon = PackedVector2Array(-384, 128, 640, 128, 640, 0, 896, 16, 896, 128, 1280, 128, 1280, 0, 1536, 0, 1536, -128, 1792, -128, 1792, 192, -384, 192)
+
+[node name="Camera2D" parent="Player" index="0"]
+position = Vector2(7.00649e-45, 80)
+
+[node name="PhantomCamera2D" parent="Player" index="1"]
+position = Vector2(7.00649e-45, 80)
+
+[node name="CharacterBody2D" parent="Player" index="2"]
+position = Vector2(0, 80)
+
+[editable path="Player"]
+[editable path="Player/CharacterBody2D/CassettePocket"]
