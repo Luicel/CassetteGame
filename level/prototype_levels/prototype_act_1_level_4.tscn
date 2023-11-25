@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://ce4grwonsedjv"]
+
+[ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_0os2l"]
+[ext_resource type="PackedScene" uid="uid://d0goadj7nkvyy" path="res://level/obstacles/platform/one-way/one_way_platform.tscn" id="2_lsuk6"]
+[ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_tile/red_tile.tscn" id="3_wc2kp"]
+[ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/level_layout.tscn" id="4_i2usq"]
+[ext_resource type="PackedScene" uid="uid://dorvfpohkstmf" path="res://level/obstacles/spikes/spikes.tscn" id="5_382eh"]
+[ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red/red_cassette.tscn" id="6_heij0"]
+[ext_resource type="PackedScene" uid="uid://d01d8mkfiuu0u" path="res://level/obstacles/death_zone/death_zone.tscn" id="7_640k4"]
+[ext_resource type="PackedScene" uid="uid://csnfbq078xw3e" path="res://level/scene_change_area.tscn" id="8_wyq0o"]
+[ext_resource type="PackedScene" uid="uid://cs6uwpa7cmmgm" path="res://level/prototype_levels/prototype_act_1_level_5.tscn" id="9_r0wm6"]
+
+[node name="PrototypeAct1Level4" instance=ExtResource("1_0os2l")]
+
+[node name="Polygon2D" parent="LevelLayout" index="0"]
+polygon = PackedVector2Array(-640, 128, -192, 80, 192, 64, 648, 8, 1024, 32, 1024, -256, 1408, -240, 1536, -320, 1728, -320, 1920, -288, 1920, -128, 2368, -128, 2368, -288, 2624, -256, 2720, -224, 2880, -240, 2880, -416, 3136, -448, 3136, -288, 3456, -288, 3456, -448, 3584, -408, 4288, -320, 4288, 832, -640, 832)
+
+[node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
+polygon = PackedVector2Array(-640, 128, -192, 80, 192, 64, 648, 8, 1024, 32, 1024, -256, 1408, -240, 1536, -320, 1728, -320, 1920, -288, 1920, -128, 2368, -128, 2368, -288, 2624, -256, 2720, -224, 2880, -240, 2880, -416, 3136, -448, 3136, -288, 3456, -288, 3456, -448, 3584, -408, 4288, -320, 4288, 832, -640, 832)
+
+[node name="OneWayPlatform" parent="." index="3" instance=ExtResource("2_lsuk6")]
+position = Vector2(896, -112)
+scale = Vector2(4, 1)
+
+[node name="OneWayPlatform2" parent="." index="4" instance=ExtResource("2_lsuk6")]
+position = Vector2(896, -240)
+scale = Vector2(4, 1)
+
+[node name="OneWayPlatform3" parent="." index="5" instance=ExtResource("2_lsuk6")]
+position = Vector2(2752, -400)
+scale = Vector2(4, 1)
+
+[node name="RedBlock" parent="." index="6" instance=ExtResource("3_wc2kp")]
+position = Vector2(2144, -272)
+scale = Vector2(7, 0.5)
+
+[node name="RedBlock2" parent="." index="7" instance=ExtResource("3_wc2kp")]
+position = Vector2(3296, -432)
+scale = Vector2(5, 0.5)
+
+[node name="LevelLayout2" parent="." index="8" instance=ExtResource("4_i2usq")]
+position = Vector2(3248, -632)
+
+[node name="Polygon2D" parent="LevelLayout2" index="0"]
+polygon = PackedVector2Array(-144, -80, -112, -232, 80, -248, 176, -232, 208, 24, -112, 24)
+
+[node name="CollisionPolygon2D" parent="LevelLayout2" index="1"]
+polygon = PackedVector2Array(-144, -80, -112, -232, 80, -248, 176, -232, 208, 24, -112, 24)
+
+[node name="Spikes" parent="." index="9" instance=ExtResource("5_382eh")]
+position = Vector2(1952, -128)
+
+[node name="Spikes2" parent="." index="10" instance=ExtResource("5_382eh")]
+position = Vector2(2016, -128)
+
+[node name="Spikes3" parent="." index="11" instance=ExtResource("5_382eh")]
+position = Vector2(2080, -128)
+
+[node name="Spikes4" parent="." index="12" instance=ExtResource("5_382eh")]
+position = Vector2(2144, -128)
+
+[node name="Spikes5" parent="." index="13" instance=ExtResource("5_382eh")]
+position = Vector2(2208, -128)
+
+[node name="Spikes6" parent="." index="14" instance=ExtResource("5_382eh")]
+position = Vector2(2272, -128)
+
+[node name="Spikes7" parent="." index="15" instance=ExtResource("5_382eh")]
+position = Vector2(2336, -128)
+
+[node name="Spikes8" parent="." index="16" instance=ExtResource("5_382eh")]
+position = Vector2(3168, -288)
+
+[node name="Spikes9" parent="." index="17" instance=ExtResource("5_382eh")]
+position = Vector2(3232, -288)
+
+[node name="Spikes10" parent="." index="18" instance=ExtResource("5_382eh")]
+position = Vector2(3296, -288)
+
+[node name="Spikes11" parent="." index="19" instance=ExtResource("5_382eh")]
+position = Vector2(3360, -288)
+
+[node name="Spikes17" parent="." index="20" instance=ExtResource("5_382eh")]
+position = Vector2(3424, -288)
+
+[node name="Spikes12" parent="." index="21" instance=ExtResource("5_382eh")]
+position = Vector2(3168, -608)
+rotation = -3.14159
+
+[node name="Spikes13" parent="." index="22" instance=ExtResource("5_382eh")]
+position = Vector2(3232, -608)
+rotation = -3.14159
+
+[node name="Spikes14" parent="." index="23" instance=ExtResource("5_382eh")]
+position = Vector2(3296, -608)
+rotation = -3.14159
+
+[node name="Spikes15" parent="." index="24" instance=ExtResource("5_382eh")]
+position = Vector2(3360, -608)
+rotation = -3.14159
+
+[node name="Spikes16" parent="." index="25" instance=ExtResource("5_382eh")]
+position = Vector2(3424, -608)
+rotation = -3.14159
+
+[node name="RedCassette" parent="." index="26" instance=ExtResource("6_heij0")]
+position = Vector2(1632, -416)
+
+[node name="DeathZone" parent="." index="27" instance=ExtResource("7_640k4")]
+position = Vector2(1104, 1104)
+scale = Vector2(200, 2)
+
+[node name="scene_change_area" parent="." index="28" instance=ExtResource("8_wyq0o")]
+position = Vector2(4152, -464)
+scene = ExtResource("9_r0wm6")
+
+[editable path="Player"]
+[editable path="Player/CharacterBody2D/CassettePocket"]
+[editable path="LevelLayout2"]

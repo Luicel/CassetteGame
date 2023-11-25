@@ -15,7 +15,6 @@ collision_mask = 6
 script = ExtResource("3_nsfm0")
 
 [node name="Polygon2D" type="Polygon2D" parent="LevelLayout"]
-position = Vector2(0, -24)
 color = Color(0.188235, 0.219608, 0.254902, 1)
 polygon = PackedVector2Array(-64, 120, 64, 120, 64, 120, 64, 184, -64, 184)
 

@@ -5,10 +5,11 @@
 [node name="LevelLayout" type="StaticBody2D"]
 collision_mask = 6
 script = ExtResource("1_u5utq")
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.188235, 0.219608, 0.254902, 1)
+polygon = PackedVector2Array(-64, -32, 64, -32, 64, 32, -64, 32)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-
-[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
-position = Vector2(-128, 120)
-color = Color(0.188235, 0.219608, 0.254902, 1)
-polygon = PackedVector2Array(64, 0, 192, 0, 192, 32, 192, 64, 64, 64)
+visible = false
