@@ -9,7 +9,7 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlqsn"]
 size = Vector2(64, 64)
 
-[node name="RedBlock" type="StaticBody2D" groups=["red_block"]]
+[node name="RedTile" type="StaticBody2D" groups=["red_block"]]
 z_index = 1
 scale = Vector2(0.5, 0.5)
 collision_mask = 2

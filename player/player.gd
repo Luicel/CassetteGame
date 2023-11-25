@@ -84,9 +84,6 @@ func _physics_process(delta):
 	if was_on_floor != is_on_floor():
 		pass
 	
-	if Input.is_action_just_pressed("throw"):
-		throw_cassette()
-	
 	
 	if is_on_floor() and just_swapped_verticality_timer.time_left == 0:
 		handle_camera_pivot()
@@ -210,15 +207,6 @@ func is_player_against_wall():
 		return true
 	else:
 		return false
-
-
-func throw_cassette():
-	if not cassette_pocket.pocketed_cassette: return
-	
-	var cassette = cassette_pocket.pocketed_cassette
-	cassette.throw(previous_direction)
-	cassette_pocket.pocketed_cassette._disable_effect()
-	cassette_pocket.remove_pocketed_cassette()
 
 
 func respawn_cassette():

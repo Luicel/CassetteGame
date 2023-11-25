@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://byqkycl7qpnd3"]
+[gd_scene load_steps=18 format=3 uid="uid://byqkycl7qpnd3"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_a2nrl"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_qfedd"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://h0qaqq82paex" path="res://cassette/cassette_pocket.tscn" id="3_4s4r2"]
 [ext_resource type="Script" path="res://player/movement/player_movement_state_machine.gd" id="4_f4mm0"]
 [ext_resource type="Script" path="res://player/movement/player_normal_movement_state.gd" id="5_32qle"]
+[ext_resource type="Script" path="res://player/player_throw.gd" id="5_vaxth"]
 [ext_resource type="Script" path="res://player/movement/player_levitate_movement_state.gd" id="6_2mgkq"]
+[ext_resource type="Texture2D" uid="uid://dhc06jib2gha0" path="res://player/throw_arrow.png" id="6_mpudx"]
 [ext_resource type="Script" path="res://player/movement/player_air_dash_movement_state.gd" id="7_74ulm"]
 [ext_resource type="Script" path="res://player/movement/player_upside_down_movement_state.gd" id="8_42xle"]
 [ext_resource type="Script" path="res://player/movement/player_float_movement_state.gd" id="9_u7hmn"]
@@ -65,6 +67,14 @@ air_resistance = 3000.0
 air_dash_force = 1600.0
 air_dash_resistance = 3000.0
 air_dash_wait_time = 0.075
+
+[node name="Throw" type="Node2D" parent="CharacterBody2D"]
+script = ExtResource("5_vaxth")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Throw"]
+z_index = 2
+position = Vector2(0, -64)
+texture = ExtResource("6_mpudx")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(3, 6)
