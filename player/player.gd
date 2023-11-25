@@ -135,9 +135,9 @@ func handle_horizontal_movement(delta):
 		previous_direction = direction
 	
 	# Stop player at camera bounds. Else, execute horizontal movement physics calculations.
-	if direction < 0 and global_position.x <= get_viewport().get_camera_2d().limit_left:
+	if direction <= 0 and global_position.x <= get_viewport().get_camera_2d().limit_left:
 		velocity.x = 0
-	elif direction > 0 and global_position.x >= get_viewport().get_camera_2d().limit_right:
+	elif direction >= 0 and global_position.x >= get_viewport().get_camera_2d().limit_right:
 		velocity.x = 0
 	else:
 		# Handle horizontal movement physics calculations.

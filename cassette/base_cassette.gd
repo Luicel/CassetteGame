@@ -58,6 +58,7 @@ func respawn():
 	await get_tree().process_frame
 	
 	global_position = initial_global_position
+	rotation = 0
 	await get_tree().process_frame
 	
 	set_physics_process(true)

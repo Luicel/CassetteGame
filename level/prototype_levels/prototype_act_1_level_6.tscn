@@ -21,6 +21,12 @@ polygon = PackedVector2Array(-448, 192, 64, 120, 64, 120, 216, 192, 480, 192, 51
 [node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
 polygon = PackedVector2Array(-448, 192, 64, 120, 64, 120, 216, 192, 480, 192, 512, 88, 768, 96, 1272, 72, 1416, 56, 1472, -32, 1504, -256, 1560, -448, 1152, -576, 1152, -832, 1472, -816, 1472, -640, 2048, -640, 2048, -816, 3136, -640, 3136, 768, -1024, 760, -1024, 256)
 
+[node name="Camera2D" parent="Player" index="0"]
+position = Vector2(7.00649e-45, -128)
+
+[node name="PhantomCamera2D" parent="Player" index="1"]
+position = Vector2(7.00649e-45, -128)
+
 [node name="LevelLayout2" parent="." index="3" instance=ExtResource("2_jkrde")]
 position = Vector2(736, -288)
 
