@@ -47,36 +47,54 @@ var movement_states : Dictionary = {}
 
 
 func _ready():
+	# Initalize movement states.
 	for child in player_movement_state_machine.get_children():
 		if child is PlayerMovementState:
 			movement_states[child.name.to_lower()] = child
 	
+	# If a configured initial movement state is valid, call its enter function.
 	if initial_movement_state:
 		initial_movement_state.enter()
 		current_movement_state = initial_movement_state
+	
+	# Set PhantomCamera2D target offset to match configured pivot.
+	phantom_camera_2d._camera_offset = camera_pivot
 
 
 func _process(delta):
+	# Call update function on current movement state.
 	if current_movement_state:
 		current_movement_state.update(delta)
 	
+	# If on floor and can't air dash, enable air dash.
 	if is_on_floor() and not can_air_dash:
 		can_air_dash = true
 		gravity_scale = 1.0
 	
+	# If cassette pocket is empty, check if player is colliding with a cassette.
 	if not cassette_pocket.pocketed_cassette:
 		detect_overlapping_colliders()
+	
+	# Attempt to recharge all blue cassettes.
+	try_to_recharge_blue_cassettes()
+	
+	# Reload the scene upon appropriate input.
+	if Input.is_action_just_pressed("reset_level"):
+		get_tree().reload_current_scene()
 
 
 func _physics_process(delta):
+	# Check and cache physics states prior to processing physics movement.
 	var was_on_wall = is_on_wall_only()
 	if was_on_wall:
 		was_wall_normal = get_wall_normal()
 	var was_on_floor = is_on_floor()
 	
+	# Process physics movement.
 	if current_movement_state:
 		current_movement_state.physics_update(delta)
 	
+	# Compare current and cached physics states and act accordingly. 
 	if was_on_wall and not is_on_wall():
 		wall_grace_timer.start()
 	if not was_on_wall and is_on_wall():
@@ -84,11 +102,9 @@ func _physics_process(delta):
 	if was_on_floor != is_on_floor():
 		pass
 	
-	
+	# If player is on floor after a delay of swapping verticality, update camera pivot.
 	if is_on_floor() and just_swapped_verticality_timer.time_left == 0:
 		handle_camera_pivot()
-	
-	try_to_recharge_blue_cassettes()
 
 
 func handle_camera_pivot():
@@ -110,20 +126,25 @@ func transition_to_movement_state(new_movement_state_name):
 
 
 func handle_horizontal_movement(delta):
-	
-	#if wall_jump_timer.time_left > 0.0 and not is_on_floor(): return
-	
+	# Calculate horizontal input direction.
 	var direction = Input.get_axis("left", "right")
-	
 	if not direction and not velocity: return
 	
+	# If direction is different than before, change previous_direction.
 	if direction > 0 and velocity.x > 0 or direction < 0 and velocity.x < 0:
 		previous_direction = direction
 	
-	apply_acceleration(direction, delta)
-	apply_friction(direction, delta)
-	apply_air_acceleration(direction, delta)
-	apply_air_resistance(direction, delta)
+	# Stop player at camera bounds. Else, execute horizontal movement physics calculations.
+	if direction < 0 and global_position.x <= get_viewport().get_camera_2d().limit_left:
+		velocity.x = 0
+	elif direction > 0 and global_position.x >= get_viewport().get_camera_2d().limit_right:
+		velocity.x = 0
+	else:
+		# Handle horizontal movement physics calculations.
+		apply_acceleration(direction, delta)
+		apply_friction(direction, delta)
+		apply_air_acceleration(direction, delta)
+		apply_air_resistance(direction, delta)
 
 
 func apply_acceleration(direction, delta):

@@ -27,6 +27,7 @@ height = 96.0
 [node name="Player" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+position = Vector2(0, -128)
 drag_top_margin = 0.75
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -34,13 +35,14 @@ script = ExtResource("1_a2nrl")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -128)
 script = ExtResource("2_ffp7b")
 priority_override = null
 priority = 5
 zoom = Vector2(1, 1)
 follow_mode = 2
 follow_target = NodePath("../CharacterBody2D")
-follow_parameters/target_offset = Vector2(0, 0)
+follow_parameters/target_offset = Vector2(0, -128)
 follow_parameters/damping = true
 follow_parameters/damping_value = 5.0
 tween_parameters = ExtResource("2_64r24")
