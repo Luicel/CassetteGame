@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://s66h0ow4ev2h"]
+[gd_scene load_steps=28 format=3 uid="uid://s66h0ow4ev2h"]
 
 [ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_2hsua"]
 [ext_resource type="PackedScene" uid="uid://b82pyxhyv8q4a" path="res://camera/camera_trigger_area.tscn" id="2_04yc0"]
@@ -15,10 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_tile/red_tile.tscn" id="13_c6yam"]
 [ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red/red_cassette.tscn" id="14_54ktf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbc2y"]
-size = Vector2(1792, 1536)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2260b"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bafl"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_yob1n"]
@@ -27,16 +24,13 @@ duration = 0.6
 transition = 3
 ease = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocl2q"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqnmp"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv8sg"]
 size = Vector2(384, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_va0n3"]
-size = Vector2(2560, 1216)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_km1cl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8ldh"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_a13fo"]
@@ -63,7 +57,7 @@ size = Vector2(384, 256)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brndb"]
 size = Vector2(32, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb8ht"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3iq6"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6qfu"]
@@ -80,11 +74,8 @@ layer_0/tile_data = PackedInt32Array(-65529, 3, 6, -393209, 3, 6, -393208, 3, 6,
 position = Vector2(1536, -352)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
 
-[node name="DetectionCollisionShape2D" parent="Section1/CameraTriggerArea" index="0"]
-shape = SubResource("RectangleShape2D_kbc2y")
-
 [node name="CameraVisibilityPreview" parent="Section1/CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_2260b")
+shape = SubResource("RectangleShape2D_6bafl")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Section1/CameraTriggerArea" index="2"]
 script = ExtResource("3_65jwr")
@@ -100,11 +91,8 @@ inactive_update_mode = 0
 position = Vector2(13440, -928)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
 
-[node name="DetectionCollisionShape2D" parent="Section1/CameraTriggerArea2" index="0"]
-shape = SubResource("RectangleShape2D_kbc2y")
-
 [node name="CameraVisibilityPreview" parent="Section1/CameraTriggerArea2" index="1"]
-shape = SubResource("RectangleShape2D_ocl2q")
+shape = SubResource("RectangleShape2D_sqnmp")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Section1/CameraTriggerArea2" index="2"]
 script = ExtResource("3_65jwr")
@@ -214,12 +202,8 @@ position = Vector2(0, 80)
 position = Vector2(4992, -672)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
 
-[node name="DetectionCollisionShape2D" parent="Section2/CameraTriggerArea2" index="0"]
-position = Vector2(384, 0)
-shape = SubResource("RectangleShape2D_va0n3")
-
 [node name="CameraVisibilityPreview" parent="Section2/CameraTriggerArea2" index="1"]
-shape = SubResource("RectangleShape2D_km1cl")
+shape = SubResource("RectangleShape2D_v8ldh")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Section2/CameraTriggerArea2" index="2"]
 position = Vector2(0.00292969, 0)
@@ -901,12 +885,8 @@ position = Vector2(9088, -32)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
 metadata/_edit_lock_ = true
 
-[node name="DetectionCollisionShape2D" parent="Section3/CameraTriggerArea3" index="0"]
-position = Vector2(384, 0)
-shape = SubResource("RectangleShape2D_va0n3")
-
 [node name="CameraVisibilityPreview" parent="Section3/CameraTriggerArea3" index="1"]
-shape = SubResource("RectangleShape2D_gb8ht")
+shape = SubResource("RectangleShape2D_w3iq6")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Section3/CameraTriggerArea3" index="2"]
 position = Vector2(0.00585938, 0)
@@ -1039,10 +1019,10 @@ position = Vector2(12800, -640)
 position = Vector2(0, 80)
 
 [node name="Camera2D" parent="Player" index="0"]
-position = Vector2(-832, 528)
+position = Vector2(-832, 656)
 
 [node name="PhantomCamera2D" parent="Player" index="1"]
-position = Vector2(-832, 528)
+position = Vector2(-832, 656)
 
 [node name="CharacterBody2D" parent="Player" index="2"]
 position = Vector2(-832, 656)

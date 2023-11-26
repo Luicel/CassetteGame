@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b82pyxhyv8q4a"]
+[gd_scene load_steps=4 format=3 uid="uid://b82pyxhyv8q4a"]
 
 [ext_resource type="Script" path="res://camera/camera_trigger_area.gd" id="1_m1lq3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tj3y"]
-size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lutml"]
 
@@ -19,9 +16,8 @@ collision_mask = 2
 script = ExtResource("1_m1lq3")
 metadata/_edit_group_ = true
 
-[node name="DetectionCollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_3tj3y")
-debug_color = Color(0, 0.639216, 0.368627, 0.337255)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [node name="CameraVisibilityPreview" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lutml")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0w5tsxal66jp"]
+[gd_scene load_steps=18 format=3 uid="uid://d0w5tsxal66jp"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_xa15t"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_whmoc"]
@@ -13,10 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://clxdrm61ea5bg" path="res://cassette/blue/blue_cassette.tscn" id="11_7v8fn"]
 [ext_resource type="PackedScene" uid="uid://bc5tw2d0vhhme" path="res://cassette/green/green_cassette.tscn" id="12_gdw0y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
-size = Vector2(3072, 1728)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhgqe"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qnr7"]
 size = Vector2(2953.85, 1661.54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -41,10 +38,10 @@ layer_0/tile_data = PackedInt32Array(1114113, 3, 6, 1114114, 3, 6, 1114115, 3, 6
 [node name="Player" parent="." instance=ExtResource("2_whmoc")]
 
 [node name="Camera2D" parent="Player" index="0"]
-position = Vector2(224, 912)
+position = Vector2(224, 1039.76)
 
 [node name="PhantomCamera2D" parent="Player" index="1"]
-position = Vector2(224, 912)
+position = Vector2(224, 1039.76)
 
 [node name="CharacterBody2D" parent="Player" index="2"]
 position = Vector2(224, 1040)
@@ -66,11 +63,8 @@ scale = Vector2(5, 1)
 position = Vector2(-1632, 288)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
 
-[node name="DetectionCollisionShape2D" parent="CameraTriggerArea" index="0"]
-shape = SubResource("RectangleShape2D_c1x3n")
-
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_dhgqe")
+shape = SubResource("RectangleShape2D_8qnr7")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_rlbro")
