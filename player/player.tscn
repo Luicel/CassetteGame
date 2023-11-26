@@ -71,12 +71,16 @@ air_dash_resistance = 3000.0
 air_dash_wait_time = 0.075
 
 [node name="Throw" type="Node2D" parent="CharacterBody2D"]
+position = Vector2(0, -24)
 script = ExtResource("5_vaxth")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Throw"]
 z_index = 2
-position = Vector2(0, -64)
+position = Vector2(0, -56)
 texture = ExtResource("6_mpudx")
+
+[node name="VisualTimer" type="Timer" parent="CharacterBody2D/Throw"]
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(3, 6)
@@ -150,5 +154,6 @@ wait_time = 0.2
 one_shot = true
 
 [connection signal="body_entered" from="CharacterBody2D/CassetteDetectorArea" to="CharacterBody2D" method="_on_cassette_detector_area_body_entered"]
+[connection signal="cassette_pocketed" from="CharacterBody2D/CassettePocket" to="CharacterBody2D/Throw" method="_on_cassette_pocket_cassette_pocketed"]
 
 [editable path="CharacterBody2D/CassettePocket"]

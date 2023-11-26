@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1x3n"]
 size = Vector2(3072, 1728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v1jh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhgqe"]
 size = Vector2(2953.85, 1661.54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -41,10 +41,10 @@ layer_0/tile_data = PackedInt32Array(1114113, 3, 6, 1114114, 3, 6, 1114115, 3, 6
 [node name="Player" parent="." instance=ExtResource("2_whmoc")]
 
 [node name="Camera2D" parent="Player" index="0"]
-position = Vector2(224, 1040)
+position = Vector2(224, 912)
 
 [node name="PhantomCamera2D" parent="Player" index="1"]
-position = Vector2(224, 1040)
+position = Vector2(224, 912)
 
 [node name="CharacterBody2D" parent="Player" index="2"]
 position = Vector2(224, 1040)
@@ -70,7 +70,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_c1x3n")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_2v1jh")
+shape = SubResource("RectangleShape2D_dhgqe")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_rlbro")

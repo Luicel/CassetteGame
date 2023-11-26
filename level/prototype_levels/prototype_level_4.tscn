@@ -18,7 +18,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbc2y"]
 size = Vector2(1792, 1536)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lu87"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2260b"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_yob1n"]
@@ -27,7 +27,7 @@ duration = 0.6
 transition = 3
 ease = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6ol4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocl2q"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv8sg"]
@@ -36,7 +36,7 @@ size = Vector2(384, 256)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_va0n3"]
 size = Vector2(2560, 1216)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_20lki"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km1cl"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_a13fo"]
@@ -63,7 +63,7 @@ size = Vector2(384, 256)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brndb"]
 size = Vector2(32, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7smci"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb8ht"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6qfu"]
@@ -84,7 +84,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_kbc2y")
 
 [node name="CameraVisibilityPreview" parent="Section1/CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_4lu87")
+shape = SubResource("RectangleShape2D_2260b")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Section1/CameraTriggerArea" index="2"]
 script = ExtResource("3_65jwr")
@@ -104,7 +104,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 shape = SubResource("RectangleShape2D_kbc2y")
 
 [node name="CameraVisibilityPreview" parent="Section1/CameraTriggerArea2" index="1"]
-shape = SubResource("RectangleShape2D_m6ol4")
+shape = SubResource("RectangleShape2D_ocl2q")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Section1/CameraTriggerArea2" index="2"]
 script = ExtResource("3_65jwr")
@@ -219,7 +219,7 @@ position = Vector2(384, 0)
 shape = SubResource("RectangleShape2D_va0n3")
 
 [node name="CameraVisibilityPreview" parent="Section2/CameraTriggerArea2" index="1"]
-shape = SubResource("RectangleShape2D_20lki")
+shape = SubResource("RectangleShape2D_km1cl")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Section2/CameraTriggerArea2" index="2"]
 position = Vector2(0.00292969, 0)
@@ -906,7 +906,7 @@ position = Vector2(384, 0)
 shape = SubResource("RectangleShape2D_va0n3")
 
 [node name="CameraVisibilityPreview" parent="Section3/CameraTriggerArea3" index="1"]
-shape = SubResource("RectangleShape2D_7smci")
+shape = SubResource("RectangleShape2D_gb8ht")
 
 [node name="PhantomCamera2D" type="Node2D" parent="Section3/CameraTriggerArea3" index="2"]
 position = Vector2(0.00585938, 0)
@@ -1039,10 +1039,10 @@ position = Vector2(12800, -640)
 position = Vector2(0, 80)
 
 [node name="Camera2D" parent="Player" index="0"]
-position = Vector2(-832, 656)
+position = Vector2(-832, 528)
 
 [node name="PhantomCamera2D" parent="Player" index="1"]
-position = Vector2(-832, 656)
+position = Vector2(-832, 528)
 
 [node name="CharacterBody2D" parent="Player" index="2"]
 position = Vector2(-832, 656)

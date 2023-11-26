@@ -1,5 +1,6 @@
 class_name BaseCassette extends RigidBody2D
 
+@onready var player = get_tree().get_first_node_in_group("player")
 @onready var throw_timer = $ThrowTimer
 @onready var initial_global_position = global_position
 
@@ -17,6 +18,9 @@ func _process(delta):
 
 
 func throw(direction : Vector2):
+	if player.up_direction == Vector2.DOWN:
+		direction.y *= -1
+	
 	gravity_scale = 0
 	linear_damp = air_resistance
 	throw_timer.start()
