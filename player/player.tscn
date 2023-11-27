@@ -99,12 +99,14 @@ collision_mask = 5
 shape = SubResource("CapsuleShape2D_5meqo")
 
 [node name="CassettePocket" parent="CharacterBody2D" instance=ExtResource("3_4s4r2")]
-visible = false
 position = Vector2(0, -24)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="CharacterBody2D/CassettePocket/Pocket" index="0"]
 disabled = true
+
+[node name="Sprite2D" parent="CharacterBody2D/CassettePocket/Pocket" index="1"]
+visible = false
 
 [node name="PlayerMovementStateMachine" type="Node" parent="CharacterBody2D"]
 script = ExtResource("4_f4mm0")
