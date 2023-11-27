@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2s3kjy2mnsyv"]
+[gd_scene load_steps=13 format=3 uid="uid://c2s3kjy2mnsyv"]
 
 [ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_i7s2t"]
 [ext_resource type="PackedScene" uid="uid://dtutos5dxlabe" path="res://level/obstacles/moving_pivot.tscn" id="2_as7mp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://csnfbq078xw3e" path="res://level/scene_change_area.tscn" id="7_hxc51"]
 [ext_resource type="PackedScene" uid="uid://ce4grwonsedjv" path="res://level/prototype_levels/prototype_act_1_level_4.tscn" id="8_ceuvm"]
 [ext_resource type="PackedScene" uid="uid://w558hq11cj3l" path="res://camera/camera_bounds.tscn" id="9_b7he5"]
+[ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="10_hpqi1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqc7e"]
 size = Vector2(128, 64)
@@ -19,10 +20,10 @@ size = Vector2(5760, 2432)
 [node name="PrototypeAct1Level3" instance=ExtResource("1_i7s2t")]
 
 [node name="Polygon2D" parent="LevelLayout" index="0"]
-polygon = PackedVector2Array(-896, 128, 64, 128, 64, 120, 544, -96, 768, -64, 800, 160, 1120, 160, 1120, 128, 1248, 128, 1248, 192, 1504, 192, 1504, 96, 1568, 96, 1568, 152, 1888, 152, 1888, 192, 2016, 192, 2032, 128, 2048, -32, 2432, -64, 2624, -128, 2880, -128, 3200, -64, 3520, -48, 3552, 104, 3680, 104, 3712, -48, 3936, -64, 3968, 88, 4096, 88, 4096, 0, 4128, -64, 4608, -32, 5184, -64, 5696, -64, 5696, 768, -896, 768)
+polygon = PackedVector2Array(-896, 128, 64, 128, 544, -96, 768, -64, 800, 160, 1120, 160, 1120, 128, 1248, 128, 1248, 192, 1504, 192, 1504, 96, 1568, 96, 1568, 152, 1888, 152, 1888, 192, 2016, 192, 2032, 128, 2048, -32, 2432, -64, 2624, -128, 2880, -128, 3200, -64, 3520, -48, 3552, 104, 3680, 104, 3712, -48, 3936, -64, 3968, 88, 4096, 88, 4096, 0, 4128, -64, 4608, -32, 5184, -64, 5696, -64, 5696, 768, -896, 768)
 
 [node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
-polygon = PackedVector2Array(-896, 128, 64, 128, 64, 120, 544, -96, 768, -64, 800, 160, 1120, 160, 1120, 128, 1248, 128, 1248, 192, 1504, 192, 1504, 96, 1568, 96, 1568, 152, 1888, 152, 1888, 192, 2016, 192, 2032, 128, 2048, -32, 2432, -64, 2624, -128, 2880, -128, 3200, -64, 3520, -48, 3552, 104, 3680, 104, 3712, -48, 3936, -64, 3968, 88, 4096, 88, 4096, 0, 4128, -64, 4608, -32, 5184, -64, 5696, -64, 5696, 768, -896, 768)
+polygon = PackedVector2Array(-896, 128, 64, 128, 544, -96, 768, -64, 800, 160, 1120, 160, 1120, 128, 1248, 128, 1248, 192, 1504, 192, 1504, 96, 1568, 96, 1568, 152, 1888, 152, 1888, 192, 2016, 192, 2032, 128, 2048, -32, 2432, -64, 2624, -128, 2880, -128, 3200, -64, 3520, -48, 3552, 104, 3680, 104, 3712, -48, 3936, -64, 3968, 88, 4096, 88, 4096, 0, 4128, -64, 4608, -32, 5184, -64, 5696, -64, 5696, 768, -896, 768)
 
 [node name="Camera2D" parent="Player" index="0"]
 position = Vector2(-672, -48)
@@ -191,6 +192,9 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" parent="CameraBounds" index="0"]
 position = Vector2(480, 536)
 shape = SubResource("RectangleShape2D_w7lf7")
+
+[node name="Checkpoint" parent="." index="34" instance=ExtResource("10_hpqi1")]
+position = Vector2(-256, 0)
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]

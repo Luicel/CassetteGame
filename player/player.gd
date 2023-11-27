@@ -14,6 +14,7 @@ signal cassette_thrown
 @onready var just_swapped_verticality_timer = $JustSwappedVerticalityTimer
 @onready var phantom_camera_2d = %PhantomCamera2D
 @onready var wall_stick_timer = $WallStickTimer
+@onready var collision_shape_2d = $CollisionShape2D
 
 @export var initial_movement_state : PlayerMovementState
 @export var camera_pivot : Vector2
@@ -80,7 +81,7 @@ func _process(delta):
 	
 	# Reload the scene upon appropriate input.
 	if Input.is_action_just_pressed("reset_level"):
-		get_tree().reload_current_scene()
+		LevelManager.reload_level()
 
 
 func _physics_process(delta):
@@ -267,6 +268,8 @@ func respawn():
 		global_position = checkpoint.respawn_point.global_position
 	else:
 		global_position = initial_position
+	
+	phantom_camera_2d.global_position = global_position + camera_pivot
 
 
 func try_to_recharge_blue_cassettes():

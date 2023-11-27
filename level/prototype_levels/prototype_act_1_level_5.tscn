@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs6uwpa7cmmgm"]
+[gd_scene load_steps=12 format=3 uid="uid://cs6uwpa7cmmgm"]
 
 [ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_11rv0"]
 [ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red/red_cassette.tscn" id="2_ich2v"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://csnfbq078xw3e" path="res://level/scene_change_area.tscn" id="7_rv3aw"]
 [ext_resource type="PackedScene" uid="uid://c6u037cqt6hf5" path="res://level/prototype_levels/prototype_act_1_level_6.tscn" id="8_03ocg"]
 [ext_resource type="PackedScene" uid="uid://w558hq11cj3l" path="res://camera/camera_bounds.tscn" id="9_fd6fh"]
+[ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="10_yl165"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5dpi"]
 size = Vector2(4288, 2560)
@@ -99,6 +100,9 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" parent="CameraBounds" index="0"]
 position = Vector2(-320, 600)
 shape = SubResource("RectangleShape2D_e5dpi")
+
+[node name="Checkpoint" parent="." index="21" instance=ExtResource("10_yl165")]
+position = Vector2(-128, -32)
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]

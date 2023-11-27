@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://mcbifdffmvlw"]
+[gd_scene load_steps=14 format=3 uid="uid://mcbifdffmvlw"]
 
 [ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_ppsru"]
 [ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/level_layout.tscn" id="2_3jsce"]
@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b82pyxhyv8q4a" path="res://camera/camera_trigger_area.tscn" id="7_1jlj7"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="8_6r5p1"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_4xi2n"]
+[ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="10_p0ycf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mf2dl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyr8p"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Curve2D" id="Curve2D_d468l"]
@@ -28,19 +29,19 @@ ease = 1
 [node name="PrototypeAct1Level1" instance=ExtResource("1_ppsru")]
 
 [node name="Polygon2D" parent="LevelLayout" index="0"]
-polygon = PackedVector2Array(-384, 128, 640, 128, 640, 64, 896, 64, 896, 128, 1280, 128, 1280, 0, 1536, 0, 1536, -128, 1792, -128, 1792, 0, 1856, 0, 1856, 128, 2048, 128, 2048, -128, 2304, -192, 2304, -64, 2432, -64, 2432, 96, 2592, 96, 2592, -192, 2688, -192, 2880, -128, 3208, -128, 3560, -256, 4096, -256, 4096, -576, 4288, -576, 4288, -832, 4096, -896, 4096, -1152, 4416, -1152, 6272, -1248, 6272, 704, -768, 704, -768, 192)
+polygon = PackedVector2Array(-384, 128, 640, 128, 640, 64, 896, 64, 896, 128, 1280, 128, 1280, 0, 1536, 0, 1536, -128, 1792, -128, 1792, 0, 1856, 0, 1856, 128, 2048, 128, 2048, -128, 2304, -192, 2304, -64, 2432, -64, 2432, 96, 2592, 96, 2592, -192, 2688, -192, 2880, -128, 3208, -128, 3560, -256, 4096, -256, 4096, -576, 4288, -576, 4288, -832, 4096, -896, 4096, -1152, 4416, -1152, 6272, -1248, 6272, 704, -1152, 704, -1152, 192, -768, 192)
 
 [node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
-polygon = PackedVector2Array(-384, 128, 640, 128, 640, 64, 896, 64, 896, 128, 1280, 128, 1280, 0, 1536, 0, 1536, -128, 1792, -128, 1792, 0, 1856, 0, 1856, 128, 2048, 128, 2048, -128, 2304, -192, 2304, -64, 2432, -64, 2432, 96, 2592, 96, 2592, -192, 2688, -192, 2880, -128, 3208, -128, 3560, -256, 4096, -256, 4096, -576, 4288, -576, 4288, -832, 4096, -896, 4096, -1152, 4416, -1152, 6272, -1248, 6272, 704, -768, 704, -768, 192)
+polygon = PackedVector2Array(-384, 128, 640, 128, 640, 64, 896, 64, 896, 128, 1280, 128, 1280, 0, 1536, 0, 1536, -128, 1792, -128, 1792, 0, 1856, 0, 1856, 128, 2048, 128, 2048, -128, 2304, -192, 2304, -64, 2432, -64, 2432, 96, 2592, 96, 2592, -192, 2688, -192, 2880, -128, 3208, -128, 3560, -256, 4096, -256, 4096, -576, 4288, -576, 4288, -832, 4096, -896, 4096, -1152, 4416, -1152, 6272, -1248, 6272, 704, -1152, 704, -1152, 192, -768, 192)
 
 [node name="Camera2D" parent="Player" index="0"]
-position = Vector2(4632, -1384)
+position = Vector2(-864, 24)
 
 [node name="PhantomCamera2D" parent="Player" index="1"]
-position = Vector2(4632, -1384)
+position = Vector2(-864, 24)
 
 [node name="CharacterBody2D" parent="Player" index="2"]
-position = Vector2(4632, -1256)
+position = Vector2(-864, 152)
 
 [node name="LevelLayout2" parent="." index="3" instance=ExtResource("2_3jsce")]
 position = Vector2(3504, -656)
@@ -74,13 +75,13 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 polygon = PackedVector2Array(-160, -1184, 96, -608, 160, -416, 352, -416, 352, 32, 160, 32, 160, 352, -160, 352)
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_mf2dl")
+shape = SubResource("RectangleShape2D_qyr8p")
 
 [node name="Path2D" parent="CameraTriggerArea" index="2"]
 curve = SubResource("Curve2D_d468l")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea" index="3"]
-position = Vector2(0, -703.999)
+position = Vector2(0, -0.000366211)
 script = ExtResource("8_6r5p1")
 priority_override = null
 priority = 0
@@ -93,6 +94,8 @@ follow_parameters/damping_value = 5.0
 tween_parameters = SubResource("Resource_400u7")
 tween_on_load = true
 inactive_update_mode = 0
+
+[node name="Checkpoint" parent="." index="8" instance=ExtResource("10_p0ycf")]
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]

@@ -12,6 +12,22 @@ func _ready():
 		walk_into_frame()
 
 
+func reload_level():
+	var player = get_player()
+	
+	player.transition_to_movement_state("dead")
+	animation_player.play("fade_to_black")
+	await animation_player.animation_finished
+	
+	player.respawn()
+	if not player.checkpoint:
+		await get_tree().process_frame
+		walk_into_frame()
+	else:
+		player.transition_to_movement_state("normal")
+	animation_player.play("fade_from_black")
+
+
 func walk_player_to_scene(scene : PackedScene):
 	if animation_player.is_playing(): return
 	

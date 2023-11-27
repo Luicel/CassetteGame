@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b34idbvf1t1ek"]
+[gd_scene load_steps=10 format=3 uid="uid://b34idbvf1t1ek"]
 
 [ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_ndntq"]
 [ext_resource type="PackedScene" uid="uid://dorvfpohkstmf" path="res://level/obstacles/spikes/spikes.tscn" id="2_una57"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://w558hq11cj3l" path="res://camera/camera_bounds.tscn" id="5_6201k"]
 [ext_resource type="PackedScene" uid="uid://csnfbq078xw3e" path="res://level/scene_change_area.tscn" id="5_arn5e"]
 [ext_resource type="PackedScene" uid="uid://c2s3kjy2mnsyv" path="res://level/prototype_levels/prototype_act_1_level_3.tscn" id="6_ttly6"]
+[ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="8_6y6kf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwe7g"]
 size = Vector2(4672, 2368)
@@ -120,6 +121,9 @@ shape = SubResource("RectangleShape2D_xwe7g")
 [node name="scene_change_area" parent="." index="22" instance=ExtResource("5_arn5e")]
 position = Vector2(3960, -864)
 scene = ExtResource("6_ttly6")
+
+[node name="Checkpoint" parent="." index="23" instance=ExtResource("8_6y6kf")]
+position = Vector2(0, -16)
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]
