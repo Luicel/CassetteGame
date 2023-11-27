@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://byqkycl7qpnd3"]
+[gd_scene load_steps=19 format=3 uid="uid://byqkycl7qpnd3"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_a2nrl"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_qfedd"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://player/movement/player_upside_down_movement_state.gd" id="8_42xle"]
 [ext_resource type="Script" path="res://player/movement/player_float_movement_state.gd" id="9_u7hmn"]
 [ext_resource type="Script" path="res://player/movement/player_limited_movement_state.gd" id="13_1m4j4"]
+[ext_resource type="Script" path="res://player/movement/player_level_transition_movement_state.gd" id="16_obwno"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8o1gm"]
 radius = 24.0
@@ -123,6 +124,9 @@ script = ExtResource("9_u7hmn")
 
 [node name="Limited" type="Node" parent="CharacterBody2D/PlayerMovementStateMachine"]
 script = ExtResource("13_1m4j4")
+
+[node name="LevelTransition" type="Node" parent="CharacterBody2D/PlayerMovementStateMachine"]
+script = ExtResource("16_obwno")
 
 [node name="AirDashTimer" type="Timer" parent="CharacterBody2D"]
 unique_name_in_owner = true

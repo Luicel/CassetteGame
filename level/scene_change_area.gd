@@ -7,4 +7,4 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body == player:
-		get_tree().change_scene_to_packed(scene)
+		LevelManager.walk_player_to_scene(scene)

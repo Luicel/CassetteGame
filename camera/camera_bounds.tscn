@@ -6,6 +6,8 @@
 size = Vector2(6400, 2688)
 
 [node name="CameraBounds" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_n4aoy")
 metadata/_edit_group_ = true
 

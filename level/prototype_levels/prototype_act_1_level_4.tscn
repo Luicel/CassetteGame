@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce4grwonsedjv"]
+[gd_scene load_steps=12 format=3 uid="uid://ce4grwonsedjv"]
 
 [ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_0os2l"]
 [ext_resource type="PackedScene" uid="uid://d0goadj7nkvyy" path="res://level/obstacles/platform/one-way/one_way_platform.tscn" id="2_lsuk6"]
@@ -9,14 +9,27 @@
 [ext_resource type="PackedScene" uid="uid://d01d8mkfiuu0u" path="res://level/obstacles/death_zone/death_zone.tscn" id="7_640k4"]
 [ext_resource type="PackedScene" uid="uid://csnfbq078xw3e" path="res://level/scene_change_area.tscn" id="8_wyq0o"]
 [ext_resource type="PackedScene" uid="uid://cs6uwpa7cmmgm" path="res://level/prototype_levels/prototype_act_1_level_5.tscn" id="9_r0wm6"]
+[ext_resource type="PackedScene" uid="uid://w558hq11cj3l" path="res://camera/camera_bounds.tscn" id="10_612p5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb3ck"]
+size = Vector2(4928, 2496)
 
 [node name="PrototypeAct1Level4" instance=ExtResource("1_0os2l")]
 
 [node name="Polygon2D" parent="LevelLayout" index="0"]
-polygon = PackedVector2Array(-640, 128, -192, 80, 192, 64, 648, 8, 1024, 32, 1024, -256, 1408, -240, 1536, -320, 1728, -320, 1920, -288, 1920, -128, 2368, -128, 2368, -288, 2624, -256, 2720, -224, 2880, -240, 2880, -416, 3136, -448, 3136, -288, 3456, -288, 3456, -448, 3584, -408, 4288, -320, 4288, 832, -640, 832)
+polygon = PackedVector2Array(-640, 128, -192, 80, 192, 64, 648, 8, 1024, 32, 1024, -256, 1408, -240, 1536, -320, 1728, -320, 1920, -288, 1920, -128, 2368, -128, 2368, -288, 2624, -256, 2720, -224, 2880, -240, 2880, -416, 3136, -448, 3136, -288, 3456, -288, 3456, -448, 3584, -408, 4800, -288, 4800, 832, -960, 832, -960, 128)
 
 [node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
-polygon = PackedVector2Array(-640, 128, -192, 80, 192, 64, 648, 8, 1024, 32, 1024, -256, 1408, -240, 1536, -320, 1728, -320, 1920, -288, 1920, -128, 2368, -128, 2368, -288, 2624, -256, 2720, -224, 2880, -240, 2880, -416, 3136, -448, 3136, -288, 3456, -288, 3456, -448, 3584, -408, 4288, -320, 4288, 832, -640, 832)
+polygon = PackedVector2Array(-640, 128, -192, 80, 192, 64, 648, 8, 1024, 32, 1024, -256, 1408, -240, 1536, -320, 1728, -320, 1920, -288, 1920, -128, 2368, -128, 2368, -288, 2624, -256, 2720, -224, 2880, -240, 2880, -416, 3136, -448, 3136, -288, 3456, -288, 3456, -448, 3584, -408, 4800, -288, 4800, 832, -960, 832, -960, 128)
+
+[node name="Camera2D" parent="Player" index="0"]
+position = Vector2(-736, -48)
+
+[node name="PhantomCamera2D" parent="Player" index="1"]
+position = Vector2(-736, -48)
+
+[node name="CharacterBody2D" parent="Player" index="2"]
+position = Vector2(-736, 80)
 
 [node name="OneWayPlatform" parent="." index="3" instance=ExtResource("2_lsuk6")]
 position = Vector2(896, -112)
@@ -107,13 +120,22 @@ rotation = -3.14159
 position = Vector2(1632, -416)
 
 [node name="DeathZone" parent="." index="27" instance=ExtResource("7_640k4")]
-position = Vector2(1104, 1104)
+position = Vector2(1160, 896)
 scale = Vector2(200, 2)
 
 [node name="scene_change_area" parent="." index="28" instance=ExtResource("8_wyq0o")]
 position = Vector2(4152, -464)
 scene = ExtResource("9_r0wm6")
 
+[node name="CameraBounds" parent="." index="29" instance=ExtResource("10_612p5")]
+position = Vector2(1824, -984)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="CameraBounds" index="0"]
+position = Vector2(0, 568)
+shape = SubResource("RectangleShape2D_fb3ck")
+
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]
 [editable path="LevelLayout2"]
+[editable path="CameraBounds"]

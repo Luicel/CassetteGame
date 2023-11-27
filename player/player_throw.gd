@@ -38,6 +38,7 @@ func update_visuals():
 
 func throw():
 	if not cassette_pocket.pocketed_cassette: return
+	if LevelManager.is_transitioning: return
 	
 	var cassette = cassette_pocket.pocketed_cassette
 	cassette.throw(current_direction)
