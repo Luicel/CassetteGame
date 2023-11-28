@@ -34,8 +34,5 @@ position = Vector2(7.00649e-45, -7.00649e-45)
 platform_wall_layers = 1
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" parent="Player/CharacterBody2D/CassettePocket/Pocket" index="1"]
-visible = false
-
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]

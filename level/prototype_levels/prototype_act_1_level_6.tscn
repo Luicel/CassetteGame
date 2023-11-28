@@ -16,62 +16,62 @@
 size = Vector2(192, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j80mk"]
-size = Vector2(4160, 2432)
+size = Vector2(4992, 2432)
 
 [node name="PrototypeAct1Level6" instance=ExtResource("1_ord7y")]
 
 [node name="Polygon2D" parent="LevelLayout" index="0"]
-polygon = PackedVector2Array(-448, 192, 64, 120, 64, 120, 216, 192, 480, 192, 512, 88, 768, 96, 1272, 72, 1416, 56, 1472, -32, 1504, -256, 1560, -448, 1152, -576, 1152, -832, 1472, -816, 1472, -640, 2048, -640, 2048, -816, 3904, -1024, 3904, 768, -1408, 768, -1408, 256, -1024, 256)
+polygon = PackedVector2Array(-448, 192, 224, 96, 224, 256, 480, 256, 480, 96, 1152, 96, 1472, 32, 1472, -448, 1152, -576, 1152, -832, 1472, -816, 1472, -640, 2048, -640, 2048, -816, 3904, -1024, 3904, 768, -2176, 768, -2176, 384, -1344, 320, -768, 192)
 
 [node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
-polygon = PackedVector2Array(-448, 192, 64, 120, 64, 120, 216, 192, 480, 192, 512, 88, 768, 96, 1272, 72, 1416, 56, 1472, -32, 1504, -256, 1560, -448, 1152, -576, 1152, -832, 1472, -816, 1472, -640, 2048, -640, 2048, -816, 3904, -1024, 3904, 768, -1408, 768, -1408, 256, -1024, 256)
+polygon = PackedVector2Array(-448, 192, 224, 96, 224, 256, 480, 256, 480, 96, 1152, 96, 1472, 32, 1472, -448, 1152, -576, 1152, -832, 1472, -816, 1472, -640, 2048, -640, 2048, -816, 3904, -1024, 3904, 768, -2176, 768, -2176, 384, -1344, 320, -768, 192)
 
 [node name="Camera2D" parent="Player" index="0"]
-position = Vector2(-1120, 80)
+position = Vector2(-1952, 176)
 
 [node name="PhantomCamera2D" parent="Player" index="1"]
-position = Vector2(-1120, 80)
+position = Vector2(-1952, 176)
 
 [node name="CharacterBody2D" parent="Player" index="2"]
-position = Vector2(-1120, 208)
+position = Vector2(-1952, 304)
 
 [node name="LevelLayout2" parent="." index="3" instance=ExtResource("2_jkrde")]
 position = Vector2(736, -288)
 
 [node name="Polygon2D" parent="LevelLayout2" index="0"]
-polygon = PackedVector2Array(-144, -128, 320, -112, 320, -32, 256, -32, 232, 40, 200, 72, 192, -32, -144, -32)
+polygon = PackedVector2Array(-128, -128, 320, -112, 320, -32, 256, -32, 240, 32, 208, 48, 192, -32, -256, -32, -256, -128)
 
 [node name="CollisionPolygon2D" parent="LevelLayout2" index="1"]
-polygon = PackedVector2Array(-144, -128, 320, -112, 320, -32, 256, -32, 232, 40, 200, 72, 192, -32, -144, -32)
+polygon = PackedVector2Array(-128, -128, 320, -112, 320, -32, 256, -32, 240, 32, 208, 48, 192, -32, -256, -32, -256, -128)
 
 [node name="LevelLayout4" parent="." index="4" instance=ExtResource("2_jkrde")]
-position = Vector2(-160, -352)
+position = Vector2(-96, -320)
 
 [node name="Polygon2D" parent="LevelLayout4" index="0"]
-polygon = PackedVector2Array(-160, -160, 320, -96, 320, 0, 208, 32, 144, 104, 40, 120, -72, 8, -128, -32)
+polygon = PackedVector2Array(-160, -160, -352, -704, -416, -1088, -416, -1408, 608, -1408, 608, -1088, 480, -640, 320, -512, 320, -96, 320, 0, 192, 32, 96, 88, -32, 88, -72, 8, -128, -32)
 
 [node name="CollisionPolygon2D" parent="LevelLayout4" index="1"]
-polygon = PackedVector2Array(-160, -160, 320, -96, 320, 0, 208, 32, 144, 104, 40, 120, -72, 8, -128, -32)
+polygon = PackedVector2Array(-160, -160, -352, -704, -416, -1088, -416, -1408, 608, -1408, 608, -1088, 480, -640, 320, -512, 320, -96, 320, 0, 192, 32, 96, 88, -32, 88, -72, 8, -128, -32)
 
 [node name="LevelLayout3" parent="." index="5" instance=ExtResource("2_jkrde")]
 position = Vector2(728, -152)
 
 [node name="Polygon2D" parent="LevelLayout3" index="0"]
-polygon = PackedVector2Array(248, 32, 272, 120, 192, 112, 216, 64)
+polygon = PackedVector2Array(248, 24, 264, 120, 200, 120, 216, 40)
 
 [node name="CollisionPolygon2D" parent="LevelLayout3" index="1"]
-polygon = PackedVector2Array(248, 32, 272, 120, 192, 112, 216, 64)
+polygon = PackedVector2Array(248, 24, 264, 120, 200, 120, 216, 40)
 
 [node name="RedCassette" parent="." index="6" instance=ExtResource("5_vjylp")]
 position = Vector2(648, 48)
 
 [node name="CassetteDestructionLaser" parent="." index="7" instance=ExtResource("6_rphap")]
-position = Vector2(960, 24)
+position = Vector2(960, 32)
 scale = Vector2(1, 2)
 
 [node name="MovingPivot" parent="." index="8" instance=ExtResource("3_m4b1l")]
-position = Vector2(352, 120)
-end_position_offset = Vector2(0, -576)
+position = Vector2(352, 192)
+end_position_offset = Vector2(0, -704)
 forward_speed = 200.0
 forward_stall_time = 1.0
 backward_speed = 200.0
@@ -91,15 +91,15 @@ polygon = PackedVector2Array(-754.251, -993.454, -562.251, -993.454, -562.251, -
 disabled = true
 
 [node name="CassetteDestructionLaser2" parent="." index="9" instance=ExtResource("6_rphap")]
-position = Vector2(376, -400)
-scale = Vector2(13.5, 0.5)
+position = Vector2(352, -368)
+scale = Vector2(8, 0.5)
 
 [node name="OneWayPlatform" parent="." index="10" instance=ExtResource("6_gnnhy")]
 position = Vector2(896, -688)
 scale = Vector2(8, 1)
 
 [node name="DeathZone" parent="." index="11" instance=ExtResource("7_y1i3j")]
-position = Vector2(1104, 1104)
+position = Vector2(1104, 832)
 scale = Vector2(200, 2)
 
 [node name="RedBlock" parent="." index="12" instance=ExtResource("4_yf7ry")]
@@ -138,11 +138,15 @@ position = Vector2(1824, -984)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="CameraBounds" index="0"]
-position = Vector2(-768, 536)
+position = Vector2(-1184, 536)
 shape = SubResource("RectangleShape2D_j80mk")
 
 [node name="Checkpoint" parent="." index="23" instance=ExtResource("11_p4dj7")]
-position = Vector2(-512, 72)
+position = Vector2(-608, 64)
+
+[node name="OneWayPlatform2" parent="." index="24" instance=ExtResource("6_gnnhy")]
+position = Vector2(352, 112)
+scale = Vector2(4, 1)
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]
