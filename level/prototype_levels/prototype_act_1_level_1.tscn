@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_4xi2n"]
 [ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="10_p0ycf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_woshv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rft03"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Curve2D" id="Curve2D_d468l"]
@@ -76,7 +76,7 @@ metadata/_edit_lock_ = true
 polygon = PackedVector2Array(-160, -1184, 96, -608, 160, -416, 352, -416, 352, 32, 160, 32, 160, 352, -160, 352)
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_woshv")
+shape = SubResource("RectangleShape2D_rft03")
 
 [node name="Path2D" parent="CameraTriggerArea" index="2"]
 curve = SubResource("Curve2D_d468l")

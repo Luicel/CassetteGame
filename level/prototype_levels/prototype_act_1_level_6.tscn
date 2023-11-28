@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6u037cqt6hf5"]
+[gd_scene load_steps=19 format=3 uid="uid://c6u037cqt6hf5"]
 
 [ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_ord7y"]
 [ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/level_layout.tscn" id="2_jkrde"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dorvfpohkstmf" path="res://level/obstacles/spikes/spikes.tscn" id="9_66q0i"]
 [ext_resource type="PackedScene" uid="uid://w558hq11cj3l" path="res://camera/camera_bounds.tscn" id="10_rnwx3"]
 [ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="11_p4dj7"]
+[ext_resource type="PackedScene" uid="uid://b82pyxhyv8q4a" path="res://camera/camera_trigger_area.tscn" id="12_n2jhf"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="13_5j4db"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="14_4qaok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ilc6"]
 size = Vector2(192, 64)
@@ -18,13 +21,22 @@ size = Vector2(192, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j80mk"]
 size = Vector2(4992, 2432)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07mkx"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="Resource" id="Resource_b4ol7"]
+script = ExtResource("14_4qaok")
+duration = 0.6
+transition = 3
+ease = 1
+
 [node name="PrototypeAct1Level6" instance=ExtResource("1_ord7y")]
 
 [node name="Polygon2D" parent="LevelLayout" index="0"]
-polygon = PackedVector2Array(-448, 192, 224, 96, 224, 256, 480, 256, 480, 96, 1152, 96, 1472, 32, 1472, -448, 1152, -576, 1152, -832, 1472, -816, 1472, -640, 2048, -640, 2048, -816, 3904, -1024, 3904, 768, -2176, 768, -2176, 384, -1344, 320, -768, 192)
+polygon = PackedVector2Array(-448, 192, 224, 96, 224, 256, 480, 256, 480, 96, 1152, 96, 1472, 32, 1472, -448, 1152, -576, 1152, -832, 1472, -960, 1472, -784, 2048, -784, 2048, -960, 3904, -1024, 3904, 768, -2176, 768, -2176, 384, -1344, 320, -768, 192)
 
 [node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
-polygon = PackedVector2Array(-448, 192, 224, 96, 224, 256, 480, 256, 480, 96, 1152, 96, 1472, 32, 1472, -448, 1152, -576, 1152, -832, 1472, -816, 1472, -640, 2048, -640, 2048, -816, 3904, -1024, 3904, 768, -2176, 768, -2176, 384, -1344, 320, -768, 192)
+polygon = PackedVector2Array(-448, 192, 224, 96, 224, 256, 480, 256, 480, 96, 1152, 96, 1472, 32, 1472, -448, 1152, -576, 1152, -832, 1472, -960, 1472, -784, 2048, -784, 2048, -960, 3904, -1024, 3904, 768, -2176, 768, -2176, 384, -1344, 320, -768, 192)
 
 [node name="Camera2D" parent="Player" index="0"]
 position = Vector2(-1952, 176)
@@ -48,10 +60,10 @@ polygon = PackedVector2Array(-128, -128, 320, -112, 320, -32, 256, -32, 240, 32,
 position = Vector2(-96, -320)
 
 [node name="Polygon2D" parent="LevelLayout4" index="0"]
-polygon = PackedVector2Array(-160, -160, -352, -704, -416, -1088, -416, -1408, 608, -1408, 608, -1088, 480, -640, 320, -512, 320, -96, 320, 0, 192, 32, 96, 88, -32, 88, -72, 8, -128, -32)
+polygon = PackedVector2Array(-352, -704, -416, -1088, -416, -1408, 608, -1408, 608, -1088, 480, -640, 320, -512, 320, -96, 320, 0, 192, 32, 96, 88, -32, 88)
 
 [node name="CollisionPolygon2D" parent="LevelLayout4" index="1"]
-polygon = PackedVector2Array(-160, -160, -352, -704, -416, -1088, -416, -1408, 608, -1408, 608, -1088, 480, -640, 320, -512, 320, -96, 320, 0, 192, 32, 96, 88, -32, 88, -72, 8, -128, -32)
+polygon = PackedVector2Array(-352, -704, -416, -1088, -416, -1408, 608, -1408, 608, -1088, 480, -640, 320, -512, 320, -96, 320, 0, 192, 32, 96, 88, -32, 88)
 
 [node name="LevelLayout3" parent="." index="5" instance=ExtResource("2_jkrde")]
 position = Vector2(728, -152)
@@ -103,35 +115,35 @@ position = Vector2(1104, 832)
 scale = Vector2(200, 2)
 
 [node name="RedBlock" parent="." index="12" instance=ExtResource("4_yf7ry")]
-position = Vector2(1760, -800)
+position = Vector2(1760, -944)
 scale = Vector2(9, 0.5)
 
 [node name="Spikes" parent="." index="13" instance=ExtResource("9_66q0i")]
-position = Vector2(1504, -640)
+position = Vector2(1504, -784)
 
 [node name="Spikes2" parent="." index="14" instance=ExtResource("9_66q0i")]
-position = Vector2(1568, -640)
+position = Vector2(1568, -784)
 
 [node name="Spikes3" parent="." index="15" instance=ExtResource("9_66q0i")]
-position = Vector2(1632, -640)
+position = Vector2(1632, -784)
 
 [node name="Spikes4" parent="." index="16" instance=ExtResource("9_66q0i")]
-position = Vector2(1696, -640)
+position = Vector2(1696, -784)
 
 [node name="Spikes5" parent="." index="17" instance=ExtResource("9_66q0i")]
-position = Vector2(1760, -640)
+position = Vector2(1760, -784)
 
 [node name="Spikes6" parent="." index="18" instance=ExtResource("9_66q0i")]
-position = Vector2(1824, -640)
+position = Vector2(1824, -784)
 
 [node name="Spikes7" parent="." index="19" instance=ExtResource("9_66q0i")]
-position = Vector2(1888, -640)
+position = Vector2(1888, -784)
 
 [node name="Spikes8" parent="." index="20" instance=ExtResource("9_66q0i")]
-position = Vector2(1952, -640)
+position = Vector2(1952, -784)
 
 [node name="Spikes9" parent="." index="21" instance=ExtResource("9_66q0i")]
-position = Vector2(2016, -640)
+position = Vector2(2016, -784)
 
 [node name="CameraBounds" parent="." index="22" instance=ExtResource("10_rnwx3")]
 position = Vector2(1824, -984)
@@ -148,6 +160,26 @@ position = Vector2(-608, 64)
 position = Vector2(352, 112)
 scale = Vector2(4, 1)
 
+[node name="CameraTriggerArea" parent="." index="25" node_paths=PackedStringArray("used_phantom_camera_2d") instance=ExtResource("12_n2jhf")]
+position = Vector2(832, -192)
+used_phantom_camera_2d = NodePath("PhantomCamera2D")
+
+[node name="CollisionPolygon2D" parent="CameraTriggerArea" index="0"]
+polygon = PackedVector2Array(-704, -192, 224, -192, 704, -320, 704, 416, -704, 416)
+
+[node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
+shape = SubResource("RectangleShape2D_07mkx")
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea" index="3"]
+script = ExtResource("13_5j4db")
+priority_override = null
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 0
+tween_parameters = SubResource("Resource_b4ol7")
+tween_on_load = true
+inactive_update_mode = 0
+
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]
 [editable path="LevelLayout2"]
@@ -156,3 +188,4 @@ scale = Vector2(4, 1)
 [editable path="MovingPivot"]
 [editable path="MovingPivot/LevelLayout"]
 [editable path="CameraBounds"]
+[editable path="CameraTriggerArea"]
