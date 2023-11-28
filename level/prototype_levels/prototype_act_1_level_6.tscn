@@ -21,7 +21,7 @@ size = Vector2(192, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j80mk"]
 size = Vector2(4992, 2432)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_07mkx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0og5"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_b4ol7"]
@@ -168,7 +168,7 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 polygon = PackedVector2Array(-704, -192, 224, -192, 704, -320, 704, 416, -704, 416)
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_07mkx")
+shape = SubResource("RectangleShape2D_g0og5")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea" index="3"]
 script = ExtResource("13_5j4db")
