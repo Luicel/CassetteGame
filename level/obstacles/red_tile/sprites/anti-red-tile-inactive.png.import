@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://curh2xagqtu01"
-path="res://.godot/imported/red-tile.png-8e6245f91fe43699b020e8dffea0963e.ctex"
+uid="uid://dipkqa0dqords"
+path="res://.godot/imported/anti-red-tile-inactive.png-99f1b0d422979e82092b043740e4b61e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/obstacles/red_tile/red-tile.png"
-dest_files=["res://.godot/imported/red-tile.png-8e6245f91fe43699b020e8dffea0963e.ctex"]
+source_file="res://level/obstacles/red_tile/sprites/anti-red-tile-inactive.png"
+dest_files=["res://.godot/imported/anti-red-tile-inactive.png-99f1b0d422979e82092b043740e4b61e.ctex"]
 
 [params]
 

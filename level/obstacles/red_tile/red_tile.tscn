@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuspi1aoqw7hh"]
+[gd_scene load_steps=6 format=3 uid="uid://cuspi1aoqw7hh"]
 
 [ext_resource type="Script" path="res://level/obstacles/red_tile/red_tile.gd" id="1_pvtn3"]
-[ext_resource type="Texture2D" uid="uid://curh2xagqtu01" path="res://level/obstacles/red_tile/red-tile.png" id="2_3mv20"]
+[ext_resource type="Texture2D" uid="uid://d0hm2ke4j7hhb" path="res://level/obstacles/red_tile/sprites/red-tile-active.png" id="2_hl883"]
+[ext_resource type="Texture2D" uid="uid://drofss67iyp8u" path="res://level/obstacles/red_tile/sprites/red-tile-inactive.png" id="3_qrsx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyef5"]
 size = Vector2(64, 64)
@@ -9,23 +10,28 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlqsn"]
 size = Vector2(64, 64)
 
-[node name="RedTile" type="StaticBody2D" groups=["red_block"]]
+[node name="RedTile" type="StaticBody2D" groups=["red_tile"]]
 z_index = 1
-scale = Vector2(0.5, 0.5)
 collision_mask = 2
 script = ExtResource("1_pvtn3")
+active_texture = ExtResource("2_hl883")
+inactive_texture = ExtResource("3_qrsx8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_iyef5")
+debug_color = Color(1, 0.792157, 0.752941, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3mv20")
+scale = Vector2(4, 4)
+texture = ExtResource("2_hl883")
 
 [node name="PlayerDetectorArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectorArea"]
+visible = false
 shape = SubResource("RectangleShape2D_dlqsn")
 
 [connection signal="body_entered" from="PlayerDetectorArea" to="." method="_on_player_detector_area_body_entered"]

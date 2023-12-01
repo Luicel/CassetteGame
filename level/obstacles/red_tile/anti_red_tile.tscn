@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1wqtah03jwb8"]
+
+[ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_tile/red_tile.tscn" id="1_frmpa"]
+[ext_resource type="Texture2D" uid="uid://bo5nfvddkveft" path="res://level/obstacles/red_tile/sprites/anti-red-tile-active.png" id="2_5v8ht"]
+[ext_resource type="Texture2D" uid="uid://dipkqa0dqords" path="res://level/obstacles/red_tile/sprites/anti-red-tile-inactive.png" id="3_k5ea5"]
+
+[node name="AntiRedTile" instance=ExtResource("1_frmpa")]
+start_active = true
+active_texture = ExtResource("2_5v8ht")
+inactive_texture = ExtResource("3_k5ea5")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_5v8ht")

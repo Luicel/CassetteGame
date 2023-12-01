@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0w5tsxal66jp"]
+[gd_scene load_steps=18 format=3 uid="uid://d0w5tsxal66jp"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_xa15t"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_whmoc"]
@@ -9,9 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="8_wjnpy"]
 [ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/layout/level_layout.tscn" id="10_u4kpt"]
 [ext_resource type="PackedScene" uid="uid://clxdrm61ea5bg" path="res://cassette/blue/blue_cassette.tscn" id="11_7v8fn"]
+[ext_resource type="PackedScene" uid="uid://b1wqtah03jwb8" path="res://level/obstacles/red_tile/anti_red_tile.tscn" id="11_t7plh"]
 [ext_resource type="PackedScene" uid="uid://bc5tw2d0vhhme" path="res://cassette/green/green_cassette.tscn" id="12_gdw0y"]
+[ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red/red_cassette.tscn" id="12_shmy1"]
+[ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_tile/red_tile.tscn" id="13_5fege"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2uqg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhcjj"]
 size = Vector2(2953.85, 1661.54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -48,7 +51,7 @@ position = Vector2(-1632, 288)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_r2uqg")
+shape = SubResource("RectangleShape2D_rhcjj")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_rlbro")
@@ -83,10 +86,7 @@ shape = SubResource("RectangleShape2D_qshsu")
 position = Vector2(0, 64)
 
 [node name="BlueCassette" parent="." instance=ExtResource("11_7v8fn")]
-position = Vector2(512, 960)
-
-[node name="BlueCassette2" parent="." instance=ExtResource("11_7v8fn")]
-position = Vector2(640, 640)
+position = Vector2(960, 768)
 
 [node name="GreenCassette" parent="." instance=ExtResource("12_gdw0y")]
 position = Vector2(-416, 1024)
@@ -98,6 +98,27 @@ position = Vector2(224, 800)
 end_position_offset = Vector2(200, 0)
 forward_speed = 200.0
 backward_speed = 200.0
+
+[node name="AntiRedTile" parent="." groups=["red_block"] instance=ExtResource("11_t7plh")]
+position = Vector2(640, 1056)
+
+[node name="AntiRedTile7" parent="." groups=["red_block"] instance=ExtResource("11_t7plh")]
+position = Vector2(640, 992)
+
+[node name="AntiRedTile8" parent="." groups=["red_block"] instance=ExtResource("11_t7plh")]
+position = Vector2(640, 928)
+
+[node name="RedCassette" parent="." instance=ExtResource("12_shmy1")]
+position = Vector2(512, 992)
+
+[node name="RedTile" parent="." instance=ExtResource("13_5fege")]
+position = Vector2(384, 1056)
+
+[node name="RedTile2" parent="." instance=ExtResource("13_5fege")]
+position = Vector2(384, 992)
+
+[node name="RedTile3" parent="." instance=ExtResource("13_5fege")]
+position = Vector2(384, 928)
 
 [editable path="Player"]
 [editable path="Player/CharacterBody2D/CassettePocket"]
