@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtutos5dxlabe"]
+
+[ext_resource type="Script" path="res://level/obstacles/moving_pivot.gd" id="1_cki8f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0pol"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve2D" id="Curve2D_futvs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5h2w"]
+size = Vector2(64, 64)
+
+[node name="MovingPivot" type="AnimatableBody2D"]
+collision_mask = 7
+script = ExtResource("1_cki8f")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j0pol")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_futvs")
+
+[node name="StallTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+shape = SubResource("RectangleShape2D_p5h2w")
+disabled = true
+
+[connection signal="timeout" from="StallTimer" to="." method="_on_stall_timer_timeout"]
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

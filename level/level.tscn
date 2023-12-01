@@ -25,10 +25,10 @@ polygon = PackedVector2Array(-64, 120, 64, 120, 64, 120, 64, 184, -64, 184)
 [node name="Player" parent="." instance=ExtResource("2_rfyqa")]
 
 [node name="Camera2D" parent="Player" index="0"]
-position = Vector2(7.00649e-45, -7.00649e-45)
+position = Vector2(7.00649e-45, -128)
 
 [node name="PhantomCamera2D" parent="Player" index="1"]
-position = Vector2(7.00649e-45, -7.00649e-45)
+position = Vector2(7.00649e-45, -128)
 
 [node name="CharacterBody2D" parent="Player" index="2"]
 platform_wall_layers = 1

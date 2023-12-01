@@ -1,5 +1,5 @@
 @tool
-extends AnimatableBody2D
+class_name Moving extends Node2D
 
 signal player_entered
 
@@ -20,9 +20,9 @@ signal player_entered
 @onready var path_2d = $Path2D
 @onready var stall_timer = $StallTimer
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var previous_position = position
-@onready var start_position = global_position + start_position_offset
-@onready var end_position = global_position + end_position_offset
+@onready var previous_position = get_parent().position
+@onready var start_position = get_parent().global_position + start_position_offset
+@onready var end_position = get_parent().global_position + end_position_offset
 
 var active = false
 var is_moving_forward = true
@@ -54,7 +54,7 @@ func _physics_process(delta):
 	if not Engine.is_editor_hint():
 		#constant_linear_velocity = (position - previous_position) / delta
 		_handle_movement(delta)
-		previous_position = position
+		previous_position = get_parent().position
 
 
 func _handle_movement(delta):
@@ -67,23 +67,29 @@ func _handle_movement(delta):
 			active = true
 	elif active and stall_timer.time_left == 0:
 		if is_moving_forward:
-			if position == end_position:
+			if get_parent().position == end_position:
 				is_moving_forward = false
 				if backward_requires_player_detection:
 					active = false
 				else:
 					_start_stall_timer(backward_stall_time)
 			else:
-				position = position.move_toward(end_position, forward_speed * delta)
+				_move_towards(end_position, delta)
 		else:
-			if position == start_position:
+			if get_parent().position == start_position:
 				is_moving_forward = true
 				if forward_requires_player_detection:
 					active = false
 				else:
 					_start_stall_timer(forward_stall_time)
 			else:
-				position = position.move_toward(start_position, backward_speed * delta)
+				_move_towards(start_position, delta)
+
+
+func _move_towards(goal_position, delta):
+	var move_towards = get_parent().position.move_toward(goal_position, forward_speed * delta)
+	get_parent().constant_linear_velocity.x = (move_towards - get_parent().position).x * delta
+	get_parent().position = move_towards
 
 
 func _start_stall_timer(seconds):

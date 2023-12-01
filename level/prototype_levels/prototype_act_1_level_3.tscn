@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_i7s2t"]
 [ext_resource type="PackedScene" uid="uid://dtutos5dxlabe" path="res://level/obstacles/moving_pivot.tscn" id="2_as7mp"]
-[ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/level_layout.tscn" id="3_ip7c6"]
+[ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/layout/level_layout.tscn" id="3_ip7c6"]
 [ext_resource type="PackedScene" uid="uid://dorvfpohkstmf" path="res://level/obstacles/spikes/spikes.tscn" id="4_7i1xf"]
 [ext_resource type="PackedScene" uid="uid://d01d8mkfiuu0u" path="res://level/obstacles/death_zone/death_zone.tscn" id="6_n0uav"]
 [ext_resource type="PackedScene" uid="uid://csnfbq078xw3e" path="res://level/scene_change_area.tscn" id="7_hxc51"]
@@ -19,7 +19,7 @@ size = Vector2(128, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7lf7"]
 size = Vector2(7168, 3328)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhuav"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00ks5"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_7qy6g"]
@@ -31,10 +31,10 @@ ease = 1
 [node name="PrototypeAct1Level3" instance=ExtResource("1_i7s2t")]
 
 [node name="Polygon2D" parent="LevelLayout" index="0"]
-polygon = PackedVector2Array(-1472, 64, -768, 64, -573.053, 128, 64, 128, 544, -64, 800, -64, 800, 160, 1120, 160, 1120, 128, 1248, 128, 1248, 192, 1504, 192, 1504, 96, 1568, 96, 1568, 152, 1888, 152, 1888, 192, 2016, 192, 2016, -288, 2432, -256, 2624, -128, 2944, -128, 3200, -64, 3392, -64, 3392, 64, 3616, 64, 3616, -192, 3872, -192, 3872, 64, 4096, 64, 4096, -608, 4416, -608, 5056, -448, 6336, -448, 6336, 768, -1472, 768)
+polygon = PackedVector2Array(-1472, 64, -768, 64, -573.053, 128, 64, 128, 544, -64, 800, -64, 800, 160, 1120, 160, 1120, 128, 1248, 128, 1248, 192, 1504, 192, 1504, 96, 1568, 96, 1568, 152, 1888, 152, 1888, 192, 2016, 192, 2016, -288, 2432, -256, 2624, -128, 2944, -128, 3200, -64, 3392, -64, 3392, 64, 3616, 64, 3616, -176, 3872, -176, 3872, 64, 4096, 64, 4096, -576, 4416, -608, 4800, -608, 5312, -448, 6336, -448, 6336, 768, -1472, 768)
 
 [node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
-polygon = PackedVector2Array(-1472, 64, -768, 64, -573.053, 128, 64, 128, 544, -64, 800, -64, 800, 160, 1120, 160, 1120, 128, 1248, 128, 1248, 192, 1504, 192, 1504, 96, 1568, 96, 1568, 152, 1888, 152, 1888, 192, 2016, 192, 2016, -288, 2432, -256, 2624, -128, 2944, -128, 3200, -64, 3392, -64, 3392, 64, 3616, 64, 3616, -192, 3872, -192, 3872, 64, 4096, 64, 4096, -608, 4416, -608, 5056, -448, 6336, -448, 6336, 768, -1472, 768)
+polygon = PackedVector2Array(-1472, 64, -768, 64, -573.053, 128, 64, 128, 544, -64, 800, -64, 800, 160, 1120, 160, 1120, 128, 1248, 128, 1248, 192, 1504, 192, 1504, 96, 1568, 96, 1568, 152, 1888, 152, 1888, 192, 2016, 192, 2016, -288, 2432, -256, 2624, -128, 2944, -128, 3200, -64, 3392, -64, 3392, 64, 3616, 64, 3616, -176, 3872, -176, 3872, 64, 4096, 64, 4096, -576, 4416, -608, 4800, -608, 5312, -448, 6336, -448, 6336, 768, -1472, 768)
 
 [node name="Camera2D" parent="Player" index="0"]
 position = Vector2(-1248, -112)
@@ -175,9 +175,9 @@ position = Vector2(3504, -416)
 start_position_offset = Vector2(0, 320)
 end_position_offset = Vector2(0, -320)
 forward_speed = 400.0
-forward_stall_time = 0.5
+forward_stall_time = 0.75
 backward_speed = 400.0
-backward_stall_time = 0.5
+backward_stall_time = 0.75
 
 [node name="CollisionShape2D" parent="MovingPivot3" index="0"]
 disabled = true
@@ -211,9 +211,9 @@ position = Vector2(3984, -416)
 start_position_offset = Vector2(0, -320)
 end_position_offset = Vector2(0, 320)
 forward_speed = 400.0
-forward_stall_time = 0.5
+forward_stall_time = 0.75
 backward_speed = 400.0
-backward_stall_time = 0.5
+backward_stall_time = 0.75
 
 [node name="CollisionShape2D" parent="MovingPivot5" index="0"]
 disabled = true
@@ -263,7 +263,7 @@ position = Vector2(-256, 0)
 metadata/_edit_lock_ = true
 
 [node name="LevelLayout2" parent="." index="38" instance=ExtResource("3_ip7c6")]
-position = Vector2(3744, -448)
+position = Vector2(3744, -432)
 
 [node name="Polygon2D" parent="LevelLayout2" index="0"]
 polygon = PackedVector2Array(-128, -32, 128, -32, 128, 32, -128, 32)
@@ -275,10 +275,10 @@ polygon = PackedVector2Array(-128, -32, 128, -32, 128, 32, -128, 32)
 position = Vector2(3328, -352)
 
 [node name="Polygon2D" parent="LevelLayout3" index="0"]
-polygon = PackedVector2Array(-192, -1120, 64, -1056, 64, 64, -128, 64, -384, 0, -640, -224, -768, -672, -1280, -864, -1664, -1888, -1664, -2464, 1024, -2464, 1024, -1248, 832, -736, 544, -544, 544, -352, 288, -352, 288, -1376, 72, -1632, -384, -1696, -576, -1632, -576, -1120)
+polygon = PackedVector2Array(-192, -1120, 64, -1056, 64, 64, -128, 64, -384, 0, -640, -224, -832, -672, -1280, -864, -1664, -1888, -1664, -2464, 1024, -2464, 1024, -1248, 832, -736, 544, -544, 544, -336, 288, -336, 288, -1376, 72, -1632, -384, -1696, -576, -1632, -576, -1120)
 
 [node name="CollisionPolygon2D" parent="LevelLayout3" index="1"]
-polygon = PackedVector2Array(-192, -1120, 64, -1056, 64, 64, -128, 64, -384, 0, -640, -224, -768, -672, -1280, -864, -1664, -1888, -1664, -2464, 1024, -2464, 1024, -1248, 832, -736, 544, -544, 544, -352, 288, -352, 288, -1376, 72, -1632, -384, -1696, -576, -1632, -576, -1120)
+polygon = PackedVector2Array(-192, -1120, 64, -1056, 64, 64, -128, 64, -384, 0, -640, -224, -832, -672, -1280, -864, -1664, -1888, -1664, -2464, 1024, -2464, 1024, -1248, 832, -736, 544, -544, 544, -336, 288, -336, 288, -1376, 72, -1632, -384, -1696, -576, -1632, -576, -1120)
 
 [node name="Label" type="Label" parent="." index="40"]
 offset_left = 2840.0
@@ -294,10 +294,10 @@ used_phantom_camera_2d = NodePath("PhantomCamera2D")
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" parent="CameraTriggerArea" index="0"]
-polygon = PackedVector2Array(-608, -544, 128, -544, 352, -256, 416, -256, 416, 480, -608, 472)
+polygon = PackedVector2Array(-608, -544, 128, -544, 352, -224, 416, -224, 416, 480, -608, 472)
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_dhuav")
+shape = SubResource("RectangleShape2D_00ks5")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea" index="3"]
 script = ExtResource("12_tr2dj")

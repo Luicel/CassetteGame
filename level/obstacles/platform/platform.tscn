@@ -1,17 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cha00p1ste10f"]
-
-[ext_resource type="Texture2D" uid="uid://ceatpqbpi1q48" path="res://level/obstacles/platform/platform-sprite.png" id="2_wjc25"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rgpx"]
-size = Vector2(256, 128)
+[gd_scene format=3 uid="uid://bpwyb5nau53pv"]
 
 [node name="Platform" type="AnimatableBody2D"]
 metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 2)
-texture = ExtResource("2_wjc25")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2rgpx")
-debug_color = Color(0, 0.6, 0.701961, 0.0980392)

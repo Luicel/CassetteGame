@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://rycovg3ohcvq"]
+
+[ext_resource type="Script" path="res://level/obstacles/moving_pivot.gd" id="1_iceh7"]
+
+[sub_resource type="Curve2D" id="Curve2D_uf236"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -200)
+}
+point_count = 2
+
+[node name="Moving" type="Node2D"]
+script = ExtResource("1_iceh7")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_uf236")
+
+[node name="StallTimer" type="Timer" parent="."]

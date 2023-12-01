@@ -17,7 +17,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5dpi"]
 size = Vector2(4928, 2560)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwgr1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doscr"]
 size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_6mrmd"]
@@ -134,7 +134,7 @@ metadata/_edit_lock_ = true
 polygon = PackedVector2Array(-672, -752, 544, -752, 544, 536, -672, 528)
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_hwgr1")
+shape = SubResource("RectangleShape2D_doscr")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea" index="3"]
 script = ExtResource("12_5lari")
