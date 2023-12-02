@@ -107,20 +107,6 @@ func _update_path_2d():
 	path_2d.curve.add_point(end_position_offset)
 
 
-func _on_player_detection_area_body_entered(body):
-	if body == player:
-		is_player_colliding = true
-		player_entered.emit()
-
-
-func _on_player_detection_area_body_exited(body):
-	if body == player:
-		is_player_colliding = false
-		if stall_timer.time_left > 0:
-			stall_timer.stop()
-			stall_timer.emit_signal("timeout")
-
-
 func _on_stall_timer_timeout():
 	if not is_player_colliding:
 		if is_moving_forward and forward_requires_player_detection:
@@ -135,3 +121,15 @@ func _on_activation_cassette_pocket_activation():
 
 func _on_activation_cassette_pocket_deactivation():
 	active = false
+
+
+func _on_area_2d_body_entered(body):
+	is_player_colliding = true
+	player_entered.emit()
+
+
+func _on_area_2d_body_exited(body):
+	is_player_colliding = false
+	if stall_timer.time_left > 0:
+		stall_timer.stop()
+		stall_timer.emit_signal("timeout")

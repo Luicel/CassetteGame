@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red/red_cassette.tscn" id="12_shmy1"]
 [ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_tile/red_tile.tscn" id="13_5fege"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhcjj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uafxq"]
 size = Vector2(2953.85, 1661.54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnrsm"]
@@ -51,7 +51,7 @@ position = Vector2(-1632, 288)
 used_phantom_camera_2d = NodePath("PhantomCamera2D")
 
 [node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
-shape = SubResource("RectangleShape2D_rhcjj")
+shape = SubResource("RectangleShape2D_uafxq")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea"]
 script = ExtResource("5_rlbro")

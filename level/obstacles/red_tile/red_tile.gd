@@ -32,7 +32,6 @@ func enable():
 	
 	if not is_player_in_area:
 		sprite_2d.texture = active_texture
-		visible = true
 		collision_shape_2d.set_deferred("disabled", false)
 	else:
 		is_trying_to_activate = true
@@ -43,7 +42,6 @@ func disable():
 	
 	is_trying_to_activate = false
 	sprite_2d.texture = inactive_texture
-	visible = false
 	collision_shape_2d.set_deferred("disabled", true)
 	
 

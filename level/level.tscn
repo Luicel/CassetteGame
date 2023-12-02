@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwfu4hg3iiiee"]
+[gd_scene load_steps=5 format=3 uid="uid://cwfu4hg3iiiee"]
 
 [ext_resource type="TileSet" uid="uid://4kkkjwefrhni" path="res://level/prototype_level_tileset.tres" id="1_jgd0x"]
 [ext_resource type="PackedScene" uid="uid://byqkycl7qpnd3" path="res://player/player.tscn" id="2_rfyqa"]
-[ext_resource type="Script" path="res://level/level_layout.gd" id="3_nsfm0"]
+[ext_resource type="Script" path="res://level/layout/level_layout.gd" id="3_nsfm0"]
+[ext_resource type="PackedScene" uid="uid://w558hq11cj3l" path="res://camera/camera_bounds.tscn" id="3_vgi6i"]
 
 [node name="Level" type="Node2D"]
 
@@ -10,17 +11,18 @@
 tile_set = ExtResource("1_jgd0x")
 format = 2
 
-[node name="LevelLayout" type="StaticBody2D" parent="."]
-collision_mask = 6
+[node name="LevelLayout" type="AnimatableBody2D" parent="."]
 script = ExtResource("3_nsfm0")
 
 [node name="Polygon2D" type="Polygon2D" parent="LevelLayout"]
 color = Color(0.188235, 0.219608, 0.254902, 1)
-polygon = PackedVector2Array(-64, 120, 64, 120, 64, 120, 64, 184, -64, 184)
+polygon = PackedVector2Array(-64, 128, 64, 128, 64, 192, -64, 192)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelLayout"]
 visible = false
 polygon = PackedVector2Array(-64, 120, 64, 120, 64, 120, 64, 184, -64, 184)
+
+[node name="CameraBounds" parent="." instance=ExtResource("3_vgi6i")]
 
 [node name="Player" parent="." instance=ExtResource("2_rfyqa")]
 

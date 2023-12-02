@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtutos5dxlabe"]
 
-[ext_resource type="Script" path="res://level/obstacles/moving_pivot.gd" id="1_cki8f"]
+[ext_resource type="Script" path="res://util/moving_pivot.gd" id="1_cki8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0pol"]
 size = Vector2(64, 64)

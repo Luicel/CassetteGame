@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw17n57witvtt"]
+[gd_scene load_steps=2 format=3 uid="uid://dw17n57witvtt"]
 
 [ext_resource type="Script" path="res://level/layout/level_layout.gd" id="1_u5utq"]
-[ext_resource type="PackedScene" uid="uid://rycovg3ohcvq" path="res://util/moving.tscn" id="2_1ehyr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dihj"]
-size = Vector2(64, 64)
 
 [node name="LevelLayout" type="AnimatableBody2D"]
 collision_mask = 6
@@ -18,12 +14,3 @@ polygon = PackedVector2Array(-64, -32, 64, -32, 64, 32, -64, 32)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(-64, -32, 64, -32, 64, 32, -64, 32)
-
-[node name="PlayerDetectionArea" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
-shape = SubResource("RectangleShape2D_8dihj")
-disabled = true
-
-[node name="Moving" parent="." instance=ExtResource("2_1ehyr")]

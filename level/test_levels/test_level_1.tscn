@@ -1,0 +1,384 @@
+[gd_scene load_steps=10 format=3 uid="uid://ld3psyv55g8"]
+
+[ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_wto6q"]
+[ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/layout/level_layout.tscn" id="2_f6y3o"]
+[ext_resource type="PackedScene" uid="uid://rycovg3ohcvq" path="res://util/moving.tscn" id="3_wg1va"]
+[ext_resource type="PackedScene" uid="uid://dorvfpohkstmf" path="res://level/obstacles/spikes/spikes.tscn" id="4_5ahhr"]
+[ext_resource type="PackedScene" uid="uid://bbmwsgrywxvl8" path="res://cassette/red/red_cassette.tscn" id="5_6chjt"]
+[ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="6_e6k5s"]
+[ext_resource type="PackedScene" uid="uid://b1wqtah03jwb8" path="res://level/obstacles/red_tile/anti_red_tile.tscn" id="7_6iw6g"]
+[ext_resource type="PackedScene" uid="uid://cuspi1aoqw7hh" path="res://level/obstacles/red_tile/red_tile.tscn" id="8_t4rdw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7ijw"]
+size = Vector2(288, 8)
+
+[node name="TestLevel1" instance=ExtResource("1_wto6q")]
+
+[node name="Polygon2D" parent="LevelLayout" index="0"]
+polygon = PackedVector2Array(-1472, 128, 64, 128, 256, 0, 576, 0, 576, 320, 1216, 320, 1216, -256, 1856, -256, 1856, 64, 2240, 64, 2240, -504, 2272, -512, 2272, -128, 2912, -128, 2912, -1280, 3200, -1280, 3392, -1344, 3392, -1152, 3904, -1152, 3904, -1344, 5184, -1472, 5184, 1152, -1472, 1152)
+
+[node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
+polygon = PackedVector2Array(-1472, 128, 64, 128, 256, 0, 576, 0, 576, 320, 1216, 320, 1216, -256, 1856, -256, 1856, 64, 2240, 64, 2240, -504, 2272, -512, 2272, -128, 2912, -128, 2912, -1280, 3200, -1280, 3392, -1344, 3392, -1152, 3904, -1152, 3904, -1344, 5184, -1472, 5184, 1152, -1472, 1152)
+
+[node name="CameraBounds" parent="." index="2"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="CameraBounds" index="0"]
+position = Vector2(1888, -812)
+
+[node name="Camera2D" parent="Player" index="0"]
+position = Vector2(-1184, -48)
+
+[node name="PhantomCamera2D" parent="Player" index="1"]
+position = Vector2(-1184, -48)
+
+[node name="CharacterBody2D" parent="Player" index="2"]
+position = Vector2(-1184, 80)
+
+[node name="LevelLayout2" parent="." index="4" instance=ExtResource("2_f6y3o")]
+position = Vector2(768, 32)
+
+[node name="Polygon2D" parent="LevelLayout2" index="0"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="CollisionPolygon2D" parent="LevelLayout2" index="1"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="Moving" parent="LevelLayout2" index="2" instance=ExtResource("3_wg1va")]
+position = Vector2(0, -8)
+end_position_offset = Vector2(0, -576)
+forward_speed = 300.0
+forward_requires_player_detection = true
+backward_speed = 300.0
+
+[node name="Area2D" type="Area2D" parent="LevelLayout2" index="3"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout2/Area2D" index="0"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_e7ijw")
+
+[node name="LevelLayout3" parent="." index="5" instance=ExtResource("2_f6y3o")]
+position = Vector2(768, -672)
+
+[node name="Polygon2D" parent="LevelLayout3" index="0"]
+polygon = PackedVector2Array(-192, -96, -192, -1120, 1504, -1120, 1888, -1120, 1888, -1016, 1760, -1016, 1760, -1000, 1632, -1000, 1632, -984, 1504, -984, 1504, -608, 896, -608, 896, -32, 1088, -32, 1088, 96, 640, 96, 448, -128, 192, -128, 192, 8, 64, 8, 64, 24, -64, 24, -64, 40, -192, 40)
+
+[node name="CollisionPolygon2D" parent="LevelLayout3" index="1"]
+polygon = PackedVector2Array(-192, -96, -192, -1120, 1504, -1120, 1888, -1120, 1888, -1016, 1760, -1016, 1760, -1000, 1632, -1000, 1632, -984, 1504, -984, 1504, -608, 896, -608, 896, -32, 1088, -32, 1088, 96, 640, 96, 448, -128, 192, -128, 192, 8, 64, 8, 64, 24, -64, 24, -64, 40, -192, 40)
+
+[node name="Spikes" parent="." index="6" instance=ExtResource("4_5ahhr")]
+position = Vector2(608, -632)
+rotation = -3.14159
+
+[node name="Spikes2" parent="." index="7" instance=ExtResource("4_5ahhr")]
+position = Vector2(672, -632)
+rotation = -3.14159
+
+[node name="Spikes3" parent="." index="8" instance=ExtResource("4_5ahhr")]
+position = Vector2(736, -648)
+rotation = -3.14159
+
+[node name="Spikes4" parent="." index="9" instance=ExtResource("4_5ahhr")]
+position = Vector2(800, -648)
+rotation = -3.14159
+
+[node name="Spikes5" parent="." index="10" instance=ExtResource("4_5ahhr")]
+position = Vector2(864, -664)
+rotation = -3.14159
+
+[node name="Spikes6" parent="." index="11" instance=ExtResource("4_5ahhr")]
+position = Vector2(928, -664)
+rotation = -3.14159
+
+[node name="Spikes23" parent="." index="12" instance=ExtResource("4_5ahhr")]
+position = Vector2(2304, -1656)
+rotation = -3.14159
+
+[node name="Spikes24" parent="." index="13" instance=ExtResource("4_5ahhr")]
+position = Vector2(2368, -1656)
+rotation = -3.14159
+
+[node name="Spikes25" parent="." index="14" instance=ExtResource("4_5ahhr")]
+position = Vector2(2432, -1672)
+rotation = -3.14159
+
+[node name="Spikes26" parent="." index="15" instance=ExtResource("4_5ahhr")]
+position = Vector2(2496, -1672)
+rotation = -3.14159
+
+[node name="Spikes27" parent="." index="16" instance=ExtResource("4_5ahhr")]
+position = Vector2(2560, -1688)
+rotation = -3.14159
+
+[node name="Spikes28" parent="." index="17" instance=ExtResource("4_5ahhr")]
+position = Vector2(2624, -1688)
+rotation = -3.14159
+
+[node name="LevelLayout4" parent="." index="18" instance=ExtResource("2_f6y3o")]
+position = Vector2(2048, -224)
+
+[node name="Polygon2D" parent="LevelLayout4" index="0"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="CollisionPolygon2D" parent="LevelLayout4" index="1"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="Moving" parent="LevelLayout4" index="2" instance=ExtResource("3_wg1va")]
+position = Vector2(0, -8)
+end_position_offset = Vector2(0, -576)
+forward_speed = 300.0
+forward_requires_player_detection = true
+backward_speed = 300.0
+
+[node name="Area2D" type="Area2D" parent="LevelLayout4" index="3"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout4/Area2D" index="0"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_e7ijw")
+
+[node name="LevelLayout6" parent="." index="19" instance=ExtResource("2_f6y3o")]
+position = Vector2(2464, -416)
+
+[node name="Polygon2D" parent="LevelLayout6" index="0"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="CollisionPolygon2D" parent="LevelLayout6" index="1"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="Moving" parent="LevelLayout6" index="2" instance=ExtResource("3_wg1va")]
+end_position_offset = Vector2(0, -1152)
+forward_speed = 300.0
+forward_requires_player_detection = true
+backward_speed = 300.0
+
+[node name="Area2D" type="Area2D" parent="LevelLayout6" index="3"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout6/Area2D" index="0"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_e7ijw")
+
+[node name="LevelLayout5" parent="." index="20" instance=ExtResource("2_f6y3o")]
+position = Vector2(2048, -928)
+
+[node name="Polygon2D" parent="LevelLayout5" index="0"]
+polygon = PackedVector2Array(-192, -64, 192, -96, 224, -96, 224, 344, 192, 352, 192, 40, 64, 40, 64, 24, -64, 24, -64, 8, -192, 8)
+
+[node name="CollisionPolygon2D" parent="LevelLayout5" index="1"]
+polygon = PackedVector2Array(-192, -64, 192, -96, 224, -96, 224, 344, 192, 352, 192, 40, 64, 40, 64, 24, -64, 24, -64, 8, -192, 8)
+
+[node name="Spikes17" parent="." index="21" instance=ExtResource("4_5ahhr")]
+position = Vector2(1888, -920)
+rotation = -3.14159
+
+[node name="Spikes18" parent="." index="22" instance=ExtResource("4_5ahhr")]
+position = Vector2(1952, -920)
+rotation = -3.14159
+
+[node name="Spikes19" parent="." index="23" instance=ExtResource("4_5ahhr")]
+position = Vector2(2016, -904)
+rotation = -3.14159
+
+[node name="Spikes20" parent="." index="24" instance=ExtResource("4_5ahhr")]
+position = Vector2(2080, -904)
+rotation = -3.14159
+
+[node name="Spikes21" parent="." index="25" instance=ExtResource("4_5ahhr")]
+position = Vector2(2144, -888)
+rotation = -3.14159
+
+[node name="Spikes22" parent="." index="26" instance=ExtResource("4_5ahhr")]
+position = Vector2(2208, -888)
+rotation = -3.14159
+
+[node name="Spikes7" parent="." index="27" instance=ExtResource("4_5ahhr")]
+position = Vector2(608, 320)
+
+[node name="Spikes8" parent="." index="28" instance=ExtResource("4_5ahhr")]
+position = Vector2(672, 320)
+
+[node name="Spikes9" parent="." index="29" instance=ExtResource("4_5ahhr")]
+position = Vector2(736, 320)
+
+[node name="Spikes10" parent="." index="30" instance=ExtResource("4_5ahhr")]
+position = Vector2(800, 320)
+
+[node name="Spikes11" parent="." index="31" instance=ExtResource("4_5ahhr")]
+position = Vector2(864, 320)
+
+[node name="Spikes12" parent="." index="32" instance=ExtResource("4_5ahhr")]
+position = Vector2(928, 320)
+
+[node name="Spikes13" parent="." index="33" instance=ExtResource("4_5ahhr")]
+position = Vector2(992, 320)
+
+[node name="Spikes14" parent="." index="34" instance=ExtResource("4_5ahhr")]
+position = Vector2(1056, 320)
+
+[node name="Spikes15" parent="." index="35" instance=ExtResource("4_5ahhr")]
+position = Vector2(1120, 320)
+
+[node name="Spikes16" parent="." index="36" instance=ExtResource("4_5ahhr")]
+position = Vector2(1184, 320)
+
+[node name="Spikes29" parent="." index="37" instance=ExtResource("4_5ahhr")]
+position = Vector2(2304, -128)
+
+[node name="Spikes30" parent="." index="38" instance=ExtResource("4_5ahhr")]
+position = Vector2(2368, -128)
+
+[node name="Spikes31" parent="." index="39" instance=ExtResource("4_5ahhr")]
+position = Vector2(2432, -128)
+
+[node name="Spikes32" parent="." index="40" instance=ExtResource("4_5ahhr")]
+position = Vector2(2496, -128)
+
+[node name="Spikes33" parent="." index="41" instance=ExtResource("4_5ahhr")]
+position = Vector2(2560, -128)
+
+[node name="Spikes47" parent="." index="42" instance=ExtResource("4_5ahhr")]
+position = Vector2(1888, 64)
+
+[node name="Spikes48" parent="." index="43" instance=ExtResource("4_5ahhr")]
+position = Vector2(1952, 64)
+
+[node name="Spikes49" parent="." index="44" instance=ExtResource("4_5ahhr")]
+position = Vector2(2016, 64)
+
+[node name="Spikes50" parent="." index="45" instance=ExtResource("4_5ahhr")]
+position = Vector2(2080, 64)
+
+[node name="Spikes51" parent="." index="46" instance=ExtResource("4_5ahhr")]
+position = Vector2(2144, 64)
+
+[node name="Spikes52" parent="." index="47" instance=ExtResource("4_5ahhr")]
+position = Vector2(2208, 64)
+
+[node name="Spikes34" parent="." index="48" instance=ExtResource("4_5ahhr")]
+position = Vector2(2624, -128)
+
+[node name="Spikes35" parent="." index="49" instance=ExtResource("4_5ahhr")]
+position = Vector2(2688, -128)
+
+[node name="Spikes36" parent="." index="50" instance=ExtResource("4_5ahhr")]
+position = Vector2(2752, -128)
+
+[node name="Spikes37" parent="." index="51" instance=ExtResource("4_5ahhr")]
+position = Vector2(2816, -128)
+
+[node name="Spikes38" parent="." index="52" instance=ExtResource("4_5ahhr")]
+position = Vector2(2880, -128)
+
+[node name="Spikes39" parent="." index="53" instance=ExtResource("4_5ahhr")]
+position = Vector2(3424, -1152)
+
+[node name="Spikes40" parent="." index="54" instance=ExtResource("4_5ahhr")]
+position = Vector2(3488, -1152)
+
+[node name="Spikes41" parent="." index="55" instance=ExtResource("4_5ahhr")]
+position = Vector2(3552, -1152)
+
+[node name="Spikes42" parent="." index="56" instance=ExtResource("4_5ahhr")]
+position = Vector2(3616, -1152)
+
+[node name="Spikes43" parent="." index="57" instance=ExtResource("4_5ahhr")]
+position = Vector2(3680, -1152)
+
+[node name="Spikes44" parent="." index="58" instance=ExtResource("4_5ahhr")]
+position = Vector2(3744, -1152)
+
+[node name="Spikes45" parent="." index="59" instance=ExtResource("4_5ahhr")]
+position = Vector2(3808, -1152)
+
+[node name="Spikes46" parent="." index="60" instance=ExtResource("4_5ahhr")]
+position = Vector2(3872, -1152)
+
+[node name="RedCassette" parent="." index="61" instance=ExtResource("5_6chjt")]
+position = Vector2(416, -96)
+
+[node name="Checkpoint" parent="." index="62" instance=ExtResource("6_e6k5s")]
+position = Vector2(-160, 0)
+
+[node name="AntiRedTile" parent="." index="63" instance=ExtResource("7_6iw6g")]
+position = Vector2(1536, -288)
+
+[node name="AntiRedTile2" parent="." index="64" instance=ExtResource("7_6iw6g")]
+position = Vector2(1536, -352)
+
+[node name="AntiRedTile3" parent="." index="65" instance=ExtResource("7_6iw6g")]
+position = Vector2(1536, -416)
+
+[node name="AntiRedTile4" parent="." index="66" instance=ExtResource("7_6iw6g")]
+position = Vector2(1536, -480)
+
+[node name="AntiRedTile5" parent="." index="67" instance=ExtResource("7_6iw6g")]
+position = Vector2(1536, -544)
+
+[node name="RedTile" parent="." index="68" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -736)
+
+[node name="RedTile2" parent="." index="69" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -800)
+
+[node name="RedTile3" parent="." index="70" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -864)
+
+[node name="RedTile4" parent="." index="71" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -928)
+
+[node name="RedTile5" parent="." index="72" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -992)
+
+[node name="RedTile6" parent="." index="73" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -1056)
+
+[node name="RedTile7" parent="." index="74" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -1120)
+
+[node name="RedTile8" parent="." index="75" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -1184)
+
+[node name="RedTile9" parent="." index="76" instance=ExtResource("8_t4rdw")]
+position = Vector2(1824, -1248)
+
+[node name="RedTile10" parent="." index="77" instance=ExtResource("8_t4rdw")]
+position = Vector2(3424, -1312)
+
+[node name="RedTile11" parent="." index="78" instance=ExtResource("8_t4rdw")]
+position = Vector2(3488, -1312)
+
+[node name="RedTile12" parent="." index="79" instance=ExtResource("8_t4rdw")]
+position = Vector2(3552, -1312)
+
+[node name="RedTile13" parent="." index="80" instance=ExtResource("8_t4rdw")]
+position = Vector2(3616, -1312)
+
+[node name="RedTile14" parent="." index="81" instance=ExtResource("8_t4rdw")]
+position = Vector2(3680, -1312)
+
+[node name="RedTile15" parent="." index="82" instance=ExtResource("8_t4rdw")]
+position = Vector2(3744, -1312)
+
+[node name="RedTile16" parent="." index="83" instance=ExtResource("8_t4rdw")]
+position = Vector2(3808, -1312)
+
+[node name="RedTile17" parent="." index="84" instance=ExtResource("8_t4rdw")]
+position = Vector2(3872, -1312)
+
+[connection signal="body_entered" from="LevelLayout2/Area2D" to="LevelLayout2/Moving" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="LevelLayout2/Area2D" to="LevelLayout2/Moving" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="LevelLayout4/Area2D" to="LevelLayout4/Moving" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="LevelLayout4/Area2D" to="LevelLayout4/Moving" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="LevelLayout6/Area2D" to="LevelLayout6/Moving" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="LevelLayout6/Area2D" to="LevelLayout6/Moving" method="_on_area_2d_body_exited"]
+
+[editable path="CameraBounds"]
+[editable path="Player"]
+[editable path="Player/CharacterBody2D/CassettePocket"]
+[editable path="LevelLayout2"]
+[editable path="LevelLayout3"]
+[editable path="LevelLayout4"]
+[editable path="LevelLayout6"]
+[editable path="LevelLayout5"]
