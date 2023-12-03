@@ -1,0 +1,515 @@
+[gd_scene load_steps=16 format=3 uid="uid://cjd2r52g4qbm"]
+
+[ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_pxka2"]
+[ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/layout/level_layout.tscn" id="2_kcfdu"]
+[ext_resource type="PackedScene" uid="uid://b82pyxhyv8q4a" path="res://camera/camera_trigger_area.tscn" id="3_fkjqd"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="4_dhg8h"]
+[ext_resource type="PackedScene" uid="uid://dorvfpohkstmf" path="res://level/obstacles/spikes/spikes.tscn" id="4_ytgog"]
+[ext_resource type="Resource" uid="uid://byamoqtyekeax" path="res://camera/default_tween_resource.tres" id="5_mi0eq"]
+[ext_resource type="PackedScene" uid="uid://bc5tw2d0vhhme" path="res://cassette/green/green_cassette.tscn" id="7_d5jxo"]
+[ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="8_u8m1c"]
+[ext_resource type="PackedScene" uid="uid://chrtsyofiofhm" path="res://level/obstacles/cassette_destruction_laser/cassette_destruction_laser.tscn" id="9_ji3ri"]
+[ext_resource type="PackedScene" uid="uid://rycovg3ohcvq" path="res://util/moving.tscn" id="11_68uly"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cee78"]
+size = Vector2(8192, 2688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abigr"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i8f1"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="Curve2D" id="Curve2D_0s1pe"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 768, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7itk2"]
+size = Vector2(384, 256)
+
+[node name="TestLevel4" instance=ExtResource("1_pxka2")]
+
+[node name="Polygon2D" parent="LevelLayout" index="0"]
+polygon = PackedVector2Array(-896, 128, 64, 128, 640, 256, 1152, 256, 1152, -128, 1408, -256, 1792, -256, 2176, -256, 2176, -128, 3456, -128, 3456, -704, 3968, -704, 4352, -704, 4352, -512, 6016, -512, 6016, -704, 6400, -704, 7936, -704, 7936, 1088, -896, 1088)
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
+polygon = PackedVector2Array(-896, 128, 64, 128, 640, 256, 1152, 256, 1152, -128, 1408, -256, 1792, -256, 2176, -256, 2176, -128, 3456, -128, 3456, -704, 3968, -704, 4352, -704, 4352, -512, 6016, -512, 6016, -704, 6400, -704, 7936, -704, 7936, 1088, -896, 1088)
+
+[node name="CameraBounds" parent="." index="2"]
+position = Vector2(1216, -192)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="CameraBounds" index="0"]
+position = Vector2(2304, 0)
+shape = SubResource("RectangleShape2D_cee78")
+
+[node name="LevelLayout2" parent="." index="3" instance=ExtResource("2_kcfdu")]
+position = Vector2(640, -288)
+
+[node name="Polygon2D" parent="LevelLayout2" index="0"]
+polygon = PackedVector2Array(-384, -2336, 7296, -2336, 7296, -672, 5760, -672, 5760, -1184, 3328, -1184, 3328, -672, 2368, -672, 2368, -544, 2240, -544, 2240, -416, 2112, -416, 2112, -672, 1856, -672, 1856, -416, 1728, -416, 1728, -544, 1600, -544, 1600, -672, 1152, -672, 1152, -224, 512, -224, 256, -96, 256, 288, -256, 96, -384, -544)
+
+[node name="CollisionPolygon2D" parent="LevelLayout2" index="1"]
+polygon = PackedVector2Array(-384, -2336, 7296, -2336, 7296, -672, 5760, -672, 5760, -1184, 3328, -1184, 3328, -672, 2368, -672, 2368, -544, 2240, -544, 2240, -416, 2112, -416, 2112, -672, 1856, -672, 1856, -416, 1728, -416, 1728, -544, 1600, -544, 1600, -672, 1152, -672, 1152, -224, 512, -224, 256, -96, 256, 288, -256, 96, -384, -544)
+
+[node name="CameraTriggerArea" parent="." index="4" node_paths=PackedStringArray("used_phantom_camera_2d") instance=ExtResource("3_fkjqd")]
+position = Vector2(2624, -544)
+used_phantom_camera_2d = NodePath("PhantomCamera2D")
+
+[node name="CollisionPolygon2D" parent="CameraTriggerArea" index="0"]
+polygon = PackedVector2Array(-896, -480, 768, -480, 768, 480, -896, 480)
+
+[node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
+shape = SubResource("RectangleShape2D_abigr")
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea" index="3"]
+script = ExtResource("4_dhg8h")
+priority_override = null
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 0
+tween_parameters = ExtResource("5_mi0eq")
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="Camera2D" parent="Player" index="0"]
+position = Vector2(-672, -48)
+
+[node name="PhantomCamera2D" parent="Player" index="1"]
+position = Vector2(-672, -48)
+
+[node name="CharacterBody2D" parent="Player" index="2"]
+position = Vector2(-672, 80)
+
+[node name="Spikes" parent="." index="6" instance=ExtResource("4_ytgog")]
+position = Vector2(2208, -128)
+
+[node name="Spikes2" parent="." index="7" instance=ExtResource("4_ytgog")]
+position = Vector2(2272, -128)
+
+[node name="Spikes3" parent="." index="8" instance=ExtResource("4_ytgog")]
+position = Vector2(2336, -128)
+
+[node name="Spikes4" parent="." index="9" instance=ExtResource("4_ytgog")]
+position = Vector2(2400, -128)
+
+[node name="Spikes5" parent="." index="10" instance=ExtResource("4_ytgog")]
+position = Vector2(2464, -128)
+
+[node name="Spikes6" parent="." index="11" instance=ExtResource("4_ytgog")]
+position = Vector2(2528, -128)
+
+[node name="Spikes7" parent="." index="12" instance=ExtResource("4_ytgog")]
+position = Vector2(2592, -128)
+
+[node name="Spikes8" parent="." index="13" instance=ExtResource("4_ytgog")]
+position = Vector2(2656, -128)
+
+[node name="Spikes9" parent="." index="14" instance=ExtResource("4_ytgog")]
+position = Vector2(2720, -128)
+
+[node name="Spikes10" parent="." index="15" instance=ExtResource("4_ytgog")]
+position = Vector2(2784, -128)
+
+[node name="Spikes11" parent="." index="16" instance=ExtResource("4_ytgog")]
+position = Vector2(2848, -128)
+
+[node name="Spikes12" parent="." index="17" instance=ExtResource("4_ytgog")]
+position = Vector2(2912, -128)
+
+[node name="Spikes13" parent="." index="18" instance=ExtResource("4_ytgog")]
+position = Vector2(2976, -128)
+
+[node name="Spikes14" parent="." index="19" instance=ExtResource("4_ytgog")]
+position = Vector2(3040, -128)
+
+[node name="Spikes15" parent="." index="20" instance=ExtResource("4_ytgog")]
+position = Vector2(3104, -128)
+
+[node name="Spikes16" parent="." index="21" instance=ExtResource("4_ytgog")]
+position = Vector2(3168, -128)
+
+[node name="Spikes17" parent="." index="22" instance=ExtResource("4_ytgog")]
+position = Vector2(3232, -128)
+
+[node name="Spikes18" parent="." index="23" instance=ExtResource("4_ytgog")]
+position = Vector2(3296, -128)
+
+[node name="Spikes19" parent="." index="24" instance=ExtResource("4_ytgog")]
+position = Vector2(3360, -128)
+
+[node name="Spikes20" parent="." index="25" instance=ExtResource("4_ytgog")]
+position = Vector2(3424, -128)
+
+[node name="Spikes21" parent="." index="26" instance=ExtResource("4_ytgog")]
+position = Vector2(2528, -960)
+rotation = 3.14159
+
+[node name="Spikes22" parent="." index="27" instance=ExtResource("4_ytgog")]
+position = Vector2(2592, -960)
+rotation = 3.14159
+
+[node name="Spikes23" parent="." index="28" instance=ExtResource("4_ytgog")]
+position = Vector2(2656, -960)
+rotation = 3.14159
+
+[node name="Spikes24" parent="." index="29" instance=ExtResource("4_ytgog")]
+position = Vector2(2720, -960)
+rotation = 3.14159
+
+[node name="GreenCassette" parent="." index="30" instance=ExtResource("7_d5jxo")]
+position = Vector2(1984, -448)
+
+[node name="Checkpoint" parent="." index="31" instance=ExtResource("8_u8m1c")]
+position = Vector2(1984, -384)
+
+[node name="CassetteDestructionLaser" parent="." index="32" instance=ExtResource("9_ji3ri")]
+position = Vector2(3712, -832)
+scale = Vector2(1, 4)
+
+[node name="CameraTriggerArea2" parent="." index="33" node_paths=PackedStringArray("used_phantom_camera_2d") instance=ExtResource("3_fkjqd")]
+position = Vector2(4800, -992)
+used_phantom_camera_2d = NodePath("PhantomCamera2D")
+
+[node name="CollisionPolygon2D" parent="CameraTriggerArea2" index="0"]
+polygon = PackedVector2Array(-896, -512, 1664, -512, 1664, 512, -896, 512)
+
+[node name="CameraVisibilityPreview" parent="CameraTriggerArea2" index="1"]
+shape = SubResource("RectangleShape2D_3i8f1")
+
+[node name="Path2D" parent="CameraTriggerArea2" index="2"]
+curve = SubResource("Curve2D_0s1pe")
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea2" index="3"]
+script = ExtResource("4_dhg8h")
+priority_override = null
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 4
+follow_target = NodePath("../../Player/CharacterBody2D")
+follow_path = NodePath("../Path2D")
+follow_parameters/damping = false
+tween_parameters = ExtResource("5_mi0eq")
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="Spikes25" parent="." index="34" instance=ExtResource("4_ytgog")]
+position = Vector2(4384, -512)
+rotation = 6.28318
+
+[node name="Spikes26" parent="." index="35" instance=ExtResource("4_ytgog")]
+position = Vector2(4448, -512)
+rotation = 6.28318
+
+[node name="Spikes27" parent="." index="36" instance=ExtResource("4_ytgog")]
+position = Vector2(4512, -512)
+rotation = 6.28318
+
+[node name="Spikes28" parent="." index="37" instance=ExtResource("4_ytgog")]
+position = Vector2(4576, -512)
+rotation = 6.28318
+
+[node name="Spikes29" parent="." index="38" instance=ExtResource("4_ytgog")]
+position = Vector2(4640, -512)
+rotation = 6.28318
+
+[node name="Spikes30" parent="." index="39" instance=ExtResource("4_ytgog")]
+position = Vector2(4704, -512)
+rotation = 6.28318
+
+[node name="Spikes31" parent="." index="40" instance=ExtResource("4_ytgog")]
+position = Vector2(4768, -512)
+rotation = 6.28318
+
+[node name="Spikes32" parent="." index="41" instance=ExtResource("4_ytgog")]
+position = Vector2(4832, -512)
+rotation = 6.28318
+
+[node name="Spikes33" parent="." index="42" instance=ExtResource("4_ytgog")]
+position = Vector2(4896, -512)
+rotation = 6.28318
+
+[node name="Spikes34" parent="." index="43" instance=ExtResource("4_ytgog")]
+position = Vector2(4960, -512)
+rotation = 6.28318
+
+[node name="Spikes35" parent="." index="44" instance=ExtResource("4_ytgog")]
+position = Vector2(5024, -512)
+rotation = 6.28318
+
+[node name="Spikes36" parent="." index="45" instance=ExtResource("4_ytgog")]
+position = Vector2(5088, -512)
+rotation = 6.28318
+
+[node name="Spikes37" parent="." index="46" instance=ExtResource("4_ytgog")]
+position = Vector2(5152, -512)
+rotation = 6.28318
+
+[node name="Spikes38" parent="." index="47" instance=ExtResource("4_ytgog")]
+position = Vector2(5216, -512)
+rotation = 6.28318
+
+[node name="Spikes39" parent="." index="48" instance=ExtResource("4_ytgog")]
+position = Vector2(5280, -512)
+rotation = 6.28318
+
+[node name="Spikes40" parent="." index="49" instance=ExtResource("4_ytgog")]
+position = Vector2(5344, -512)
+rotation = 6.28318
+
+[node name="Spikes41" parent="." index="50" instance=ExtResource("4_ytgog")]
+position = Vector2(5408, -512)
+rotation = 6.28318
+
+[node name="Spikes42" parent="." index="51" instance=ExtResource("4_ytgog")]
+position = Vector2(5472, -512)
+rotation = 6.28318
+
+[node name="Spikes43" parent="." index="52" instance=ExtResource("4_ytgog")]
+position = Vector2(5536, -512)
+rotation = 6.28318
+
+[node name="Spikes44" parent="." index="53" instance=ExtResource("4_ytgog")]
+position = Vector2(5600, -512)
+rotation = 6.28318
+
+[node name="Spikes45" parent="." index="54" instance=ExtResource("4_ytgog")]
+position = Vector2(5664, -512)
+rotation = 6.28318
+
+[node name="Spikes46" parent="." index="55" instance=ExtResource("4_ytgog")]
+position = Vector2(5728, -512)
+rotation = 6.28318
+
+[node name="Spikes47" parent="." index="56" instance=ExtResource("4_ytgog")]
+position = Vector2(5792, -512)
+rotation = 6.28318
+
+[node name="Spikes48" parent="." index="57" instance=ExtResource("4_ytgog")]
+position = Vector2(5856, -512)
+rotation = 6.28318
+
+[node name="Spikes49" parent="." index="58" instance=ExtResource("4_ytgog")]
+position = Vector2(5920, -512)
+rotation = 6.28318
+
+[node name="Spikes50" parent="." index="59" instance=ExtResource("4_ytgog")]
+position = Vector2(5984, -512)
+rotation = 6.28318
+
+[node name="Spikes51" parent="." index="60" instance=ExtResource("4_ytgog")]
+position = Vector2(4000, -1472)
+rotation = 9.42476
+
+[node name="Spikes52" parent="." index="61" instance=ExtResource("4_ytgog")]
+position = Vector2(4064, -1472)
+rotation = 9.42476
+
+[node name="Spikes53" parent="." index="62" instance=ExtResource("4_ytgog")]
+position = Vector2(4128, -1472)
+rotation = 9.42476
+
+[node name="Spikes54" parent="." index="63" instance=ExtResource("4_ytgog")]
+position = Vector2(4192, -1472)
+rotation = 9.42476
+
+[node name="Spikes55" parent="." index="64" instance=ExtResource("4_ytgog")]
+position = Vector2(4256, -1472)
+rotation = 9.42476
+
+[node name="Spikes56" parent="." index="65" instance=ExtResource("4_ytgog")]
+position = Vector2(4320, -1472)
+rotation = 9.42476
+
+[node name="Spikes57" parent="." index="66" instance=ExtResource("4_ytgog")]
+position = Vector2(4384, -1472)
+rotation = 9.42476
+
+[node name="Spikes58" parent="." index="67" instance=ExtResource("4_ytgog")]
+position = Vector2(4448, -1472)
+rotation = 9.42476
+
+[node name="Spikes59" parent="." index="68" instance=ExtResource("4_ytgog")]
+position = Vector2(4512, -1472)
+rotation = 9.42476
+
+[node name="Spikes60" parent="." index="69" instance=ExtResource("4_ytgog")]
+position = Vector2(4576, -1472)
+rotation = 9.42476
+
+[node name="Spikes61" parent="." index="70" instance=ExtResource("4_ytgog")]
+position = Vector2(4640, -1472)
+rotation = 9.42476
+
+[node name="Spikes62" parent="." index="71" instance=ExtResource("4_ytgog")]
+position = Vector2(4704, -1472)
+rotation = 9.42476
+
+[node name="Spikes63" parent="." index="72" instance=ExtResource("4_ytgog")]
+position = Vector2(4768, -1472)
+rotation = 9.42476
+
+[node name="Spikes64" parent="." index="73" instance=ExtResource("4_ytgog")]
+position = Vector2(4832, -1472)
+rotation = 9.42476
+
+[node name="Spikes65" parent="." index="74" instance=ExtResource("4_ytgog")]
+position = Vector2(4896, -1472)
+rotation = 9.42476
+
+[node name="Spikes66" parent="." index="75" instance=ExtResource("4_ytgog")]
+position = Vector2(4960, -1472)
+rotation = 9.42476
+
+[node name="Spikes67" parent="." index="76" instance=ExtResource("4_ytgog")]
+position = Vector2(5024, -1472)
+rotation = 9.42476
+
+[node name="Spikes68" parent="." index="77" instance=ExtResource("4_ytgog")]
+position = Vector2(5088, -1472)
+rotation = 9.42476
+
+[node name="Spikes69" parent="." index="78" instance=ExtResource("4_ytgog")]
+position = Vector2(5152, -1472)
+rotation = 9.42476
+
+[node name="Spikes70" parent="." index="79" instance=ExtResource("4_ytgog")]
+position = Vector2(5216, -1472)
+rotation = 9.42476
+
+[node name="Spikes71" parent="." index="80" instance=ExtResource("4_ytgog")]
+position = Vector2(5280, -1472)
+rotation = 9.42476
+
+[node name="Spikes72" parent="." index="81" instance=ExtResource("4_ytgog")]
+position = Vector2(5344, -1472)
+rotation = 9.42476
+
+[node name="Spikes73" parent="." index="82" instance=ExtResource("4_ytgog")]
+position = Vector2(5408, -1472)
+rotation = 9.42476
+
+[node name="Spikes74" parent="." index="83" instance=ExtResource("4_ytgog")]
+position = Vector2(5472, -1472)
+rotation = 9.42476
+
+[node name="Spikes75" parent="." index="84" instance=ExtResource("4_ytgog")]
+position = Vector2(5536, -1472)
+rotation = 9.42476
+
+[node name="Spikes76" parent="." index="85" instance=ExtResource("4_ytgog")]
+position = Vector2(5600, -1472)
+rotation = 9.42476
+
+[node name="Spikes77" parent="." index="86" instance=ExtResource("4_ytgog")]
+position = Vector2(5664, -1472)
+rotation = 9.42476
+
+[node name="Spikes78" parent="." index="87" instance=ExtResource("4_ytgog")]
+position = Vector2(5728, -1472)
+rotation = 9.42476
+
+[node name="Spikes79" parent="." index="88" instance=ExtResource("4_ytgog")]
+position = Vector2(5792, -1472)
+rotation = 9.42476
+
+[node name="Spikes80" parent="." index="89" instance=ExtResource("4_ytgog")]
+position = Vector2(5856, -1472)
+rotation = 9.42476
+
+[node name="Spikes81" parent="." index="90" instance=ExtResource("4_ytgog")]
+position = Vector2(5920, -1472)
+rotation = 9.42476
+
+[node name="Spikes82" parent="." index="91" instance=ExtResource("4_ytgog")]
+position = Vector2(5984, -1472)
+rotation = 9.42476
+
+[node name="Spikes83" parent="." index="92" instance=ExtResource("4_ytgog")]
+position = Vector2(6048, -1472)
+rotation = 9.42476
+
+[node name="Spikes84" parent="." index="93" instance=ExtResource("4_ytgog")]
+position = Vector2(6112, -1472)
+rotation = 9.42476
+
+[node name="Spikes85" parent="." index="94" instance=ExtResource("4_ytgog")]
+position = Vector2(6176, -1472)
+rotation = 9.42476
+
+[node name="Spikes86" parent="." index="95" instance=ExtResource("4_ytgog")]
+position = Vector2(6240, -1472)
+rotation = 9.42476
+
+[node name="Spikes87" parent="." index="96" instance=ExtResource("4_ytgog")]
+position = Vector2(6304, -1472)
+rotation = 9.42476
+
+[node name="Spikes88" parent="." index="97" instance=ExtResource("4_ytgog")]
+position = Vector2(6368, -1472)
+rotation = 9.42476
+
+[node name="GreenCassette2" parent="." index="98" instance=ExtResource("7_d5jxo")]
+position = Vector2(4896, -992)
+
+[node name="Checkpoint2" parent="." index="99" instance=ExtResource("8_u8m1c")]
+position = Vector2(4160, -832)
+
+[node name="CollisionShape2D" parent="Checkpoint2" index="0"]
+shape = SubResource("RectangleShape2D_7itk2")
+
+[node name="LevelLayout3" parent="." index="100" instance=ExtResource("2_kcfdu")]
+position = Vector2(4608, -704)
+
+[node name="Polygon2D" parent="LevelLayout3" index="0"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="CollisionPolygon2D" parent="LevelLayout3" index="1"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="Moving" parent="LevelLayout3" index="2" instance=ExtResource("11_68uly")]
+end_position_offset = Vector2(0, -576)
+forward_speed = 300.0
+backward_speed = 300.0
+
+[node name="LevelLayout4" parent="." index="101" instance=ExtResource("2_kcfdu")]
+position = Vector2(5760, -704)
+
+[node name="Polygon2D" parent="LevelLayout4" index="0"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="CollisionPolygon2D" parent="LevelLayout4" index="1"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="Moving" parent="LevelLayout4" index="2" instance=ExtResource("11_68uly")]
+end_position_offset = Vector2(0, -576)
+forward_speed = 300.0
+backward_speed = 300.0
+
+[node name="LevelLayout5" parent="." index="102" instance=ExtResource("2_kcfdu")]
+position = Vector2(5184, -1280)
+
+[node name="Polygon2D" parent="LevelLayout5" index="0"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="CollisionPolygon2D" parent="LevelLayout5" index="1"]
+polygon = PackedVector2Array(-160, -32, 160, -32, 160, 32, -160, 32)
+
+[node name="Moving" parent="LevelLayout5" index="2" instance=ExtResource("11_68uly")]
+end_position_offset = Vector2(0, 576)
+forward_speed = 300.0
+backward_speed = 300.0
+
+[editable path="CameraBounds"]
+[editable path="LevelLayout2"]
+[editable path="CameraTriggerArea"]
+[editable path="Player"]
+[editable path="Player/CharacterBody2D/CassettePocket"]
+[editable path="CameraTriggerArea2"]
+[editable path="Checkpoint2"]
+[editable path="LevelLayout3"]
+[editable path="LevelLayout4"]
+[editable path="LevelLayout5"]
