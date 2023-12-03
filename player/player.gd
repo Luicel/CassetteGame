@@ -16,6 +16,7 @@ signal cassette_thrown
 @onready var wall_stick_timer = $WallStickTimer
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var air_dash_timer = %AirDashTimer
+@onready var air_dash_buffer = $AirDashBuffer
 
 @export var initial_movement_state : PlayerMovementState
 @export var camera_pivot : Vector2
@@ -83,6 +84,10 @@ func _process(delta):
 	# Reload the scene upon appropriate input.
 	if Input.is_action_just_pressed("reset_level"):
 		LevelManager.reload_level()
+	
+	# Handle air dash buffer
+	if Input.is_action_just_pressed("jump"):
+		air_dash_buffer.start()
 
 
 func _physics_process(delta):

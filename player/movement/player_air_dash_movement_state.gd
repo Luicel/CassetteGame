@@ -12,6 +12,10 @@ func enter():
 	active_blue_cassette = player.cassette_pocket.pocketed_cassette
 	if not can_air_dash and active_blue_cassette.is_charged:
 		can_air_dash = true
+	
+	# Handle air dash buffer.
+	if player.air_dash_buffer.time_left > 0:
+		handle_air_dash()
 
 
 func physics_update(delta):
