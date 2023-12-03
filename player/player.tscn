@@ -137,7 +137,7 @@ script = ExtResource("17_eg3ag")
 
 [node name="AirDashTimer" type="Timer" parent="CharacterBody2D"]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.5
 one_shot = true
 
 [node name="CoyoteTimeTimer" type="Timer" parent="CharacterBody2D"]

@@ -15,6 +15,7 @@ signal cassette_thrown
 @onready var phantom_camera_2d = %PhantomCamera2D
 @onready var wall_stick_timer = $WallStickTimer
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var air_dash_timer = %AirDashTimer
 
 @export var initial_movement_state : PlayerMovementState
 @export var camera_pivot : Vector2

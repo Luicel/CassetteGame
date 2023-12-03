@@ -94,11 +94,6 @@ position = Vector2(-416, 1024)
 [node name="LevelLayout" parent="." instance=ExtResource("10_u4kpt")]
 position = Vector2(224, 800)
 
-[node name="Moving" parent="LevelLayout" index="3"]
-end_position_offset = Vector2(200, 0)
-forward_speed = 200.0
-backward_speed = 200.0
-
 [node name="AntiRedTile" parent="." groups=["red_block"] instance=ExtResource("11_t7plh")]
 position = Vector2(640, 1056)
 

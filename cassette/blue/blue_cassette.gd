@@ -17,4 +17,9 @@ func _enable_effect():
 
 
 func _disable_effect():
+	if player.air_dash_timer.time_left > 0:
+		await player.air_dash_timer.timeout
+		
+		if player.cassette_pocket.pocketed_cassette is BlueCassette: return
+	
 	get_tree().get_first_node_in_group("player").transition_to_movement_state("normal")
