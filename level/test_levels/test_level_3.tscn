@@ -1,0 +1,145 @@
+[gd_scene load_steps=14 format=3 uid="uid://c2wqfpp1jq0nw"]
+
+[ext_resource type="PackedScene" uid="uid://cwfu4hg3iiiee" path="res://level/level.tscn" id="1_glpwu"]
+[ext_resource type="PackedScene" uid="uid://dw17n57witvtt" path="res://level/layout/level_layout.tscn" id="2_kabuj"]
+[ext_resource type="PackedScene" uid="uid://b82pyxhyv8q4a" path="res://camera/camera_trigger_area.tscn" id="3_ji4mx"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="4_n547q"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_0myls"]
+[ext_resource type="PackedScene" uid="uid://clxdrm61ea5bg" path="res://cassette/blue/blue_cassette.tscn" id="5_hvnol"]
+[ext_resource type="PackedScene" uid="uid://crvh46rtn6va1" path="res://level/obstacles/platform/one-way/cassette_one_way_platform.tscn" id="6_hcmuw"]
+[ext_resource type="PackedScene" uid="uid://dorvfpohkstmf" path="res://level/obstacles/spikes/spikes.tscn" id="7_kvxjq"]
+[ext_resource type="PackedScene" uid="uid://b1i0axoispxnm" path="res://level/checkpoint/checkpoint.tscn" id="8_23qqs"]
+[ext_resource type="PackedScene" uid="uid://chrtsyofiofhm" path="res://level/obstacles/cassette_destruction_laser/cassette_destruction_laser.tscn" id="9_yn26k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk0dl"]
+size = Vector2(4864, 2688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cytuh"]
+size = Vector2(2400, 1350)
+
+[sub_resource type="Resource" id="Resource_0h73c"]
+script = ExtResource("5_0myls")
+duration = 0.6
+transition = 3
+ease = 1
+
+[node name="TestLevel3" instance=ExtResource("1_glpwu")]
+
+[node name="Polygon2D" parent="LevelLayout" index="0"]
+polygon = PackedVector2Array(-1784, 0, -896, 64, 192, 64, 448, 0, 768, 0, 960, -64, 960, 192, 1728, 192, 1728, -320, 1920, -384, 2752, -384, 4032, -256, 4032, 1280, -1792, 1280)
+
+[node name="CollisionPolygon2D" parent="LevelLayout" index="1"]
+polygon = PackedVector2Array(-1784, 0, -896, 64, 192, 64, 448, 0, 768, 0, 960, -64, 960, 192, 1728, 192, 1728, -320, 1920, -384, 2752, -384, 4032, -256, 4032, 1280, -1792, 1280)
+
+[node name="CameraBounds" parent="." index="2"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="CameraBounds" index="0"]
+position = Vector2(960, 0)
+shape = SubResource("RectangleShape2D_yk0dl")
+
+[node name="Camera2D" parent="Player" index="0"]
+position = Vector2(-1568, -160)
+
+[node name="PhantomCamera2D" parent="Player" index="1"]
+position = Vector2(-1568, -160)
+
+[node name="CharacterBody2D" parent="Player" index="2"]
+position = Vector2(-1568, -32)
+
+[node name="LevelLayout2" parent="." index="4" instance=ExtResource("2_kabuj")]
+position = Vector2(-944, -528)
+
+[node name="Polygon2D" parent="LevelLayout2" index="0"]
+polygon = PackedVector2Array(-208, -1008, 752, -1008, 1168, -1008, 1168, 368, 944, 336, 368, 336, -64, 32)
+
+[node name="CollisionPolygon2D" parent="LevelLayout2" index="1"]
+polygon = PackedVector2Array(-208, -1008, 752, -1008, 1168, -1008, 1168, 368, 944, 336, 368, 336, -64, 32)
+
+[node name="LevelLayout3" parent="." index="5" instance=ExtResource("2_kabuj")]
+position = Vector2(224, -288)
+
+[node name="Polygon2D" parent="LevelLayout3" index="0"]
+polygon = PackedVector2Array(192, -480, 736, -480, 736, -352, 352, -32, 192, -32)
+
+[node name="CollisionPolygon2D" parent="LevelLayout3" index="1"]
+polygon = PackedVector2Array(192, -480, 736, -480, 736, -352, 352, -32, 192, -32)
+
+[node name="CameraTriggerArea" parent="." index="6" node_paths=PackedStringArray("used_phantom_camera_2d") instance=ExtResource("3_ji4mx")]
+position = Vector2(1056, -416)
+used_phantom_camera_2d = NodePath("PhantomCamera2D")
+
+[node name="CollisionPolygon2D" parent="CameraTriggerArea" index="0"]
+polygon = PackedVector2Array(-1056, -960, 1056, -960, 1056, 704, -1056, 704)
+
+[node name="CameraVisibilityPreview" parent="CameraTriggerArea" index="1"]
+shape = SubResource("RectangleShape2D_cytuh")
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraTriggerArea" index="3"]
+script = ExtResource("4_n547q")
+priority_override = null
+priority = 0
+zoom = Vector2(0.8, 0.8)
+follow_mode = 0
+tween_parameters = SubResource("Resource_0h73c")
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="BlueCassette" parent="." index="7" instance=ExtResource("5_hvnol")]
+position = Vector2(608, -96)
+
+[node name="CassetteOneWayPlatform" parent="." index="8" instance=ExtResource("6_hcmuw")]
+position = Vector2(1344, -368)
+scale = Vector2(10, 1)
+metadata/_edit_lock_ = true
+
+[node name="Spikes" parent="." index="9" instance=ExtResource("7_kvxjq")]
+position = Vector2(992, 192)
+
+[node name="Spikes2" parent="." index="10" instance=ExtResource("7_kvxjq")]
+position = Vector2(1056, 192)
+
+[node name="Spikes3" parent="." index="11" instance=ExtResource("7_kvxjq")]
+position = Vector2(1120, 192)
+
+[node name="Spikes4" parent="." index="12" instance=ExtResource("7_kvxjq")]
+position = Vector2(1184, 192)
+
+[node name="Spikes5" parent="." index="13" instance=ExtResource("7_kvxjq")]
+position = Vector2(1248, 192)
+
+[node name="Spikes6" parent="." index="14" instance=ExtResource("7_kvxjq")]
+position = Vector2(1312, 192)
+
+[node name="Spikes7" parent="." index="15" instance=ExtResource("7_kvxjq")]
+position = Vector2(1376, 192)
+
+[node name="Spikes8" parent="." index="16" instance=ExtResource("7_kvxjq")]
+position = Vector2(1440, 192)
+
+[node name="Spikes9" parent="." index="17" instance=ExtResource("7_kvxjq")]
+position = Vector2(1504, 192)
+
+[node name="Spikes10" parent="." index="18" instance=ExtResource("7_kvxjq")]
+position = Vector2(1568, 192)
+
+[node name="Spikes11" parent="." index="19" instance=ExtResource("7_kvxjq")]
+position = Vector2(1632, 192)
+
+[node name="Spikes12" parent="." index="20" instance=ExtResource("7_kvxjq")]
+position = Vector2(1696, 192)
+
+[node name="Checkpoint" parent="." index="21" instance=ExtResource("8_23qqs")]
+position = Vector2(-352, -64)
+
+[node name="CassetteDestructionLaser" parent="." index="22" instance=ExtResource("9_yn26k")]
+position = Vector2(320, -384)
+scale = Vector2(6, 0.5)
+
+[editable path="CameraBounds"]
+[editable path="Player"]
+[editable path="Player/CharacterBody2D/CassettePocket"]
+[editable path="LevelLayout2"]
+[editable path="LevelLayout3"]
+[editable path="CameraTriggerArea"]
+[editable path="Checkpoint"]
